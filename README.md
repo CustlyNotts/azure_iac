@@ -2,11 +2,11 @@
 
 - clone this git repo to your local machine: 
     ```console
-    git clone https://dpwhotfsonline.visualstudio.com/IT%20Infra/_git/IaC
+    git clone https://github.com/CustlyNotts/azure_iac.git
     ```
 - go inside direcotory where you want to work:
     ```console
-    cd /Users/pavlotymoshchenkov/repos/IaC/aks
+    cd azure_iac
     ```
 - initialize a working directory containing Terraform configuration files:
     ```console
@@ -18,7 +18,7 @@
     ```
 - plan and apply configuration provided in your variable file:
     ```console
-    terraform apply -var-file /Users/pavlotymoshchenkov/repos/IaC/aks/vars/aks-sharedapps-prod.tfvars
+    terraform apply -var-file azure_iac/aks/vars/aks-sharedapps-prod.tfvars
     ```
 - ***CAREFULLY CHECK THE PLAN SUMMARY BEFORE APPLYING!!!*** It could contains destroy statements
 # Import existing resources in Terraform
@@ -31,20 +31,20 @@ If you want to onboard existing resource in Terraform, you can follow next steps
     ```
 - complete input variables with values from the azure AKS overview page, preferrably use the JSON view
    ```console
-   vi /Users/pavlotymoshchenkov/repos/IaC/aks/vars/aks-sharedapps-prod.tfvars
+   vi azure_iac/aks/vars/aks-sharedapps-prod.tfvars
    ```
 - plan and apply configuration provided in your variable file: 
     ```console
-    terraform apply -var-file /Users/pavlotymoshchenkov/repos/IaC/aks/vars/aks-sharedapps-prod.tfvars
+    terraform apply -var-file azure_iac/aks/vars/aks-sharedapps-prod.tfvars
     ```
 - if resource is already exist you will get error similar to:
     ```console
-    Error: A resource with the ID "/subscriptions/368014ab-c35d-4615-a165-842d87aec6f5/resourceGroups/rg-cargoesshared-prod/providers/Microsoft.ContainerService/managedClusters/aks-sharedapps-prod/agentPools/usernodepool" already exists - to be managed via Terraform this resource needs to be imported into the State. Please see the resource documentation for "azurerm_kubernetes_cluster_node_pool" for more information.
+    Error: A resource with the ID "/subscriptions/*****************/resourceGroups/rg-***...usernodepool" already exists - to be managed via Terraform this resource needs to be imported into the State. Please see the resource documentation for "azurerm_kubernetes_cluster_node_pool" for more information.
     with azurerm_kubernetes_cluster_node_pool.userpool["usernodepool"],
     on terraform.tf line 79, in resource "azurerm_kubernetes_cluster_node_pool" "userpool":
     79: resource "azurerm_kubernetes_cluster_node_pool" "userpool" {
     ```
 - in this case you can import each resource into Terraform state by executing next command (Note: the following command imports a nodepool named usernodepool):
   ```console 
-  terraform import -var-file /Users/pavlotymoshchenkov/repos/IaC/aks/vars/aks-sharedapps-prod.tfvars 'azurerm_kubernetes_cluster_node_pool.userpool["usernodepool"]' "/subscriptions/368014ab-c35d-4615-a165-842d87aec6f5/resourceGroups/rg-cargoesshared-prod/providers/Microsoft.ContainerService/managedClusters/aks-sharedapps-prod/agentPools/usernodepool"
+  terraform import -var-file azure_iac/aks/vars/aks-sharedapps-prod.tfvars 'azurerm_kubernetes_cluster_node_pool.userpool["usernodepool"]' "/subscriptions/*****************/resourceGroups/rg-***...usernodepool"
   ```

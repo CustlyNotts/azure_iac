@@ -1,5 +1,0 @@
-subscription_id     = "99a847a3-1033-4a6d-a9bb-41a087e8c982"
-name                = "sb-workflowmanagement-prod"
-resource_group_name = "rg_cargoesRunner_prod"
-sku                 = "Basic"
-location            = "UAE North"

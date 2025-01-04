@@ -1,9 +1,0 @@
-subscription_id     = <subscription_id>
-apimName                = "dpw-apim-nonprod"
-resource_group_name = "rg-dpw-apim-nonprod"
-location="uaenorth"
-apimPublisherEmail ="bastian.joe@dpworld.com"
-apimPublisherName="dpw-apim-nonprod"
-apimSku="Premium"
-apimSkuCapacity=1
-subnet_id="/subscriptions/8bfd9524-8956-41b0-a915-4e7ed9f8b84b/resourceGroups/Rg-Cargoes-APIM-NonProd/providers/Microsoft.Network/virtualNetworks/vnet-apim-nonprod/subnets/snet-apim-nonprod"

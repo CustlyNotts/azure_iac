@@ -1,9 +1,0 @@
-subscription_id     = <subscription_id>
-name = "cargoesflow-email-notifications"
-accountName = "CargoesFlow-dev"
-resource_group_name = "rg-cargoesflow-dev"
-action_group_id = "/subscriptions/8a5908cd-e907-473a-9c94-748bd2347176/resourceGroups/rg-ccsautomation-nonprod/providers/microsoft.insights/actiongroups/test_action_group"
-throttled_request_threshold = 75
-dead_letter_threshold = [10, 20]
-active_messages_threshold = [30, 40]
-queues = ["flow-non-prod-test-queue", "email-notifications"]
