@@ -42,7 +42,7 @@ If you want to onboard existing resource in Terraform, you can follow next steps
     Error: A resource with the ID "/subscriptions/*****************/resourceGroups/rg-***...usernodepool" already exists - to be managed via Terraform this resource needs to be imported into the State. Please see the resource documentation for "azurerm_kubernetes_cluster_node_pool" for more information.
     with azurerm_kubernetes_cluster_node_pool.userpool["usernodepool"],
     on terraform.tf line 79, in resource "azurerm_kubernetes_cluster_node_pool" "userpool":
-    79: resource "azurerm_kubernetes_cluster_node_pool" "userpool" {
+    79: resource "azurerm_kubernetes_cluster_node_pool" "userpool"
     ```
 - in this case you can import each resource into Terraform state by executing next command (Note: the following command imports a nodepool named usernodepool):
   ```console 
