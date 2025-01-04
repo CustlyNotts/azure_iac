@@ -1,0 +1,4394 @@
+if_mib:
+  walk:
+    - 1.3.6.1.4.1.2620.1.1
+    - 1.3.6.1.4.1.2620.1.2
+    - 1.3.6.1.4.1.2620.1.25
+    - 1.3.6.1.4.1.2620.1.5
+    - 1.3.6.1.4.1.2620.1.6
+    - 1.3.6.1.4.1.2620.1.7
+  metrics:
+    - name: fwModuleState
+      oid: 1.3.6.1.4.1.2620.1.1.1
+      type: DisplayString
+      help: The state of the fw module - 1.3.6.1.4.1.2620.1.1.1
+    - name: fwFilterName
+      oid: 1.3.6.1.4.1.2620.1.1.2
+      type: DisplayString
+      help: The name of the loaded filter - 1.3.6.1.4.1.2620.1.1.2
+    - name: fwFilterDate
+      oid: 1.3.6.1.4.1.2620.1.1.3
+      type: DisplayString
+      help: Install time - 1.3.6.1.4.1.2620.1.1.3
+    - name: fwAccepted
+      oid: 1.3.6.1.4.1.2620.1.1.4
+      type: gauge
+      help: The number of accepted packets. - 1.3.6.1.4.1.2620.1.1.4
+    - name: fwRejected
+      oid: 1.3.6.1.4.1.2620.1.1.5
+      type: gauge
+      help: The number of rejected packets. - 1.3.6.1.4.1.2620.1.1.5
+    - name: fwDropped
+      oid: 1.3.6.1.4.1.2620.1.1.6
+      type: gauge
+      help: The number of dropped packets. - 1.3.6.1.4.1.2620.1.1.6
+    - name: fwLogged
+      oid: 1.3.6.1.4.1.2620.1.1.7
+      type: gauge
+      help: The number of logged packets. - 1.3.6.1.4.1.2620.1.1.7
+    - name: fwMajor
+      oid: 1.3.6.1.4.1.2620.1.1.8
+      type: gauge
+      help: Major version - 1.3.6.1.4.1.2620.1.1.8
+    - name: fwMinor
+      oid: 1.3.6.1.4.1.2620.1.1.9
+      type: gauge
+      help: Minor version - 1.3.6.1.4.1.2620.1.1.9
+    - name: fwProduct
+      oid: 1.3.6.1.4.1.2620.1.1.10
+      type: DisplayString
+      help: Product name - 1.3.6.1.4.1.2620.1.1.10
+    - name: fwEvent
+      oid: 1.3.6.1.4.1.2620.1.1.11
+      type: DisplayString
+      help: A string containing the last snmp trap sent via fw - 1.3.6.1.4.1.2620.1.1.11
+    - name: fwSICTrustState
+      oid: 1.3.6.1.4.1.2620.1.1.12
+      type: gauge
+      help:
+        "SIC Trust State : Possible values include: Not initialized 0 Initialized
+        but not established 1 Established 2 Error 3 Unknown 4 - 1.3.6.1.4.1.2620.1.1.12"
+    - name: fwProdName
+      oid: 1.3.6.1.4.1.2620.1.1.21
+      type: DisplayString
+      help: Product name - 1.3.6.1.4.1.2620.1.1.21
+    - name: fwVerMajor
+      oid: 1.3.6.1.4.1.2620.1.1.22
+      type: gauge
+      help: Major version - 1.3.6.1.4.1.2620.1.1.22
+    - name: fwVerMinor
+      oid: 1.3.6.1.4.1.2620.1.1.23
+      type: gauge
+      help: Minor version - 1.3.6.1.4.1.2620.1.1.23
+    - name: fwKernelBuild
+      oid: 1.3.6.1.4.1.2620.1.1.24
+      type: gauge
+      help: Kernel build num - 1.3.6.1.4.1.2620.1.1.24
+    - name: fwPolicyName
+      oid: 1.3.6.1.4.1.2620.1.1.25.1
+      type: DisplayString
+      help: Policy Name - 1.3.6.1.4.1.2620.1.1.25.1
+    - name: fwInstallTime
+      oid: 1.3.6.1.4.1.2620.1.1.25.2
+      type: DisplayString
+      help: Policy install time - 1.3.6.1.4.1.2620.1.1.25.2
+    - name: fwNumConn
+      oid: 1.3.6.1.4.1.2620.1.1.25.3
+      type: gauge
+      help: Number of connections - 1.3.6.1.4.1.2620.1.1.25.3
+    - name: fwPeakNumConn
+      oid: 1.3.6.1.4.1.2620.1.1.25.4
+      type: gauge
+      help: Peak number of connections - 1.3.6.1.4.1.2620.1.1.25.4
+    - name: fwIfIndex
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.1"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwIfName
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.2"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwAcceptPcktsIn
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.5
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.5"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwAcceptPcktsOut
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.6"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwAcceptBytesIn
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.7
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.7"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwAcceptBytesOut
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.8
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.8"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwDropPcktsIn
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.9
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.9"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwDropPcktsOut
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.10
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.10"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwRejectPcktsIn
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.11
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.11"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwRejectPcktsOut
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.12
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.12"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwLogIn
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.13
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.13"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwLogOut
+      oid: 1.3.6.1.4.1.2620.1.1.25.5.1.14
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.5.1.14"
+      indexes:
+        - labelname: fwIfIndex
+          type: gauge
+    - name: fwAcceptedTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.6
+      type: counter
+      help: Total number of accepted packets - 1.3.6.1.4.1.2620.1.1.25.6
+    - name: fwIspIndex
+      oid: 1.3.6.1.4.1.2620.1.1.25.7.1.1
+      type: gauge
+      help: Index - 1.3.6.1.4.1.2620.1.1.25.7.1.1
+      indexes:
+        - labelname: fwIspIndex
+          type: gauge
+    - name: fwIspName
+      oid: 1.3.6.1.4.1.2620.1.1.25.7.1.2
+      type: DisplayString
+      help: Name - 1.3.6.1.4.1.2620.1.1.25.7.1.2
+      indexes:
+        - labelname: fwIspIndex
+          type: gauge
+    - name: fwIspStatus
+      oid: 1.3.6.1.4.1.2620.1.1.25.7.1.3
+      type: DisplayString
+      help: Status - 1.3.6.1.4.1.2620.1.1.25.7.1.3
+      indexes:
+        - labelname: fwIspIndex
+          type: gauge
+    - name: fwIspRole
+      oid: 1.3.6.1.4.1.2620.1.1.25.7.1.4
+      type: DisplayString
+      help: Role - 1.3.6.1.4.1.2620.1.1.25.7.1.4
+      indexes:
+        - labelname: fwIspIndex
+          type: gauge
+    - name: unknown
+      oid: 1.3.6.1.4.1.2620.1.1.25.7.1.5
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.7.1.5"
+      indexes:
+        - labelname: fwIspIndex
+          type: gauge
+    - name: fwAcceptedBytesTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.8
+      type: counter
+      help: Total number of accepted bytes - 1.3.6.1.4.1.2620.1.1.25.8
+    - name: fwDroppedBytesTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.9
+      type: counter
+      help: Total number of dropped bytes - 1.3.6.1.4.1.2620.1.1.25.9
+    - name: fwConnTableLimit
+      oid: 1.3.6.1.4.1.2620.1.1.25.10
+      type: gauge
+      help: Connection table limit - 1.3.6.1.4.1.2620.1.1.25.10
+    - name: fwLoggedTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.13
+      type: counter
+      help: Total number of logs sent - 1.3.6.1.4.1.2620.1.1.25.13
+    - name: fwRejectedTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.14
+      type: counter
+      help: Total number of rejected packets - 1.3.6.1.4.1.2620.1.1.25.14
+    - name: fwRejectedBytesTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.15
+      type: counter
+      help: Total number of rejected bytes - 1.3.6.1.4.1.2620.1.1.25.15
+    - name: fwDroppedTotal
+      oid: 1.3.6.1.4.1.2620.1.1.25.16
+      type: counter
+      help: Total number of dropped packets - 1.3.6.1.4.1.2620.1.1.25.16
+    - name: fwAcceptedBytesRates
+      oid: 1.3.6.1.4.1.2620.1.1.25.20
+      type: counter
+      help: Accepted bytes rates - 1.3.6.1.4.1.2620.1.1.25.20
+    - name: fwAcceptedPcktsRates
+      oid: 1.3.6.1.4.1.2620.1.1.25.21
+      type: counter
+      help: Accepted packets rates - 1.3.6.1.4.1.2620.1.1.25.21
+    - name: fwConnsRate
+      oid: 1.3.6.1.4.1.2620.1.1.25.22
+      type: gauge
+      help: Connection Rates - 1.3.6.1.4.1.2620.1.1.25.22
+    - name: fwIfIndex64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.1"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwIfName64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.2"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwAcceptPcktsIn64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.5
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.5"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwAcceptPcktsOut64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.6
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.6"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwAcceptBytesIn64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.7
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.7"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwAcceptBytesOut64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.8
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.8"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwDropPcktsIn64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.9
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.9"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwDropPcktsOut64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.10
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.10"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwRejectPcktsIn64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.11
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.11"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwRejectPcktsOut64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.12
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.12"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwLogIn64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.13
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.13"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwLogOut64
+      oid: 1.3.6.1.4.1.2620.1.1.25.25.1.14
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.1.25.25.1.14"
+      indexes:
+        - labelname: fwIfIndex64
+          type: gauge
+    - name: fwFullyUtilizedDrops
+      oid: 1.3.6.1.4.1.2620.1.1.25.26
+      type: counter
+      help: Total number of dropped packets due to instance being fully utilized - 1.3.6.1.4.1.2620.1.1.25.26
+    - name: fwHmem_block_size
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.1
+      type: gauge
+      help: hmem - block size - 1.3.6.1.4.1.2620.1.1.26.1.1
+    - name: fwHmem_requested_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.2
+      type: gauge
+      help: hmem - requested bytes - 1.3.6.1.4.1.2620.1.1.26.1.2
+    - name: fwHmem_initial_allocated_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.3
+      type: gauge
+      help: hmem - initial allocated bytes - 1.3.6.1.4.1.2620.1.1.26.1.3
+    - name: fwHmem_initial_allocated_blocks
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.4
+      type: gauge
+      help: hmem - initial allocated blocks - 1.3.6.1.4.1.2620.1.1.26.1.4
+    - name: fwHmem_initial_allocated_pools
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.5
+      type: gauge
+      help: hmem - initial allocated pools - 1.3.6.1.4.1.2620.1.1.26.1.5
+    - name: fwHmem_current_allocated_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.6
+      type: gauge
+      help: hmem - current allocated bytes - 1.3.6.1.4.1.2620.1.1.26.1.6
+    - name: fwHmem_current_allocated_blocks
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.7
+      type: gauge
+      help: hmem - current allocated blocks - 1.3.6.1.4.1.2620.1.1.26.1.7
+    - name: fwHmem_current_allocated_pools
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.8
+      type: gauge
+      help: hmem - current allocated pools - 1.3.6.1.4.1.2620.1.1.26.1.8
+    - name: fwHmem_maximum_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.9
+      type: gauge
+      help: hmem - maximum bytes - 1.3.6.1.4.1.2620.1.1.26.1.9
+    - name: fwHmem_maximum_pools
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.10
+      type: gauge
+      help: hmem - maximum pools - 1.3.6.1.4.1.2620.1.1.26.1.10
+    - name: fwHmem_bytes_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.11
+      type: gauge
+      help: hmem - bytes used - 1.3.6.1.4.1.2620.1.1.26.1.11
+    - name: fwHmem_blocks_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.12
+      type: gauge
+      help: hmem - blocks used - 1.3.6.1.4.1.2620.1.1.26.1.12
+    - name: fwHmem_bytes_unused
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.13
+      type: gauge
+      help: hmem - bytes unused - 1.3.6.1.4.1.2620.1.1.26.1.13
+    - name: fwHmem_blocks_unused
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.14
+      type: gauge
+      help: hmem - blocks unused - 1.3.6.1.4.1.2620.1.1.26.1.14
+    - name: fwHmem_bytes_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.15
+      type: gauge
+      help: hmem - bytes peak - 1.3.6.1.4.1.2620.1.1.26.1.15
+    - name: fwHmem_blocks_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.16
+      type: gauge
+      help: hmem - blocks peak - 1.3.6.1.4.1.2620.1.1.26.1.16
+    - name: fwHmem_bytes_internal_use
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.17
+      type: gauge
+      help: hmem - bytes internal use - 1.3.6.1.4.1.2620.1.1.26.1.17
+    - name: fwHmem_number_of_items
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.18
+      type: gauge
+      help: hmem - number of items - 1.3.6.1.4.1.2620.1.1.26.1.18
+    - name: fwHmem_alloc_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.19
+      type: gauge
+      help: hmem - alloc operations - 1.3.6.1.4.1.2620.1.1.26.1.19
+    - name: fwHmem_free_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.20
+      type: gauge
+      help: hmem - free operations - 1.3.6.1.4.1.2620.1.1.26.1.20
+    - name: fwHmem_failed_alloc
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.21
+      type: gauge
+      help: hmem - failed alloc - 1.3.6.1.4.1.2620.1.1.26.1.21
+    - name: fwHmem_failed_free
+      oid: 1.3.6.1.4.1.2620.1.1.26.1.22
+      type: gauge
+      help: hmem - failed free - 1.3.6.1.4.1.2620.1.1.26.1.22
+    - name: fwKmem_system_physical_mem
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.1
+      type: gauge
+      help: kmem - system physical mem - 1.3.6.1.4.1.2620.1.1.26.2.1
+    - name: fwKmem_available_physical_mem
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.2
+      type: gauge
+      help: kmem - available physical mem - 1.3.6.1.4.1.2620.1.1.26.2.2
+    - name: fwKmem_aix_heap_size
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.3
+      type: gauge
+      help: kmem - aix heap size - 1.3.6.1.4.1.2620.1.1.26.2.3
+    - name: fwKmem_bytes_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.4
+      type: gauge
+      help: kmem - bytes used - 1.3.6.1.4.1.2620.1.1.26.2.4
+    - name: fwKmem_blocking_bytes_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.5
+      type: gauge
+      help: kmem - blocking bytes used - 1.3.6.1.4.1.2620.1.1.26.2.5
+    - name: fwKmem_non_blocking_bytes_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.6
+      type: gauge
+      help: kmem - non blocking bytes used - 1.3.6.1.4.1.2620.1.1.26.2.6
+    - name: fwKmem_bytes_unused
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.7
+      type: gauge
+      help: kmem - bytes unused - 1.3.6.1.4.1.2620.1.1.26.2.7
+    - name: fwKmem_bytes_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.8
+      type: gauge
+      help: kmem - bytes peak - 1.3.6.1.4.1.2620.1.1.26.2.8
+    - name: fwKmem_blocking_bytes_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.9
+      type: gauge
+      help: kmem - blocking bytes peak - 1.3.6.1.4.1.2620.1.1.26.2.9
+    - name: fwKmem_non_blocking_bytes_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.10
+      type: gauge
+      help: kmem - non blocking bytes peak - 1.3.6.1.4.1.2620.1.1.26.2.10
+    - name: fwKmem_bytes_internal_use
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.11
+      type: gauge
+      help: kmem - bytes internal use - 1.3.6.1.4.1.2620.1.1.26.2.11
+    - name: fwKmem_number_of_items
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.12
+      type: gauge
+      help: kmem - number of items - 1.3.6.1.4.1.2620.1.1.26.2.12
+    - name: fwKmem_alloc_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.13
+      type: gauge
+      help: kmem - alloc operations - 1.3.6.1.4.1.2620.1.1.26.2.13
+    - name: fwKmem_free_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.14
+      type: gauge
+      help: kmem - free operations - 1.3.6.1.4.1.2620.1.1.26.2.14
+    - name: fwKmem_failed_alloc
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.15
+      type: gauge
+      help: kmem - failed alloc - 1.3.6.1.4.1.2620.1.1.26.2.15
+    - name: fwKmem_failed_free
+      oid: 1.3.6.1.4.1.2620.1.1.26.2.16
+      type: gauge
+      help: kmem - failed free - 1.3.6.1.4.1.2620.1.1.26.2.16
+    - name: fwInspect_packets
+      oid: 1.3.6.1.4.1.2620.1.1.26.3.1
+      type: gauge
+      help: inspect - packets - 1.3.6.1.4.1.2620.1.1.26.3.1
+    - name: fwInspect_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.3.2
+      type: gauge
+      help: inspect - operations - 1.3.6.1.4.1.2620.1.1.26.3.2
+    - name: fwInspect_lookups
+      oid: 1.3.6.1.4.1.2620.1.1.26.3.3
+      type: gauge
+      help: inspect - lookups - 1.3.6.1.4.1.2620.1.1.26.3.3
+    - name: fwInspect_record
+      oid: 1.3.6.1.4.1.2620.1.1.26.3.4
+      type: gauge
+      help: inspect - record - 1.3.6.1.4.1.2620.1.1.26.3.4
+    - name: fwInspect_extract
+      oid: 1.3.6.1.4.1.2620.1.1.26.3.5
+      type: gauge
+      help: inspect - extract - 1.3.6.1.4.1.2620.1.1.26.3.5
+    - name: fwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.1
+      type: gauge
+      help: cookies - total - 1.3.6.1.4.1.2620.1.1.26.4.1
+    - name: fwCookies_allocfwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.2
+      type: gauge
+      help: cookies - alloc - 1.3.6.1.4.1.2620.1.1.26.4.2
+    - name: fwCookies_freefwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.3
+      type: gauge
+      help: cookies - free - 1.3.6.1.4.1.2620.1.1.26.4.3
+    - name: fwCookies_dupfwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.4
+      type: gauge
+      help: cookies - dup - 1.3.6.1.4.1.2620.1.1.26.4.4
+    - name: fwCookies_getfwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.5
+      type: gauge
+      help: cookies - get - 1.3.6.1.4.1.2620.1.1.26.4.5
+    - name: fwCookies_putfwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.6
+      type: gauge
+      help: cookies - put - 1.3.6.1.4.1.2620.1.1.26.4.6
+    - name: fwCookies_lenfwCookies_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.4.7
+      type: gauge
+      help: cookies - len - 1.3.6.1.4.1.2620.1.1.26.4.7
+    - name: fwChains_alloc
+      oid: 1.3.6.1.4.1.2620.1.1.26.5.1
+      type: gauge
+      help: chains - alloc - 1.3.6.1.4.1.2620.1.1.26.5.1
+    - name: fwChains_free
+      oid: 1.3.6.1.4.1.2620.1.1.26.5.2
+      type: gauge
+      help: chains - free - 1.3.6.1.4.1.2620.1.1.26.5.2
+    - name: fwFrag_fragments
+      oid: 1.3.6.1.4.1.2620.1.1.26.6.1
+      type: gauge
+      help: fragments - fragments - 1.3.6.1.4.1.2620.1.1.26.6.1
+    - name: fwFrag_expired
+      oid: 1.3.6.1.4.1.2620.1.1.26.6.2
+      type: gauge
+      help: fragments - expired - 1.3.6.1.4.1.2620.1.1.26.6.2
+    - name: fwFrag_packets
+      oid: 1.3.6.1.4.1.2620.1.1.26.6.3
+      type: gauge
+      help: fragments - packets - 1.3.6.1.4.1.2620.1.1.26.6.3
+    - name: fwUfpHitRatio
+      oid: 1.3.6.1.4.1.2620.1.1.26.8.1
+      type: gauge
+      help: ufp - % hits ratio - 1.3.6.1.4.1.2620.1.1.26.8.1
+    - name: fwUfpInspected
+      oid: 1.3.6.1.4.1.2620.1.1.26.8.2
+      type: gauge
+      help: ufp - total connections - 1.3.6.1.4.1.2620.1.1.26.8.2
+    - name: fwUfpHits
+      oid: 1.3.6.1.4.1.2620.1.1.26.8.3
+      type: gauge
+      help: ufp - hits connections - 1.3.6.1.4.1.2620.1.1.26.8.3
+    - name: fwSS_http_pid
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.1
+      type: gauge
+      help: http - pid - 1.3.6.1.4.1.2620.1.1.26.9.1.1
+    - name: fwSS_http_proto
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.2
+      type: gauge
+      help: http - proto - 1.3.6.1.4.1.2620.1.1.26.9.1.2
+    - name: fwSS_http_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.3
+      type: gauge
+      help: http - port - 1.3.6.1.4.1.2620.1.1.26.9.1.3
+    - name: fwSS_http_logical_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.4
+      type: gauge
+      help: http - logical port - 1.3.6.1.4.1.2620.1.1.26.9.1.4
+    - name: fwSS_http_max_avail_socket
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.5
+      type: gauge
+      help: http - max avail socket - 1.3.6.1.4.1.2620.1.1.26.9.1.5
+    - name: fwSS_http_socket_in_use_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.6
+      type: gauge
+      help: http - socket in use max - 1.3.6.1.4.1.2620.1.1.26.9.1.6
+    - name: fwSS_http_socket_in_use_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.7
+      type: gauge
+      help: http - socket in use current - 1.3.6.1.4.1.2620.1.1.26.9.1.7
+    - name: fwSS_http_socket_in_use_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.8
+      type: gauge
+      help: http - socket in use count - 1.3.6.1.4.1.2620.1.1.26.9.1.8
+    - name: fwSS_http_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.9
+      type: gauge
+      help: http - session max - 1.3.6.1.4.1.2620.1.1.26.9.1.9
+    - name: fwSS_http_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.10
+      type: gauge
+      help: http - session current - 1.3.6.1.4.1.2620.1.1.26.9.1.10
+    - name: fwSS_http_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.11
+      type: gauge
+      help: http - session count - 1.3.6.1.4.1.2620.1.1.26.9.1.11
+    - name: fwSS_http_auth_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.12
+      type: gauge
+      help: http - auth session max - 1.3.6.1.4.1.2620.1.1.26.9.1.12
+    - name: fwSS_http_auth_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.13
+      type: gauge
+      help: http - auth session current - 1.3.6.1.4.1.2620.1.1.26.9.1.13
+    - name: fwSS_http_auth_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.14
+      type: gauge
+      help: http - auth session count - 1.3.6.1.4.1.2620.1.1.26.9.1.14
+    - name: fwSS_http_accepted_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.15
+      type: gauge
+      help: http - accepted session - 1.3.6.1.4.1.2620.1.1.26.9.1.15
+    - name: fwSS_http_rejected_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.16
+      type: gauge
+      help: http - rejected session - 1.3.6.1.4.1.2620.1.1.26.9.1.16
+    - name: fwSS_http_auth_failures
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.17
+      type: gauge
+      help: http - auth failures - 1.3.6.1.4.1.2620.1.1.26.9.1.17
+    - name: fwSS_http_ops_cvp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.18
+      type: gauge
+      help: http - opsec cvp session max - 1.3.6.1.4.1.2620.1.1.26.9.1.18
+    - name: fwSS_http_ops_cvp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.19
+      type: gauge
+      help: http - opsec cvp session current - 1.3.6.1.4.1.2620.1.1.26.9.1.19
+    - name: fwSS_http_ops_cvp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.20
+      type: gauge
+      help: http - opsec cvp session count - 1.3.6.1.4.1.2620.1.1.26.9.1.20
+    - name: fwSS_http_ops_cvp_rej_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.21
+      type: gauge
+      help: http - opsec cvp rej session - 1.3.6.1.4.1.2620.1.1.26.9.1.21
+    - name: fwSS_http_ssl_encryp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.22
+      type: gauge
+      help: http - ssl encryp session max - 1.3.6.1.4.1.2620.1.1.26.9.1.22
+    - name: fwSS_http_ssl_encryp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.23
+      type: gauge
+      help: http - ssl encryp session current - 1.3.6.1.4.1.2620.1.1.26.9.1.23
+    - name: fwSS_http_ssl_encryp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.24
+      type: gauge
+      help: http - ssl encryp session count - 1.3.6.1.4.1.2620.1.1.26.9.1.24
+    - name: fwSS_http_transp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.25
+      type: gauge
+      help: http - transparent session max - 1.3.6.1.4.1.2620.1.1.26.9.1.25
+    - name: fwSS_http_transp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.26
+      type: gauge
+      help: http - transparent session current - 1.3.6.1.4.1.2620.1.1.26.9.1.26
+    - name: fwSS_http_transp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.27
+      type: gauge
+      help: http - transparent session count - 1.3.6.1.4.1.2620.1.1.26.9.1.27
+    - name: fwSS_http_proxied_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.28
+      type: gauge
+      help: http - proxied session max - 1.3.6.1.4.1.2620.1.1.26.9.1.28
+    - name: fwSS_http_proxied_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.29
+      type: gauge
+      help: http - proxied session current - 1.3.6.1.4.1.2620.1.1.26.9.1.29
+    - name: fwSS_http_proxied_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.30
+      type: gauge
+      help: http - proxied session count - 1.3.6.1.4.1.2620.1.1.26.9.1.30
+    - name: fwSS_http_tunneled_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.31
+      type: gauge
+      help: http - tunneled session max - 1.3.6.1.4.1.2620.1.1.26.9.1.31
+    - name: fwSS_http_tunneled_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.32
+      type: gauge
+      help: http - tunneled session current - 1.3.6.1.4.1.2620.1.1.26.9.1.32
+    - name: fwSS_http_tunneled_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.33
+      type: gauge
+      help: http - tunneled session count - 1.3.6.1.4.1.2620.1.1.26.9.1.33
+    - name: fwSS_http_ftp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.34
+      type: gauge
+      help: http - ftp session max - 1.3.6.1.4.1.2620.1.1.26.9.1.34
+    - name: fwSS_http_ftp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.35
+      type: gauge
+      help: http - ftp session current - 1.3.6.1.4.1.2620.1.1.26.9.1.35
+    - name: fwSS_http_ftp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.36
+      type: gauge
+      help: http - ftp session count - 1.3.6.1.4.1.2620.1.1.26.9.1.36
+    - name: fwSS_http_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.37
+      type: DisplayString
+      help: http - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.1.37
+    - name: fwSS_http_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.38
+      type: gauge
+      help: http - is alive - 1.3.6.1.4.1.2620.1.1.26.9.1.38
+    - name: fwSS_http_blocked_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.39
+      type: gauge
+      help:
+        count of HTTP items blocked, being classified as 'infected' by Anti Virus
+        - 1.3.6.1.4.1.2620.1.1.26.9.1.39
+    - name: fwSS_http_blocked_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.40
+      type: gauge
+      help: sum of all the counts of the previous OID (fwss-http-blocked-cnt) - 1.3.6.1.4.1.2620.1.1.26.9.1.40
+    - name: fwSS_http_scanned_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.41
+      type: gauge
+      help: sum of all the counts of 'blocked' (infected) and 'passed' items - 1.3.6.1.4.1.2620.1.1.26.9.1.41
+    - name: fwSS_http_blocked_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.42
+      type: gauge
+      help:
+        count of HTTP items blocked by 'file type' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.42
+    - name: fwSS_http_blocked_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.43
+      type: gauge
+      help:
+        count of HTTP items blocked by 'size limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.43
+    - name: fwSS_http_blocked_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.44
+      type: gauge
+      help:
+        count of HTTP items blocked by 'archive limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.44
+    - name: fwSS_http_blocked_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.45
+      type: gauge
+      help:
+        count of HTTP items blocked because of 'internal error' in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.45
+    - name: fwSS_http_passed_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.46
+      type: gauge
+      help: count of HTTP items passed, being classified as 'safe' by Anti Virus - 1.3.6.1.4.1.2620.1.1.26.9.1.46
+    - name: fwSS_http_passed_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.47
+      type: gauge
+      help:
+        count of HTTP items allowed (without AV scan) by 'File Type' policy in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.47
+    - name: fwSS_http_passed_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.48
+      type: gauge
+      help:
+        count of HTTP items allowed (without AV scan) by 'Size Limit' policy in
+        Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.48
+    - name: fwSS_http_passed_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.49
+      type: gauge
+      help:
+        count of HTTP items allowed (without AV scan) by 'Archive Limit' policy
+        in Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.49
+    - name: fwSS_http_passed_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.50
+      type: gauge
+      help:
+        count of HTTP items allowed (without AV scan) by 'internal error' in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.50
+    - name: fwSS_http_passed_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.51
+      type: gauge
+      help: sum of all the above 'passed' counts - OIDs .46 to .50 - 1.3.6.1.4.1.2620.1.1.26.9.1.51
+    - name: fwSS_http_blocked_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.52
+      type: gauge
+      help:
+        "count of HTTP items rejected by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.1.52"
+    - name: fwSS_http_passed_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.53
+      type: gauge
+      help:
+        "count of HTTP items allowed by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.1.53"
+    - name: fwSS_http_blocked_by_URL_filter_category
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.54
+      type: gauge
+      help:
+        count of URLs blocked by 'Web Filtering Policy' in 'Content Inspection'
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.1.54
+    - name: fwSS_http_blocked_by_URL_block_list
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.55
+      type: gauge
+      help:
+        count of URLs blocked by 'Blocked URLs/IPs' in 'Content Inspection' tab
+        in SmartDashboard (overriding 'Web Filtering Policy'). - 1.3.6.1.4.1.2620.1.1.26.9.1.55
+    - name: fwSS_http_passed_by_URL_allow_list
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.56
+      type: gauge
+      help:
+        count of Allowed by 'allowed URLs/IPs' in 'Content Inspection' tab in SmartDashboard
+        (overriding 'Web Filtering Policy') - 1.3.6.1.4.1.2620.1.1.26.9.1.56
+    - name: fwSS_http_passed_by_URL_filter_category
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.1.57
+      type: gauge
+      help:
+        count of URLs allowed by 'Web Filtering Policy' in 'Content Inspection'
+        tab in SmartDashboard. - 1.3.6.1.4.1.2620.1.1.26.9.1.57
+    - name: fwSS_ftp_pid
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.1
+      type: gauge
+      help: ftp - pid - 1.3.6.1.4.1.2620.1.1.26.9.2.1
+    - name: fwSS_ftp_proto
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.2
+      type: gauge
+      help: ftp - proto - 1.3.6.1.4.1.2620.1.1.26.9.2.2
+    - name: fwSS_ftp_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.3
+      type: gauge
+      help: ftp - port - 1.3.6.1.4.1.2620.1.1.26.9.2.3
+    - name: fwSS_ftp_logical_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.4
+      type: gauge
+      help: ftp - logical port - 1.3.6.1.4.1.2620.1.1.26.9.2.4
+    - name: fwSS_ftp_max_avail_socket
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.5
+      type: gauge
+      help: ftp - max avail socket - 1.3.6.1.4.1.2620.1.1.26.9.2.5
+    - name: fwSS_ftp_socket_in_use_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.6
+      type: gauge
+      help: ftp - socket in use max - 1.3.6.1.4.1.2620.1.1.26.9.2.6
+    - name: fwSS_ftp_socket_in_use_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.7
+      type: gauge
+      help: ftp - socket in use current - 1.3.6.1.4.1.2620.1.1.26.9.2.7
+    - name: fwSS_ftp_socket_in_use_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.8
+      type: gauge
+      help: ftp - socket in use count - 1.3.6.1.4.1.2620.1.1.26.9.2.8
+    - name: fwSS_ftp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.9
+      type: gauge
+      help: ftp - session max - 1.3.6.1.4.1.2620.1.1.26.9.2.9
+    - name: fwSS_ftp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.10
+      type: gauge
+      help: ftp - session current - 1.3.6.1.4.1.2620.1.1.26.9.2.10
+    - name: fwSS_ftp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.11
+      type: gauge
+      help: ftp - session count - 1.3.6.1.4.1.2620.1.1.26.9.2.11
+    - name: fwSS_ftp_auth_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.12
+      type: gauge
+      help: ftp - auth session max - 1.3.6.1.4.1.2620.1.1.26.9.2.12
+    - name: fwSS_ftp_auth_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.13
+      type: gauge
+      help: ftp - auth session current - 1.3.6.1.4.1.2620.1.1.26.9.2.13
+    - name: fwSS_ftp_auth_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.14
+      type: gauge
+      help: ftp - auth session count - 1.3.6.1.4.1.2620.1.1.26.9.2.14
+    - name: fwSS_ftp_accepted_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.15
+      type: gauge
+      help: ftp - accepted session - 1.3.6.1.4.1.2620.1.1.26.9.2.15
+    - name: fwSS_ftp_rejected_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.16
+      type: gauge
+      help: ftp - rejected session - 1.3.6.1.4.1.2620.1.1.26.9.2.16
+    - name: fwSS_ftp_auth_failures
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.17
+      type: gauge
+      help: ftp - auth failures - 1.3.6.1.4.1.2620.1.1.26.9.2.17
+    - name: fwSS_ftp_ops_cvp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.18
+      type: gauge
+      help: ftp - opsec cvp session max - 1.3.6.1.4.1.2620.1.1.26.9.2.18
+    - name: fwSS_ftp_ops_cvp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.19
+      type: gauge
+      help: ftp - opsec cvp session current - 1.3.6.1.4.1.2620.1.1.26.9.2.19
+    - name: fwSS_ftp_ops_cvp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.20
+      type: gauge
+      help: ftp - opsec cvp session count - 1.3.6.1.4.1.2620.1.1.26.9.2.20
+    - name: fwSS_ftp_ops_cvp_rej_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.21
+      type: gauge
+      help: ftp - opsec cvp rej session - 1.3.6.1.4.1.2620.1.1.26.9.2.21
+    - name: fwSS_ftp_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.22
+      type: DisplayString
+      help: ftp - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.2.22
+    - name: fwSS_ftp_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.23
+      type: gauge
+      help: ftp - is alive - 1.3.6.1.4.1.2620.1.1.26.9.2.23
+    - name: fwSS_ftp_blocked_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.24
+      type: gauge
+      help:
+        count of ftp items blocked, being classified as 'infected' by Anti Virus
+        - 1.3.6.1.4.1.2620.1.1.26.9.2.24
+    - name: fwSS_ftp_blocked_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.25
+      type: gauge
+      help: sum of all the counts of the previous OID (fwss-ftp-blocked-cnt) - 1.3.6.1.4.1.2620.1.1.26.9.2.25
+    - name: fwSS_ftp_scanned_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.26
+      type: gauge
+      help: sum of all the counts of 'blocked' (infected) and 'passed' items - 1.3.6.1.4.1.2620.1.1.26.9.2.26
+    - name: fwSS_ftp_blocked_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.27
+      type: gauge
+      help:
+        count of ftp items blocked by 'file type' policy in Content Inspection tab
+        in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.27
+    - name: fwSS_ftp_blocked_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.28
+      type: gauge
+      help:
+        count of ftp items blocked by 'size limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.28
+    - name: fwSS_ftp_blocked_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.29
+      type: gauge
+      help:
+        count of ftp items blocked by 'archive limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.29
+    - name: fwSS_ftp_blocked_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.30
+      type: gauge
+      help:
+        count of ftp items blocked because of 'internal error' in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.30
+    - name: fwSS_ftp_passed_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.31
+      type: gauge
+      help: count of ftp items passed, being classified as 'safe' by Anti Virus - 1.3.6.1.4.1.2620.1.1.26.9.2.31
+    - name: fwSS_ftp_passed_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.32
+      type: gauge
+      help:
+        count of ftp items allowed (without AV scan) by 'File Type' policy in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.32
+    - name: fwSS_ftp_passed_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.33
+      type: gauge
+      help:
+        count of ftp items allowed (without AV scan) by 'Size Limit' policy in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.33
+    - name: fwSS_ftp_passed_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.34
+      type: gauge
+      help:
+        count of ftp items allowed (without AV scan) by 'Archive Limit' policy in
+        Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.34
+    - name: fwSS_ftp_passed_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.35
+      type: gauge
+      help:
+        count of ftp items allowed (without AV scan) by 'internal error' in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.2.35
+    - name: fwSS_ftp_passed_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.36
+      type: gauge
+      help: sum of all the above 'passed' counts - OIDs .31 to .35 - 1.3.6.1.4.1.2620.1.1.26.9.2.36
+    - name: fwSS_ftp_blocked_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.37
+      type: gauge
+      help:
+        "count of ftp items rejected by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.2.37"
+    - name: fwSS_ftp_passed_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.2.38
+      type: gauge
+      help:
+        "count of ftp items allowed by Anti Virus as either: exceeding size or archive
+        limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.2.38"
+    - name: fwSS_telnet_pid
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.1
+      type: gauge
+      help: telnet - pid - 1.3.6.1.4.1.2620.1.1.26.9.3.1
+    - name: fwSS_telnet_proto
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.2
+      type: gauge
+      help: telnet - proto - 1.3.6.1.4.1.2620.1.1.26.9.3.2
+    - name: fwSS_telnet_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.3
+      type: gauge
+      help: telnet - port - 1.3.6.1.4.1.2620.1.1.26.9.3.3
+    - name: fwSS_telnet_logical_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.4
+      type: gauge
+      help: telnet - logical port - 1.3.6.1.4.1.2620.1.1.26.9.3.4
+    - name: fwSS_telnet_max_avail_socket
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.5
+      type: gauge
+      help: telnet - max avail socket - 1.3.6.1.4.1.2620.1.1.26.9.3.5
+    - name: fwSS_telnet_socket_in_use_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.6
+      type: gauge
+      help: telnet - socket in use max - 1.3.6.1.4.1.2620.1.1.26.9.3.6
+    - name: fwSS_telnet_socket_in_use_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.7
+      type: gauge
+      help: telnet - socket in use current - 1.3.6.1.4.1.2620.1.1.26.9.3.7
+    - name: fwSS_telnet_socket_in_use_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.8
+      type: gauge
+      help: telnet - socket in use count - 1.3.6.1.4.1.2620.1.1.26.9.3.8
+    - name: fwSS_telnet_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.9
+      type: gauge
+      help: telnet - session max - 1.3.6.1.4.1.2620.1.1.26.9.3.9
+    - name: fwSS_telnet_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.10
+      type: gauge
+      help: telnet - session current - 1.3.6.1.4.1.2620.1.1.26.9.3.10
+    - name: fwSS_telnet_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.11
+      type: gauge
+      help: telnet - session count - 1.3.6.1.4.1.2620.1.1.26.9.3.11
+    - name: fwSS_telnet_auth_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.12
+      type: gauge
+      help: telnet - auth session max - 1.3.6.1.4.1.2620.1.1.26.9.3.12
+    - name: fwSS_telnet_auth_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.13
+      type: gauge
+      help: telnet - auth session current - 1.3.6.1.4.1.2620.1.1.26.9.3.13
+    - name: fwSS_telnet_auth_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.14
+      type: gauge
+      help: telnet - auth session count - 1.3.6.1.4.1.2620.1.1.26.9.3.14
+    - name: fwSS_telnet_accepted_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.15
+      type: gauge
+      help: telnet - accepted session - 1.3.6.1.4.1.2620.1.1.26.9.3.15
+    - name: fwSS_telnet_rejected_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.16
+      type: gauge
+      help: telnet - rejected session - 1.3.6.1.4.1.2620.1.1.26.9.3.16
+    - name: fwSS_telnet_auth_failures
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.17
+      type: gauge
+      help: telnet - auth failures - 1.3.6.1.4.1.2620.1.1.26.9.3.17
+    - name: fwSS_telnet_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.18
+      type: DisplayString
+      help: telnet - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.3.18
+    - name: fwSS_telnet_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.3.19
+      type: gauge
+      help: telnet - is alive - 1.3.6.1.4.1.2620.1.1.26.9.3.19
+    - name: fwSS_rlogin_pid
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.1
+      type: gauge
+      help: rlogin - pid - 1.3.6.1.4.1.2620.1.1.26.9.4.1
+    - name: fwSS_rlogin_proto
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.2
+      type: gauge
+      help: rlogin - proto - 1.3.6.1.4.1.2620.1.1.26.9.4.2
+    - name: fwSS_rlogin_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.3
+      type: gauge
+      help: rlogin - port - 1.3.6.1.4.1.2620.1.1.26.9.4.3
+    - name: fwSS_rlogin_logical_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.4
+      type: gauge
+      help: rlogin - logical port - 1.3.6.1.4.1.2620.1.1.26.9.4.4
+    - name: fwSS_rlogin_max_avail_socket
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.5
+      type: gauge
+      help: rlogin - max avail socket - 1.3.6.1.4.1.2620.1.1.26.9.4.5
+    - name: fwSS_rlogin_socket_in_use_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.6
+      type: gauge
+      help: rlogin - socket in use max - 1.3.6.1.4.1.2620.1.1.26.9.4.6
+    - name: fwSS_rlogin_socket_in_use_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.7
+      type: gauge
+      help: rlogin - socket in use current - 1.3.6.1.4.1.2620.1.1.26.9.4.7
+    - name: fwSS_rlogin_socket_in_use_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.8
+      type: gauge
+      help: rlogin - socket in use count - 1.3.6.1.4.1.2620.1.1.26.9.4.8
+    - name: fwSS_rlogin_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.9
+      type: gauge
+      help: rlogin - session max - 1.3.6.1.4.1.2620.1.1.26.9.4.9
+    - name: fwSS_rlogin_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.10
+      type: gauge
+      help: rlogin - session current - 1.3.6.1.4.1.2620.1.1.26.9.4.10
+    - name: fwSS_rlogin_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.11
+      type: gauge
+      help: rlogin - session count - 1.3.6.1.4.1.2620.1.1.26.9.4.11
+    - name: fwSS_rlogin_auth_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.12
+      type: gauge
+      help: rlogin - auth session max - 1.3.6.1.4.1.2620.1.1.26.9.4.12
+    - name: fwSS_rlogin_auth_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.13
+      type: gauge
+      help: rlogin - auth session current - 1.3.6.1.4.1.2620.1.1.26.9.4.13
+    - name: fwSS_rlogin_auth_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.14
+      type: gauge
+      help: rlogin - auth session count - 1.3.6.1.4.1.2620.1.1.26.9.4.14
+    - name: fwSS_rlogin_accepted_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.15
+      type: gauge
+      help: rlogin - accepted session - 1.3.6.1.4.1.2620.1.1.26.9.4.15
+    - name: fwSS_rlogin_rejected_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.16
+      type: gauge
+      help: rlogin - rejected session - 1.3.6.1.4.1.2620.1.1.26.9.4.16
+    - name: fwSS_rlogin_auth_failures
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.17
+      type: gauge
+      help: rlogin - auth failures - 1.3.6.1.4.1.2620.1.1.26.9.4.17
+    - name: fwSS_rlogin_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.18
+      type: DisplayString
+      help: rlogin - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.4.18
+    - name: fwSS_rlogin_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.4.19
+      type: gauge
+      help: rlogin - is alive - 1.3.6.1.4.1.2620.1.1.26.9.4.19
+    - name: fwSS_ufp_ops_ufp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.5.1
+      type: gauge
+      help: ufp - session max - 1.3.6.1.4.1.2620.1.1.26.9.5.1
+    - name: fwSS_ufp_ops_ufp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.5.2
+      type: gauge
+      help: ufp - session current - 1.3.6.1.4.1.2620.1.1.26.9.5.2
+    - name: fwSS_ufp_ops_ufp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.5.3
+      type: gauge
+      help: ufp - session count - 1.3.6.1.4.1.2620.1.1.26.9.5.3
+    - name: fwSS_ufp_ops_ufp_rej_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.5.4
+      type: gauge
+      help: ufp - rej session - 1.3.6.1.4.1.2620.1.1.26.9.5.4
+    - name: fwSS_ufp_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.5.5
+      type: DisplayString
+      help: ufp - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.5.5
+    - name: fwSS_ufp_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.5.6
+      type: gauge
+      help: ufp - is alive - 1.3.6.1.4.1.2620.1.1.26.9.5.6
+    - name: fwSS_smtp_pid
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.1
+      type: gauge
+      help: smtp - pid - 1.3.6.1.4.1.2620.1.1.26.9.6.1
+    - name: fwSS_smtp_proto
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.2
+      type: gauge
+      help: smtp - proto - 1.3.6.1.4.1.2620.1.1.26.9.6.2
+    - name: fwSS_smtp_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.3
+      type: gauge
+      help: smtp - port - 1.3.6.1.4.1.2620.1.1.26.9.6.3
+    - name: fwSS_smtp_logical_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.4
+      type: gauge
+      help: smtp - logical port - 1.3.6.1.4.1.2620.1.1.26.9.6.4
+    - name: fwSS_smtp_max_avail_socket
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.5
+      type: gauge
+      help: smtp - max avail socket - 1.3.6.1.4.1.2620.1.1.26.9.6.5
+    - name: fwSS_smtp_socket_in_use_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.6
+      type: gauge
+      help: smtp - socket in use max - 1.3.6.1.4.1.2620.1.1.26.9.6.6
+    - name: fwSS_smtp_socket_in_use_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.7
+      type: gauge
+      help: smtp - socket in use current - 1.3.6.1.4.1.2620.1.1.26.9.6.7
+    - name: fwSS_smtp_socket_in_use_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.8
+      type: gauge
+      help: smtp - socket in use count - 1.3.6.1.4.1.2620.1.1.26.9.6.8
+    - name: fwSS_smtp_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.9
+      type: gauge
+      help: smtp - session max - 1.3.6.1.4.1.2620.1.1.26.9.6.9
+    - name: fwSS_smtp_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.10
+      type: gauge
+      help: smtp - session current - 1.3.6.1.4.1.2620.1.1.26.9.6.10
+    - name: fwSS_smtp_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.11
+      type: gauge
+      help: smtp - session count - 1.3.6.1.4.1.2620.1.1.26.9.6.11
+    - name: fwSS_smtp_auth_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.12
+      type: gauge
+      help: smtp - auth session max - 1.3.6.1.4.1.2620.1.1.26.9.6.12
+    - name: fwSS_smtp_auth_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.13
+      type: gauge
+      help: smtp - auth session current - 1.3.6.1.4.1.2620.1.1.26.9.6.13
+    - name: fwSS_smtp_auth_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.14
+      type: gauge
+      help: smtp - auth session count - 1.3.6.1.4.1.2620.1.1.26.9.6.14
+    - name: fwSS_smtp_accepted_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.15
+      type: gauge
+      help: smtp - accepted session - 1.3.6.1.4.1.2620.1.1.26.9.6.15
+    - name: fwSS_smtp_rejected_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.16
+      type: gauge
+      help: smtp - rejected session - 1.3.6.1.4.1.2620.1.1.26.9.6.16
+    - name: fwSS_smtp_auth_failures
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.17
+      type: gauge
+      help: smtp - auth failures - 1.3.6.1.4.1.2620.1.1.26.9.6.17
+    - name: fwSS_smtp_mail_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.18
+      type: gauge
+      help: smtp - mail max - 1.3.6.1.4.1.2620.1.1.26.9.6.18
+    - name: fwSS_smtp_mail_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.19
+      type: gauge
+      help: smtp - mail curr - 1.3.6.1.4.1.2620.1.1.26.9.6.19
+    - name: fwSS_smtp_mail_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.20
+      type: gauge
+      help: smtp - mail count - 1.3.6.1.4.1.2620.1.1.26.9.6.20
+    - name: fwSS_smtp_outgoing_mail_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.21
+      type: gauge
+      help: smtp - outgoing mail max - 1.3.6.1.4.1.2620.1.1.26.9.6.21
+    - name: fwSS_smtp_outgoing_mail_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.22
+      type: gauge
+      help: smtp - outgoing mail curr - 1.3.6.1.4.1.2620.1.1.26.9.6.22
+    - name: fwSS_smtp_outgoing_mail_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.23
+      type: gauge
+      help: smtp - outgoing mail count - 1.3.6.1.4.1.2620.1.1.26.9.6.23
+    - name: fwSS_smtp_max_mail_on_conn
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.24
+      type: gauge
+      help: smtp - max mail on conn - 1.3.6.1.4.1.2620.1.1.26.9.6.24
+    - name: fwSS_smtp_total_mails
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.25
+      type: gauge
+      help: smtp - total mails - 1.3.6.1.4.1.2620.1.1.26.9.6.25
+    - name: fwSS_smtp_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.26
+      type: DisplayString
+      help: smtp - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.6.26
+    - name: fwSS_smtp_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.27
+      type: gauge
+      help: smtp - is alive - 1.3.6.1.4.1.2620.1.1.26.9.6.27
+    - name: fwSS_smtp_blocked_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.28
+      type: gauge
+      help:
+        count of smtp items blocked, being classified as 'infected' by Anti Virus
+        - 1.3.6.1.4.1.2620.1.1.26.9.6.28
+    - name: fwSS_smtp_blocked_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.29
+      type: gauge
+      help: sum of all the counts of the previous OID (fwss-smtp-blocked-cnt) - 1.3.6.1.4.1.2620.1.1.26.9.6.29
+    - name: fwSS_smtp_scanned_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.30
+      type: gauge
+      help: sum of all the counts of 'blocked' (infected) and 'passed' items - 1.3.6.1.4.1.2620.1.1.26.9.6.30
+    - name: fwSS_smtp_blocked_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.31
+      type: gauge
+      help:
+        count of smtp items blocked by 'file type' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.31
+    - name: fwSS_smtp_blocked_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.32
+      type: gauge
+      help:
+        count of smtp items blocked by 'size limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.32
+    - name: fwSS_smtp_blocked_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.33
+      type: gauge
+      help:
+        count of smtp items blocked by 'archive limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.33
+    - name: fwSS_smtp_blocked_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.34
+      type: gauge
+      help:
+        count of smtp items blocked because of 'internal error' in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.34
+    - name: fwSS_smtp_passed_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.35
+      type: gauge
+      help: count of smtp items passed, being classified as 'safe' by Anti Virus - 1.3.6.1.4.1.2620.1.1.26.9.6.35
+    - name: fwSS_smtp_passed_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.36
+      type: gauge
+      help:
+        count of smtp items allowed (without AV scan) by 'File Type' policy in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.36
+    - name: fwSS_smtp_passed_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.37
+      type: gauge
+      help:
+        count of smtp items allowed (without AV scan) by 'Size Limit' policy in
+        Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.37
+    - name: fwSS_smtp_passed_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.38
+      type: gauge
+      help:
+        count of smtp items allowed (without AV scan) by 'Archive Limit' policy
+        in Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.38
+    - name: fwSS_smtp_passed_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.39
+      type: gauge
+      help:
+        count of smtp items allowed (without AV scan) by 'internal error' in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.6.39
+    - name: fwSS_smtp_passed_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.40
+      type: gauge
+      help: sum of all the above 'passed' counts - OIDs .35 to .39 - 1.3.6.1.4.1.2620.1.1.26.9.6.40
+    - name: fwSS_smtp_blocked_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.41
+      type: gauge
+      help:
+        "count of smtp items rejected by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.6.41"
+    - name: fwSS_smtp_passed_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.6.42
+      type: gauge
+      help:
+        "count of smtp items allowed by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.6.42"
+    - name: fwSS_POP3_pid
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.1
+      type: gauge
+      help: POP3 - pid - 1.3.6.1.4.1.2620.1.1.26.9.7.1
+    - name: fwSS_POP3_proto
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.2
+      type: gauge
+      help: POP3 - proto - 1.3.6.1.4.1.2620.1.1.26.9.7.2
+    - name: fwSS_POP3_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.3
+      type: gauge
+      help: POP3 - port - 1.3.6.1.4.1.2620.1.1.26.9.7.3
+    - name: fwSS_POP3_logical_port
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.4
+      type: gauge
+      help: POP3 - logical port - 1.3.6.1.4.1.2620.1.1.26.9.7.4
+    - name: fwSS_POP3_max_avail_socket
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.5
+      type: gauge
+      help: POP3 - max avail socket - 1.3.6.1.4.1.2620.1.1.26.9.7.5
+    - name: fwSS_POP3_socket_in_use_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.6
+      type: gauge
+      help: POP3 - socket in use max - 1.3.6.1.4.1.2620.1.1.26.9.7.6
+    - name: fwSS_POP3_socket_in_use_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.7
+      type: gauge
+      help: POP3 - socket in use current - 1.3.6.1.4.1.2620.1.1.26.9.7.7
+    - name: fwSS_POP3_socket_in_use_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.8
+      type: gauge
+      help: POP3 - socket in use count - 1.3.6.1.4.1.2620.1.1.26.9.7.8
+    - name: fwSS_POP3_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.9
+      type: gauge
+      help: POP3 - session max - 1.3.6.1.4.1.2620.1.1.26.9.7.9
+    - name: fwSS_POP3_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.10
+      type: gauge
+      help: POP3 - session current - 1.3.6.1.4.1.2620.1.1.26.9.7.10
+    - name: fwSS_POP3_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.11
+      type: gauge
+      help: POP3 - session count - 1.3.6.1.4.1.2620.1.1.26.9.7.11
+    - name: fwSS_POP3_auth_sess_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.12
+      type: gauge
+      help: POP3 - auth session max - 1.3.6.1.4.1.2620.1.1.26.9.7.12
+    - name: fwSS_POP3_auth_sess_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.13
+      type: gauge
+      help: POP3 - auth session current - 1.3.6.1.4.1.2620.1.1.26.9.7.13
+    - name: fwSS_POP3_auth_sess_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.14
+      type: gauge
+      help: POP3 - auth session count - 1.3.6.1.4.1.2620.1.1.26.9.7.14
+    - name: fwSS_POP3_accepted_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.15
+      type: gauge
+      help: POP3 - accepted session - 1.3.6.1.4.1.2620.1.1.26.9.7.15
+    - name: fwSS_POP3_rejected_sess
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.16
+      type: gauge
+      help: POP3 - rejected session - 1.3.6.1.4.1.2620.1.1.26.9.7.16
+    - name: fwSS_POP3_auth_failures
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.17
+      type: gauge
+      help: POP3 - auth failures - 1.3.6.1.4.1.2620.1.1.26.9.7.17
+    - name: fwSS_POP3_mail_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.18
+      type: gauge
+      help: POP3 - mail max - 1.3.6.1.4.1.2620.1.1.26.9.7.18
+    - name: fwSS_POP3_mail_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.19
+      type: gauge
+      help: POP3 - mail curr - 1.3.6.1.4.1.2620.1.1.26.9.7.19
+    - name: fwSS_POP3_mail_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.20
+      type: gauge
+      help: POP3 - mail count - 1.3.6.1.4.1.2620.1.1.26.9.7.20
+    - name: fwSS_POP3_outgoing_mail_max
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.21
+      type: gauge
+      help: POP3 - outgoing mail max - 1.3.6.1.4.1.2620.1.1.26.9.7.21
+    - name: fwSS_POP3_outgoing_mail_curr
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.22
+      type: gauge
+      help: POP3 - outgoing mail curr - 1.3.6.1.4.1.2620.1.1.26.9.7.22
+    - name: fwSS_POP3_outgoing_mail_count
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.23
+      type: gauge
+      help: POP3 - outgoing mail count - 1.3.6.1.4.1.2620.1.1.26.9.7.23
+    - name: fwSS_POP3_max_mail_on_conn
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.24
+      type: gauge
+      help: POP3 - max mail on conn - 1.3.6.1.4.1.2620.1.1.26.9.7.24
+    - name: fwSS_POP3_total_mails
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.25
+      type: gauge
+      help: POP3 - total mails - 1.3.6.1.4.1.2620.1.1.26.9.7.25
+    - name: fwSS_POP3_time_stamp
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.26
+      type: DisplayString
+      help: POP3 - time stamp - 1.3.6.1.4.1.2620.1.1.26.9.7.26
+    - name: fwSS_POP3_is_alive
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.27
+      type: gauge
+      help: POP3 - is alive - 1.3.6.1.4.1.2620.1.1.26.9.7.27
+    - name: fwSS_POP3_blocked_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.28
+      type: gauge
+      help:
+        count of POP3 items blocked, being classified as 'infected' by Anti Virus
+        - 1.3.6.1.4.1.2620.1.1.26.9.7.28
+    - name: fwSS_POP3_blocked_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.29
+      type: gauge
+      help: sum of all the counts of the previous OID (fwss-POP3-blocked-cnt) - 1.3.6.1.4.1.2620.1.1.26.9.7.29
+    - name: fwSS_POP3_scanned_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.30
+      type: gauge
+      help: sum of all the counts of 'blocked' (infected) and 'passed' items - 1.3.6.1.4.1.2620.1.1.26.9.7.30
+    - name: fwSS_POP3_blocked_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.31
+      type: gauge
+      help:
+        count of POP3 items blocked by 'file type' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.31
+    - name: fwSS_POP3_blocked_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.32
+      type: gauge
+      help:
+        count of POP3 items blocked by 'size limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.32
+    - name: fwSS_POP3_blocked_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.33
+      type: gauge
+      help:
+        count of POP3 items blocked by 'archive limit' policy in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.33
+    - name: fwSS_POP3_blocked_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.34
+      type: gauge
+      help:
+        count of POP3 items blocked because of 'internal error' in Content Inspection
+        tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.34
+    - name: fwSS_POP3_passed_cnt
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.35
+      type: gauge
+      help: count of POP3 items passed, being classified as 'safe' by Anti Virus - 1.3.6.1.4.1.2620.1.1.26.9.7.35
+    - name: fwSS_POP3_passed_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.36
+      type: gauge
+      help:
+        count of POP3 items allowed (without AV scan) by 'File Type' policy in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.36
+    - name: fwSS_POP3_passed_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.37
+      type: gauge
+      help:
+        count of POP3 items allowed (without AV scan) by 'Size Limit' policy in
+        Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.37
+    - name: fwSS_POP3_passed_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.38
+      type: gauge
+      help:
+        count of POP3 items allowed (without AV scan) by 'Archive Limit' policy
+        in Content Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.38
+    - name: fwSS_POP3_passed_by_internal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.39
+      type: gauge
+      help:
+        count of POP3 items allowed (without AV scan) by 'internal error' in Content
+        Inspection tab in SmartDashboard - 1.3.6.1.4.1.2620.1.1.26.9.7.39
+    - name: fwSS_POP3_passed_total
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.40
+      type: gauge
+      help: sum of all the above 'passed' counts - OIDs .35 to .39 - 1.3.6.1.4.1.2620.1.1.26.9.7.40
+    - name: fwSS_POP3_blocked_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.41
+      type: gauge
+      help:
+        "count of POP3 items rejected by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.7.41"
+    - name: fwSS_POP3_passed_by_AV_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.7.42
+      type: gauge
+      help:
+        "count of POP3 items allowed by Anti Virus as either: exceeding size or
+        archive limits, or failed scan due to internal error (configured in the 'settings'
+        pane in 'Content Inspection' tab in SmartDashboard) - 1.3.6.1.4.1.2620.1.1.26.9.7.42"
+    - name: fwSS_total_blocked_by_av
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.1
+      type: gauge
+      help: total blocked items for all services (HTTP,FTP,POP3,SMTP) - 1.3.6.1.4.1.2620.1.1.26.9.10.1
+    - name: fwSS_total_blocked
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.2
+      type: gauge
+      help:
+        total blocked items for all policies (filetype,size limit, archive limit,internal
+        error) - 1.3.6.1.4.1.2620.1.1.26.9.10.2
+    - name: fwSS_total_scanned
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.3
+      type: gauge
+      help: total scanned items for all services (HTTP,FTP,POP3,SMTP) - 1.3.6.1.4.1.2620.1.1.26.9.10.3
+    - name: fwSS_total_blocked_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.4
+      type: gauge
+      help:
+        total blocked items by 'File Type' policy for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.4
+    - name: fwSS_total_blocked_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.5
+      type: gauge
+      help:
+        total blocked items by 'Size Limit' policy for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.5
+    - name: fwSS_total_blocked_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.6
+      type: gauge
+      help:
+        total blocked items by 'Archive Limit' policy for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.6
+    - name: fwSS_total_blocked_by_interal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.7
+      type: gauge
+      help:
+        total blocked items by 'Internal Error' for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.7
+    - name: fwSS_total_passed_by_av
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.8
+      type: gauge
+      help: total passed items for all services (HTTP,FTP,POP3,SMTP) - 1.3.6.1.4.1.2620.1.1.26.9.10.8
+    - name: fwSS_total_passed_by_file_type
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.9
+      type: gauge
+      help:
+        total passed items by 'File Type' policy for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.9
+    - name: fwSS_total_passed_by_size_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.10
+      type: gauge
+      help:
+        total passed items by 'Size Limit' policy for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.10
+    - name: fwSS_total_passed_by_archive_limit
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.11
+      type: gauge
+      help:
+        total blocked items by 'Archive Limit' policy for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.11
+    - name: fwSS_total_passed_by_interal_error
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.12
+      type: gauge
+      help:
+        total blocked items by 'Internal Error' for all services (HTTP,FTP,POP3,SMTP)
+        - 1.3.6.1.4.1.2620.1.1.26.9.10.12
+    - name: fwSS_total_passed
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.13
+      type: gauge
+      help:
+        total passed items for all policies (filetype,size limit, archive limit,internal
+        error) - 1.3.6.1.4.1.2620.1.1.26.9.10.13
+    - name: fwSS_total_blocked_by_av_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.14
+      type: gauge
+      help: total blocked items by AV settings - 1.3.6.1.4.1.2620.1.1.26.9.10.14
+    - name: fwSS_total_passed_by_av_settings
+      oid: 1.3.6.1.4.1.2620.1.1.26.9.10.15
+      type: gauge
+      help: total passed items by AV settings - 1.3.6.1.4.1.2620.1.1.26.9.10.15
+    - name: fwConnectionsStatConnectionsTcp
+      oid: 1.3.6.1.4.1.2620.1.1.26.11.1
+      type: gauge
+      help: tcp connections passing through the FireWall-1 Module - 1.3.6.1.4.1.2620.1.1.26.11.1
+    - name: fwConnectionsStatConnectionsUdp
+      oid: 1.3.6.1.4.1.2620.1.1.26.11.2
+      type: gauge
+      help: udp connections passing through the FireWall-1 Module - 1.3.6.1.4.1.2620.1.1.26.11.2
+    - name: fwConnectionsStatConnectionsIcmp
+      oid: 1.3.6.1.4.1.2620.1.1.26.11.3
+      type: gauge
+      help: icmp connections passing through the FireWall-1 Module - 1.3.6.1.4.1.2620.1.1.26.11.3
+    - name: fwConnectionsStatConnectionsOther
+      oid: 1.3.6.1.4.1.2620.1.1.26.11.4
+      type: gauge
+      help: other connections passing through the FireWall-1 Module - 1.3.6.1.4.1.2620.1.1.26.11.4
+    - name: fwConnectionsStatConnections
+      oid: 1.3.6.1.4.1.2620.1.1.26.11.5
+      type: gauge
+      help: total connections passing through the FireWall-1 Module - 1.3.6.1.4.1.2620.1.1.26.11.5
+    - name: fwConnectionsStatConnectionRate
+      oid: 1.3.6.1.4.1.2620.1.1.26.11.6
+      type: gauge
+      help: connection rate (per second) passing through the FireWall-1 Module - 1.3.6.1.4.1.2620.1.1.26.11.6
+    - name: fwHmem64_block_size
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.1
+      type: counter
+      help: hmem - block size - 1.3.6.1.4.1.2620.1.1.26.12.1
+    - name: fwHmem64_requested_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.2
+      type: counter
+      help: hmem - requested bytes - 1.3.6.1.4.1.2620.1.1.26.12.2
+    - name: fwHmem64_initial_allocated_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.3
+      type: counter
+      help: hmem - initial allocated bytes - 1.3.6.1.4.1.2620.1.1.26.12.3
+    - name: fwHmem64_initial_allocated_blocks
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.4
+      type: gauge
+      help: hmem - initial allocated blocks - 1.3.6.1.4.1.2620.1.1.26.12.4
+    - name: fwHmem64_initial_allocated_pools
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.5
+      type: gauge
+      help: hmem - initial allocated pools - 1.3.6.1.4.1.2620.1.1.26.12.5
+    - name: fwHmem64_current_allocated_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.6
+      type: counter
+      help: hmem - current allocated bytes - 1.3.6.1.4.1.2620.1.1.26.12.6
+    - name: fwHmem64_current_allocated_blocks
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.7
+      type: gauge
+      help: hmem - current allocated blocks - 1.3.6.1.4.1.2620.1.1.26.12.7
+    - name: fwHmem64_current_allocated_pools
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.8
+      type: gauge
+      help: hmem - current allocated pools - 1.3.6.1.4.1.2620.1.1.26.12.8
+    - name: fwHmem64_maximum_bytes
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.9
+      type: counter
+      help: hmem - maximum bytes - 1.3.6.1.4.1.2620.1.1.26.12.9
+    - name: fwHmem64_maximum_pools
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.10
+      type: gauge
+      help: hmem - maximum pools - 1.3.6.1.4.1.2620.1.1.26.12.10
+    - name: fwHmem64_bytes_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.11
+      type: counter
+      help: hmem - bytes used - 1.3.6.1.4.1.2620.1.1.26.12.11
+    - name: fwHmem64_blocks_used
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.12
+      type: gauge
+      help: hmem - blocks used - 1.3.6.1.4.1.2620.1.1.26.12.12
+    - name: fwHmem64_bytes_unused
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.13
+      type: counter
+      help: hmem - bytes unused - 1.3.6.1.4.1.2620.1.1.26.12.13
+    - name: fwHmem64_blocks_unused
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.14
+      type: gauge
+      help: hmem - blocks unused - 1.3.6.1.4.1.2620.1.1.26.12.14
+    - name: fwHmem64_bytes_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.15
+      type: counter
+      help: hmem - bytes peak - 1.3.6.1.4.1.2620.1.1.26.12.15
+    - name: fwHmem64_blocks_peak
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.16
+      type: gauge
+      help: hmem - blocks peak - 1.3.6.1.4.1.2620.1.1.26.12.16
+    - name: fwHmem64_bytes_internal_use
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.17
+      type: gauge
+      help: hmem - bytes internal use - 1.3.6.1.4.1.2620.1.1.26.12.17
+    - name: fwHmem64_number_of_items
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.18
+      type: counter
+      help: hmem - number of items - 1.3.6.1.4.1.2620.1.1.26.12.18
+    - name: fwHmem64_alloc_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.19
+      type: gauge
+      help: hmem - alloc operations - 1.3.6.1.4.1.2620.1.1.26.12.19
+    - name: fwHmem64_free_operations
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.20
+      type: gauge
+      help: hmem - free operations - 1.3.6.1.4.1.2620.1.1.26.12.20
+    - name: fwHmem64_failed_alloc
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.21
+      type: gauge
+      help: hmem - failed alloc - 1.3.6.1.4.1.2620.1.1.26.12.21
+    - name: fwHmem64_failed_free
+      oid: 1.3.6.1.4.1.2620.1.1.26.12.22
+      type: gauge
+      help: hmem - failed free - 1.3.6.1.4.1.2620.1.1.26.12.22
+    - name: fwNetIfIndex
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.27.1.1"
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfName
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.2
+      type: DisplayString
+      help: Interface Name - 1.3.6.1.4.1.2620.1.1.27.1.2
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfIPAddr
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.3
+      type: InetAddressIPv4
+      help: IPv4 Address (an empty address will be denoted by 0.0.0.0) - 1.3.6.1.4.1.2620.1.1.27.1.3
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfNetmask
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.4
+      type: InetAddressIPv4
+      help:
+        Network Mask of the GW behind the Bridge (an empty mask will be denoted
+        by 0.0.0.0) - 1.3.6.1.4.1.2620.1.1.27.1.4
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfFlags
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.5
+      type: gauge
+      help:
+        "Flags indicating the type(s) of the device: Possible values include: VPN
+        tunnel device 1 Unnumbered device 2 Proxy device 4 Bridge 8 Bond 16 Slave 32
+        (e.g - 1.3.6.1.4.1.2620.1.1.27.1.5"
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfPeerName
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.6
+      type: DisplayString
+      help: VPN Tunnel Peer Name - 1.3.6.1.4.1.2620.1.1.27.1.6
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfRemoteIp
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.7
+      type: InetAddressIPv4
+      help: VPN Tunnel Remote IP - 1.3.6.1.4.1.2620.1.1.27.1.7
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfTopology
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.8
+      type: gauge
+      help:
+        Planned for future use only - currently should have the constant value of
+        4 - 1.3.6.1.4.1.2620.1.1.27.1.8
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfProxyName
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.9
+      type: DisplayString
+      help: VPN Tunnel Proxy Name - 1.3.6.1.4.1.2620.1.1.27.1.9
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfSlaves
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.10
+      type: DisplayString
+      help:
+        If this device is acting as a master, this string contains space separated
+        names of all its slave devices. - 1.3.6.1.4.1.2620.1.1.27.1.10
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfPorts
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.11
+      type: DisplayString
+      help:
+        Given an interface which is a port in a bridge, list all its siblings interfaces
+        - 1.3.6.1.4.1.2620.1.1.27.1.11
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfIPV6Addr
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.12
+      type: OctetString
+      help: IPv6 Address given in an hexa format . - 1.3.6.1.4.1.2620.1.1.27.1.12
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwNetIfIPV6AddrLen
+      oid: 1.3.6.1.4.1.2620.1.1.27.1.13
+      type: gauge
+      help: IPv6 Address length - 1.3.6.1.4.1.2620.1.1.27.1.13
+      indexes:
+        - labelname: fwNetIfIndex
+          type: gauge
+    - name: fwLSConnOverall
+      oid: 1.3.6.1.4.1.2620.1.1.30.1
+      type: gauge
+      help: Connectivity with log servers, Ok(0), Warnning(1) and Error(2) - 1.3.6.1.4.1.2620.1.1.30.1
+    - name: fwLSConnOverallDesc
+      oid: 1.3.6.1.4.1.2620.1.1.30.2
+      type: DisplayString
+      help: Description of connectivity status with log servers - 1.3.6.1.4.1.2620.1.1.30.2
+    - name: fwLSConnIndex
+      oid: 1.3.6.1.4.1.2620.1.1.30.3.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.1.30.3.1.1"
+      indexes:
+        - labelname: fwLSConnIndex
+          type: gauge
+    - name: fwLSConnName
+      oid: 1.3.6.1.4.1.2620.1.1.30.3.1.2
+      type: DisplayString
+      help: Log Server Name\IP - 1.3.6.1.4.1.2620.1.1.30.3.1.2
+      indexes:
+        - labelname: fwLSConnIndex
+          type: gauge
+    - name: fwLSConnState
+      oid: 1.3.6.1.4.1.2620.1.1.30.3.1.3
+      type: gauge
+      help:
+        Connectivity state with the log server Ok(0), Error(1) and Not Active(2)
+        - 1.3.6.1.4.1.2620.1.1.30.3.1.3
+      indexes:
+        - labelname: fwLSConnIndex
+          type: gauge
+    - name: fwLSConnStateDesc
+      oid: 1.3.6.1.4.1.2620.1.1.30.3.1.4
+      type: DisplayString
+      help: Description of connectivity state with the log server - 1.3.6.1.4.1.2620.1.1.30.3.1.4
+      indexes:
+        - labelname: fwLSConnIndex
+          type: gauge
+    - name: fwLSConnSendRate
+      oid: 1.3.6.1.4.1.2620.1.1.30.3.1.5
+      type: gauge
+      help: Logs Sending Rate to the Log Server - 1.3.6.1.4.1.2620.1.1.30.3.1.5
+      indexes:
+        - labelname: fwLSConnIndex
+          type: gauge
+    - name: fwLocalLoggingDesc
+      oid: 1.3.6.1.4.1.2620.1.1.30.4
+      type: DisplayString
+      help: Description of local logging status - 1.3.6.1.4.1.2620.1.1.30.4
+    - name: fwLocalLoggingStat
+      oid: 1.3.6.1.4.1.2620.1.1.30.5
+      type: gauge
+      help:
+        Writing logs localy, To log servers(0), Local configured (1) Local due to
+        connectivity(2) Local due to high rate(3) - 1.3.6.1.4.1.2620.1.1.30.5
+    - name: fwLocalLoggingWriteRate
+      oid: 1.3.6.1.4.1.2620.1.1.30.6
+      type: gauge
+      help: Local Logging Writing Rate - 1.3.6.1.4.1.2620.1.1.30.6
+    - name: fwLoggingHandlingRate
+      oid: 1.3.6.1.4.1.2620.1.1.30.7
+      type: gauge
+      help:
+        Total Logging Handling Rate (Local writing and Sending to Log Server) -
+        1.3.6.1.4.1.2620.1.1.30.7
+    - name: fwInstancesCPUInstanceName
+      oid: 1.3.6.1.4.1.2620.1.1.31.1.1.1
+      type: DisplayString
+      help: Name of instance thread - 1.3.6.1.4.1.2620.1.1.31.1.1.1
+      indexes:
+        - labelname: fwInstancesCPUInstanceName
+          type: DisplayString
+    - name: fwInstancesCPUUsage
+      oid: 1.3.6.1.4.1.2620.1.1.31.1.1.2
+      type: gauge
+      help: Current CPU usage percent - 1.3.6.1.4.1.2620.1.1.31.1.1.2
+      indexes:
+        - labelname: fwInstancesCPUInstanceName
+          type: DisplayString
+    - name: fwInstancesCPUTotal
+      oid: 1.3.6.1.4.1.2620.1.1.31.2
+      type: gauge
+      help: OID to present the total CPU usage of all instances of the fw - 1.3.6.1.4.1.2620.1.1.31.2
+    - name: cpvProdName
+      oid: 1.3.6.1.4.1.2620.1.2.1
+      type: DisplayString
+      help: Product name - 1.3.6.1.4.1.2620.1.2.1
+    - name: cpvVerMajor
+      oid: 1.3.6.1.4.1.2620.1.2.2
+      type: gauge
+      help: Major version - 1.3.6.1.4.1.2620.1.2.2
+    - name: cpvVerMinor
+      oid: 1.3.6.1.4.1.2620.1.2.3
+      type: gauge
+      help: Minor version - 1.3.6.1.4.1.2620.1.2.3
+    - name: cpvEncPackets
+      oid: 1.3.6.1.4.1.2620.1.2.4.1.1
+      type: counter
+      help: Encrypted packets - 1.3.6.1.4.1.2620.1.2.4.1.1
+    - name: cpvDecPackets
+      oid: 1.3.6.1.4.1.2620.1.2.4.1.2
+      type: counter
+      help: Decrypted packets - 1.3.6.1.4.1.2620.1.2.4.1.2
+    - name: cpvErrOut
+      oid: 1.3.6.1.4.1.2620.1.2.4.2.1
+      type: counter
+      help: Encryption errors - 1.3.6.1.4.1.2620.1.2.4.2.1
+    - name: cpvErrIn
+      oid: 1.3.6.1.4.1.2620.1.2.4.2.2
+      type: counter
+      help: Decryption errors - 1.3.6.1.4.1.2620.1.2.4.2.2
+    - name: cpvErrIke
+      oid: 1.3.6.1.4.1.2620.1.2.4.2.3
+      type: counter
+      help: IKE errors - 1.3.6.1.4.1.2620.1.2.4.2.3
+    - name: cpvErrPolicy
+      oid: 1.3.6.1.4.1.2620.1.2.4.2.4
+      type: counter
+      help: Policy errors - 1.3.6.1.4.1.2620.1.2.4.2.4
+    - name: cpvCurrEspSAsIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.1
+      type: counter
+      help: IPsec current Inbound ESP SAs - 1.3.6.1.4.1.2620.1.2.5.2.1
+    - name: cpvTotalEspSAsIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.2
+      type: counter
+      help: IPsec total Inbound ESP SAs - 1.3.6.1.4.1.2620.1.2.5.2.2
+    - name: cpvCurrEspSAsOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.3
+      type: counter
+      help: IPsec current Outbound ESP SAs - 1.3.6.1.4.1.2620.1.2.5.2.3
+    - name: cpvTotalEspSAsOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.4
+      type: counter
+      help: IPsec total Outbound ESP SAs - 1.3.6.1.4.1.2620.1.2.5.2.4
+    - name: cpvCurrAhSAsIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.5
+      type: counter
+      help: IPsec current Inbound AH SAs - 1.3.6.1.4.1.2620.1.2.5.2.5
+    - name: cpvTotalAhSAsIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.6
+      type: counter
+      help: IPsec total Inbound AH SAs - 1.3.6.1.4.1.2620.1.2.5.2.6
+    - name: cpvCurrAhSAsOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.7
+      type: counter
+      help: IPsec current Outbound AH SAs - 1.3.6.1.4.1.2620.1.2.5.2.7
+    - name: cpvTotalAhSAsOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.8
+      type: counter
+      help: IPsec total Outbound AH SAs - 1.3.6.1.4.1.2620.1.2.5.2.8
+    - name: cpvMaxConncurEspSAsIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.9
+      type: counter
+      help: IPsec max concurrent Inbound ESP SAs - 1.3.6.1.4.1.2620.1.2.5.2.9
+    - name: cpvMaxConncurEspSAsOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.10
+      type: counter
+      help: IPsec max concurrent Outbound ESP SAs - 1.3.6.1.4.1.2620.1.2.5.2.10
+    - name: cpvMaxConncurAhSAsIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.11
+      type: counter
+      help: IPsec max concurrent Inbound AH SAs - 1.3.6.1.4.1.2620.1.2.5.2.11
+    - name: cpvMaxConncurAhSAsOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.2.12
+      type: counter
+      help: IPsec max concurrent Outbound AH SAs - 1.3.6.1.4.1.2620.1.2.5.2.12
+    - name: cpvSaDecrErr
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.1
+      type: counter
+      help: IPsec decryption errors - 1.3.6.1.4.1.2620.1.2.5.3.1
+    - name: cpvSaAuthErr
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.2
+      type: counter
+      help: IPsec authentication errors - 1.3.6.1.4.1.2620.1.2.5.3.2
+    - name: cpvSaReplayErr
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.3
+      type: counter
+      help: IPsec replay errors - 1.3.6.1.4.1.2620.1.2.5.3.3
+    - name: cpvSaPolicyErr
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.4
+      type: counter
+      help: IPsec policy errors - 1.3.6.1.4.1.2620.1.2.5.3.4
+    - name: cpvSaOtherErrIn
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.5
+      type: counter
+      help: IPsec other inbound errors - 1.3.6.1.4.1.2620.1.2.5.3.5
+    - name: cpvSaOtherErrOut
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.6
+      type: counter
+      help: IPsec other outbound errors - 1.3.6.1.4.1.2620.1.2.5.3.6
+    - name: cpvSaUnknownSpiErr
+      oid: 1.3.6.1.4.1.2620.1.2.5.3.7
+      type: counter
+      help: IPsec unknown SPI errors - 1.3.6.1.4.1.2620.1.2.5.3.7
+    - name: cpvIpsecUdpEspEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.1
+      type: counter
+      help: IPsec UDP ESP encrypted packets - 1.3.6.1.4.1.2620.1.2.5.4.1
+    - name: cpvIpsecUdpEspDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.2
+      type: counter
+      help: IPsec UDP ESP decrypted packets - 1.3.6.1.4.1.2620.1.2.5.4.2
+    - name: cpvIpsecAhEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.3
+      type: counter
+      help: IPsec AH encrypted packets - 1.3.6.1.4.1.2620.1.2.5.4.3
+    - name: cpvIpsecAhDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.4
+      type: counter
+      help: IPsec AH decrypted packets - 1.3.6.1.4.1.2620.1.2.5.4.4
+    - name: cpvIpsecEspEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.5
+      type: counter
+      help: IPsec ESP encrypted packets - 1.3.6.1.4.1.2620.1.2.5.4.5
+    - name: cpvIpsecEspDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.6
+      type: counter
+      help: IPsec ESP decrypted packets - 1.3.6.1.4.1.2620.1.2.5.4.6
+    - name: cpvIpsecDecomprBytesBefore
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.7
+      type: counter
+      help: IPsec bytes before decompression - 1.3.6.1.4.1.2620.1.2.5.4.7
+    - name: cpvIpsecDecomprBytesAfter
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.8
+      type: counter
+      help: IPsec bytes after decompression - 1.3.6.1.4.1.2620.1.2.5.4.8
+    - name: cpvIpsecDecomprOverhead
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.9
+      type: counter
+      help: IPsec bytes decompression overhead - 1.3.6.1.4.1.2620.1.2.5.4.9
+    - name: cpvIpsecDecomprPkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.10
+      type: counter
+      help: IPsec packets decompressed - 1.3.6.1.4.1.2620.1.2.5.4.10
+    - name: cpvIpsecDecomprErr
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.11
+      type: counter
+      help: IPsec decompression errors - 1.3.6.1.4.1.2620.1.2.5.4.11
+    - name: cpvIpsecComprBytesBefore
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.12
+      type: counter
+      help: IPsec bytes before compression - 1.3.6.1.4.1.2620.1.2.5.4.12
+    - name: cpvIpsecComprBytesAfter
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.13
+      type: counter
+      help: IPsec bytes after compression - 1.3.6.1.4.1.2620.1.2.5.4.13
+    - name: cpvIpsecComprOverhead
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.14
+      type: counter
+      help: IPsec bytes compression overhead - 1.3.6.1.4.1.2620.1.2.5.4.14
+    - name: cpvIpsecNonCompressibleBytes
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.15
+      type: counter
+      help: IPsec bytes non compressible - 1.3.6.1.4.1.2620.1.2.5.4.15
+    - name: cpvIpsecCompressiblePkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.16
+      type: counter
+      help: IPsec packets compressed - 1.3.6.1.4.1.2620.1.2.5.4.16
+    - name: cpvIpsecNonCompressiblePkts
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.17
+      type: counter
+      help: IPsec packets non compressible - 1.3.6.1.4.1.2620.1.2.5.4.17
+    - name: cpvIpsecComprErrors
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.18
+      type: counter
+      help: IPsec compression errors - 1.3.6.1.4.1.2620.1.2.5.4.18
+    - name: cpvIpsecEspEncBytes
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.19
+      type: counter
+      help: IPsec ESP encrypted bytes - 1.3.6.1.4.1.2620.1.2.5.4.19
+    - name: cpvIpsecEspDecBytes
+      oid: 1.3.6.1.4.1.2620.1.2.5.4.20
+      type: counter
+      help: IPsec ESP decrypted bytes - 1.3.6.1.4.1.2620.1.2.5.4.20
+    - name: cpvFwzEncapsEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.6.1.1
+      type: counter
+      help: Fwz encapsulated encrypted packets - 1.3.6.1.4.1.2620.1.2.6.1.1
+    - name: cpvFwzEncapsDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.6.1.2
+      type: counter
+      help: Fwz encapsulated decrypted packets - 1.3.6.1.4.1.2620.1.2.6.1.2
+    - name: cpvFwzEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.6.1.3
+      type: gauge
+      help: Fwz encrypted packets - 1.3.6.1.4.1.2620.1.2.6.1.3
+    - name: cpvFwzDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.6.1.4
+      type: gauge
+      help: Fwz decrypted packets - 1.3.6.1.4.1.2620.1.2.6.1.4
+    - name: cpvFwzEncapsEncErrs
+      oid: 1.3.6.1.4.1.2620.1.2.6.2.1
+      type: counter
+      help: Fwz encapsulated encryption errors - 1.3.6.1.4.1.2620.1.2.6.2.1
+    - name: cpvFwzEncapsDecErrs
+      oid: 1.3.6.1.4.1.2620.1.2.6.2.2
+      type: counter
+      help: Fwz encapsulated decryption errors - 1.3.6.1.4.1.2620.1.2.6.2.2
+    - name: cpvFwzEncErrs
+      oid: 1.3.6.1.4.1.2620.1.2.6.2.3
+      type: gauge
+      help: Fwz encryption errors - 1.3.6.1.4.1.2620.1.2.6.2.3
+    - name: cpvFwzDecErrs
+      oid: 1.3.6.1.4.1.2620.1.2.6.2.4
+      type: gauge
+      help: Fwz decryption errors - 1.3.6.1.4.1.2620.1.2.6.2.4
+    - name: cpvHwAccelVendor
+      oid: 1.3.6.1.4.1.2620.1.2.8.1.1
+      type: DisplayString
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.1.1
+    - name: cpvHwAccelStatus
+      oid: 1.3.6.1.4.1.2620.1.2.8.1.2
+      type: DisplayString
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.1.2
+    - name: cpvHwAccelDriverMajorVer
+      oid: 1.3.6.1.4.1.2620.1.2.8.1.3
+      type: gauge
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.1.3
+    - name: cpvHwAccelDriverMinorVer
+      oid: 1.3.6.1.4.1.2620.1.2.8.1.4
+      type: gauge
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.1.4
+    - name: cpvHwAccelEspEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.1
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.1
+    - name: cpvHwAccelEspDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.2
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.2
+    - name: cpvHwAccelEspEncBytes
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.3
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.3
+    - name: cpvHwAccelEspDecBytes
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.4
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.4
+    - name: cpvHwAccelAhEncPkts
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.5
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.5
+    - name: cpvHwAccelAhDecPkts
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.6
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.6
+    - name: cpvHwAccelAhEncBytes
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.7
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.7
+    - name: cpvHwAccelAhDecBytes
+      oid: 1.3.6.1.4.1.2620.1.2.8.2.8
+      type: counter
+      help: HW accel - 1.3.6.1.4.1.2620.1.2.8.2.8
+    - name: cpvIKECurrSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.1
+      type: counter
+      help: IKE current SAs - 1.3.6.1.4.1.2620.1.2.9.1.1
+    - name: cpvIKECurrInitSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.2
+      type: counter
+      help: IKE current initiated SAs - 1.3.6.1.4.1.2620.1.2.9.1.2
+    - name: cpvIKECurrRespSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.3
+      type: counter
+      help: IKE current responded SAs - 1.3.6.1.4.1.2620.1.2.9.1.3
+    - name: cpvIKETotalSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.4
+      type: counter
+      help: IKE total SAs - 1.3.6.1.4.1.2620.1.2.9.1.4
+    - name: cpvIKETotalInitSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.5
+      type: counter
+      help: IKE total initiated SAs - 1.3.6.1.4.1.2620.1.2.9.1.5
+    - name: cpvIKETotalRespSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.6
+      type: counter
+      help: IKE total responded SAs - 1.3.6.1.4.1.2620.1.2.9.1.6
+    - name: cpvIKETotalSAsAttempts
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.7
+      type: counter
+      help: IKE total SAs attempts - 1.3.6.1.4.1.2620.1.2.9.1.7
+    - name: cpvIKETotalSAsInitAttempts
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.8
+      type: counter
+      help: IKE total SAs initiated attempts - 1.3.6.1.4.1.2620.1.2.9.1.8
+    - name: cpvIKETotalSAsRespAttempts
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.9
+      type: counter
+      help: IKE total SAs responded attempts - 1.3.6.1.4.1.2620.1.2.9.1.9
+    - name: cpvIKEMaxConncurSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.10
+      type: counter
+      help: IKE max concurrent SAs - 1.3.6.1.4.1.2620.1.2.9.1.10
+    - name: cpvIKEMaxConncurInitSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.11
+      type: counter
+      help: IKE max concurrent initiated SAs - 1.3.6.1.4.1.2620.1.2.9.1.11
+    - name: cpvIKEMaxConncurRespSAs
+      oid: 1.3.6.1.4.1.2620.1.2.9.1.12
+      type: counter
+      help: IKE max concurrent responded SAs - 1.3.6.1.4.1.2620.1.2.9.1.12
+    - name: cpvIKETotalFailuresInit
+      oid: 1.3.6.1.4.1.2620.1.2.9.2.1
+      type: counter
+      help: IKE total failures (initiator errors) - 1.3.6.1.4.1.2620.1.2.9.2.1
+    - name: cpvIKENoResp
+      oid: 1.3.6.1.4.1.2620.1.2.9.2.2
+      type: counter
+      help: IKE no response from peer (initiator errors) - 1.3.6.1.4.1.2620.1.2.9.2.2
+    - name: cpvIKETotalFailuresResp
+      oid: 1.3.6.1.4.1.2620.1.2.9.2.3
+      type: counter
+      help: IKE total failures (responder errors) - 1.3.6.1.4.1.2620.1.2.9.2.3
+    - name: cpvIPsecNICsNum
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.1
+      type: gauge
+      help: "IPsec NIC: Number of IPsec NIC's - 1.3.6.1.4.1.2620.1.2.10.1.1"
+    - name: cpvIPsecNICTotalDownLoadedSAs
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.2
+      type: counter
+      help: "IPsec NIC: Total downloaded SA's - 1.3.6.1.4.1.2620.1.2.10.1.2"
+    - name: cpvIPsecNICCurrDownLoadedSAs
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.3
+      type: counter
+      help: "IPsec NIC: Current downloaded SA's - 1.3.6.1.4.1.2620.1.2.10.1.3"
+    - name: cpvIPsecNICDecrBytes
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.4
+      type: counter
+      help: "IPsec NIC: Decrypted bytes by NIC - 1.3.6.1.4.1.2620.1.2.10.1.4"
+    - name: cpvIPsecNICEncrBytes
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.5
+      type: counter
+      help: "IPsec NIC: Encrypted bytes by NIC - 1.3.6.1.4.1.2620.1.2.10.1.5"
+    - name: cpvIPsecNICDecrPackets
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.6
+      type: counter
+      help: "IPsec NIC: Decrypted packets by NIC - 1.3.6.1.4.1.2620.1.2.10.1.6"
+    - name: cpvIPsecNICEncrPackets
+      oid: 1.3.6.1.4.1.2620.1.2.10.1.7
+      type: counter
+      help: "IPsec NIC: Encrypted packets by NIC - 1.3.6.1.4.1.2620.1.2.10.1.7"
+    - name: cpsemdProcAlive
+      oid: 1.3.6.1.4.1.2620.1.25.1.1
+      type: gauge
+      help: cpsemd Process is alive - 1.3.6.1.4.1.2620.1.25.1.1
+    - name: cpsemdNewEventsHandled
+      oid: 1.3.6.1.4.1.2620.1.25.1.2
+      type: gauge
+      help: New events handled - 1.3.6.1.4.1.2620.1.25.1.2
+    - name: cpsemdUpdatesHandled
+      oid: 1.3.6.1.4.1.2620.1.25.1.3
+      type: gauge
+      help: Number of updates handled - 1.3.6.1.4.1.2620.1.25.1.3
+    - name: cpsemdLastEventTime
+      oid: 1.3.6.1.4.1.2620.1.25.1.4
+      type: DisplayString
+      help: Last processed event time - 1.3.6.1.4.1.2620.1.25.1.4
+    - name: cpsemdCurrentDBSize
+      oid: 1.3.6.1.4.1.2620.1.25.1.5
+      type: DisplayString
+      help: Current database size - 1.3.6.1.4.1.2620.1.25.1.5
+    - name: cpsemdDBCapacity
+      oid: 1.3.6.1.4.1.2620.1.25.1.6
+      type: DisplayString
+      help: Database capacity - 1.3.6.1.4.1.2620.1.25.1.6
+    - name: cpsemdNumEvents
+      oid: 1.3.6.1.4.1.2620.1.25.1.7
+      type: gauge
+      help: Number of events in database - 1.3.6.1.4.1.2620.1.25.1.7
+    - name: cpsemdDBDiskSpace
+      oid: 1.3.6.1.4.1.2620.1.25.1.8
+      type: DisplayString
+      help: Available database disk space - 1.3.6.1.4.1.2620.1.25.1.8
+    - name: cpsemdCorrelationUnitIndex
+      oid: 1.3.6.1.4.1.2620.1.25.1.9.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.25.1.9.1.1"
+      indexes:
+        - labelname: cpsemdCorrelationUnitIndex
+          type: gauge
+    - name: cpsemdCorrelationUnitIP
+      oid: 1.3.6.1.4.1.2620.1.25.1.9.1.2
+      type: DisplayString
+      help: Correlation Unit IP - 1.3.6.1.4.1.2620.1.25.1.9.1.2
+      indexes:
+        - labelname: cpsemdCorrelationUnitIndex
+          type: gauge
+    - name: cpsemdCorrelationUnitLastRcvdTime
+      oid: 1.3.6.1.4.1.2620.1.25.1.9.1.3
+      type: DisplayString
+      help: Time of last received event - 1.3.6.1.4.1.2620.1.25.1.9.1.3
+      indexes:
+        - labelname: cpsemdCorrelationUnitIndex
+          type: gauge
+    - name: cpsemdCorrelationUnitNumEventsRcvd
+      oid: 1.3.6.1.4.1.2620.1.25.1.9.1.4
+      type: gauge
+      help: Number of events received - 1.3.6.1.4.1.2620.1.25.1.9.1.4
+      indexes:
+        - labelname: cpsemdCorrelationUnitIndex
+          type: gauge
+    - name: cpsemdConnectionDuration
+      oid: 1.3.6.1.4.1.2620.1.25.1.9.1.5
+      type: gauge
+      help: Connection duration (to the Correlation Unit) - 1.3.6.1.4.1.2620.1.25.1.9.1.5
+      indexes:
+        - labelname: cpsemdCorrelationUnitIndex
+          type: gauge
+    - name: cpsemdDBIsFull
+      oid: 1.3.6.1.4.1.2620.1.25.1.10
+      type: gauge
+      help: 1 - Database is full; 0 - Database is not full - 1.3.6.1.4.1.2620.1.25.1.10
+    - name: cpsemdStatCode
+      oid: 1.3.6.1.4.1.2620.1.25.1.101
+      type: gauge
+      help: Status code - 1.3.6.1.4.1.2620.1.25.1.101
+    - name: cpsemdStatShortDescr
+      oid: 1.3.6.1.4.1.2620.1.25.1.102
+      type: DisplayString
+      help: Status short description - 1.3.6.1.4.1.2620.1.25.1.102
+    - name: cpsemdStatLongDescr
+      oid: 1.3.6.1.4.1.2620.1.25.1.103
+      type: DisplayString
+      help: Status long description - 1.3.6.1.4.1.2620.1.25.1.103
+    - name: cpseadProcAlive
+      oid: 1.3.6.1.4.1.2620.1.25.2.1
+      type: gauge
+      help: cpsead Process is alive - 1.3.6.1.4.1.2620.1.25.2.1
+    - name: cpseadConnectedToSem
+      oid: 1.3.6.1.4.1.2620.1.25.2.2
+      type: gauge
+      help:
+        Connected to SEM (is the Correlation Unit connected to the Analyzer Server)
+        - 1.3.6.1.4.1.2620.1.25.2.2
+    - name: cpseadNumProcessedLogs
+      oid: 1.3.6.1.4.1.2620.1.25.2.3
+      type: DisplayString
+      help: Number of logs processed - 1.3.6.1.4.1.2620.1.25.2.3
+    - name: cpseadJobIndex
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.25.2.4.1.1"
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadJobID
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.2
+      type: DisplayString
+      help: Job ID - 1.3.6.1.4.1.2620.1.25.2.4.1.2
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadJobName
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.3
+      type: DisplayString
+      help: Job name - 1.3.6.1.4.1.2620.1.25.2.4.1.3
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadJobState
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.4
+      type: DisplayString
+      help: Job state - 1.3.6.1.4.1.2620.1.25.2.4.1.4
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadJobIsOnline
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.5
+      type: gauge
+      help: Is job online - 1.3.6.1.4.1.2620.1.25.2.4.1.5
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadJobLogServer
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.6
+      type: DisplayString
+      help:
+        Log Server (the IP of the log server from which the job is reading logs)
+        - 1.3.6.1.4.1.2620.1.25.2.4.1.6
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadJobDataType
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.7
+      type: DisplayString
+      help: "Data type (the type of date being read: log or audit) - 1.3.6.1.4.1.2620.1.25.2.4.1.7"
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadConnectedToLogServer
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.8
+      type: gauge
+      help:
+        Connected to Log Server (is the Correlation Unit connected to the Log Server)
+        - 1.3.6.1.4.1.2620.1.25.2.4.1.8
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadNumAnalyzedLogs
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.9
+      type: DisplayString
+      help: Number of logs analyzed - 1.3.6.1.4.1.2620.1.25.2.4.1.9
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadFileName
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.10
+      type: DisplayString
+      help: File Name (the name of the file from which the job is reading logs) - 1.3.6.1.4.1.2620.1.25.2.4.1.10
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadFileCurrentPosition
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.11
+      type: DisplayString
+      help: current position in the file - 1.3.6.1.4.1.2620.1.25.2.4.1.11
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadStateDescriptionCode
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.12
+      type: DisplayString
+      help:
+        state description code (code for the state description in the next OID)
+        - 1.3.6.1.4.1.2620.1.25.2.4.1.12
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadStateDescription
+      oid: 1.3.6.1.4.1.2620.1.25.2.4.1.13
+      type: DisplayString
+      help:
+        state description (provides more info regarding the job's state (OID 4),
+        for instance details errors.) - 1.3.6.1.4.1.2620.1.25.2.4.1.13
+      indexes:
+        - labelname: cpseadJobIndex
+          type: gauge
+    - name: cpseadNoFreeDiskSpace
+      oid: 1.3.6.1.4.1.2620.1.25.2.5
+      type: gauge
+      help:
+        no free disk space (is there not enough free disk space on the Correlation
+        Unit) - 1.3.6.1.4.1.2620.1.25.2.5
+    - name: cpseadStatCode
+      oid: 1.3.6.1.4.1.2620.1.25.2.101
+      type: gauge
+      help: Status code - 1.3.6.1.4.1.2620.1.25.2.101
+    - name: cpseadStatShortDescr
+      oid: 1.3.6.1.4.1.2620.1.25.2.102
+      type: DisplayString
+      help: Status short description - 1.3.6.1.4.1.2620.1.25.2.102
+    - name: cpseadStatLongDescr
+      oid: 1.3.6.1.4.1.2620.1.25.2.103
+      type: DisplayString
+      help: Status long description - 1.3.6.1.4.1.2620.1.25.2.103
+    - name: haProdName
+      oid: 1.3.6.1.4.1.2620.1.5.1
+      type: DisplayString
+      help: Product name - 1.3.6.1.4.1.2620.1.5.1
+    - name: haInstalled
+      oid: 1.3.6.1.4.1.2620.1.5.2
+      type: gauge
+      help: HA installed - 1.3.6.1.4.1.2620.1.5.2
+    - name: haVerMajor
+      oid: 1.3.6.1.4.1.2620.1.5.3
+      type: gauge
+      help: Major version - 1.3.6.1.4.1.2620.1.5.3
+    - name: haVerMinor
+      oid: 1.3.6.1.4.1.2620.1.5.4
+      type: gauge
+      help: Minor version - 1.3.6.1.4.1.2620.1.5.4
+    - name: haStarted
+      oid: 1.3.6.1.4.1.2620.1.5.5
+      type: DisplayString
+      help: HA started - 1.3.6.1.4.1.2620.1.5.5
+    - name: haState
+      oid: 1.3.6.1.4.1.2620.1.5.6
+      type: DisplayString
+      help: HA state - 1.3.6.1.4.1.2620.1.5.6
+    - name: haBlockState
+      oid: 1.3.6.1.4.1.2620.1.5.7
+      type: DisplayString
+      help: HA blocking state - 1.3.6.1.4.1.2620.1.5.7
+    - name: haIdentifier
+      oid: 1.3.6.1.4.1.2620.1.5.8
+      type: gauge
+      help: HA identifier - 1.3.6.1.4.1.2620.1.5.8
+    - name: haProtoVersion
+      oid: 1.3.6.1.4.1.2620.1.5.10
+      type: gauge
+      help: HA protocol version - 1.3.6.1.4.1.2620.1.5.10
+    - name: haWorkMode
+      oid: 1.3.6.1.4.1.2620.1.5.11
+      type: DisplayString
+      help: Working mode - 1.3.6.1.4.1.2620.1.5.11
+    - name: haIfIndex
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.1"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haIfName
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.2"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haIP
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.3
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.3"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haStatus
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.4
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.4"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haVerified
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.5
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.5"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haTrusted
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.6"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haShared
+      oid: 1.3.6.1.4.1.2620.1.5.12.1.7
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.12.1.7"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haProblemIndex
+      oid: 1.3.6.1.4.1.2620.1.5.13.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.13.1.1"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haProblemName
+      oid: 1.3.6.1.4.1.2620.1.5.13.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.5.13.1.2"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haProblemStatus
+      oid: 1.3.6.1.4.1.2620.1.5.13.1.3
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.5.13.1.3"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haProblemPriority
+      oid: 1.3.6.1.4.1.2620.1.5.13.1.4
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.13.1.4"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haProblemVerified
+      oid: 1.3.6.1.4.1.2620.1.5.13.1.5
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.5.13.1.5"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haProblemDescr
+      oid: 1.3.6.1.4.1.2620.1.5.13.1.6
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.5.13.1.6"
+      indexes:
+        - labelname: haIfIndex
+          type: gauge
+    - name: haVersionSting
+      oid: 1.3.6.1.4.1.2620.1.5.14
+      type: DisplayString
+      help: Version string - 1.3.6.1.4.1.2620.1.5.14
+    - name: haClusterIpIndex
+      oid: 1.3.6.1.4.1.2620.1.5.15.1.1
+      type: gauge
+      help: Cluster IP index - 1.3.6.1.4.1.2620.1.5.15.1.1
+      indexes:
+        - labelname: haClusterIpIndex
+          type: gauge
+    - name: haClusterIpIfName
+      oid: 1.3.6.1.4.1.2620.1.5.15.1.2
+      type: DisplayString
+      help: Cluster IP interface name - 1.3.6.1.4.1.2620.1.5.15.1.2
+      indexes:
+        - labelname: haClusterIpIndex
+          type: gauge
+    - name: haClusterIpAddr
+      oid: 1.3.6.1.4.1.2620.1.5.15.1.3
+      type: InetAddressIPv4
+      help: Cluster IP address - 1.3.6.1.4.1.2620.1.5.15.1.3
+      indexes:
+        - labelname: haClusterIpIndex
+          type: gauge
+    - name: haClusterIpNetMask
+      oid: 1.3.6.1.4.1.2620.1.5.15.1.4
+      type: InetAddressIPv4
+      help: Cluster network mask - 1.3.6.1.4.1.2620.1.5.15.1.4
+      indexes:
+        - labelname: haClusterIpIndex
+          type: gauge
+    - name: haClusterIpMemberNet
+      oid: 1.3.6.1.4.1.2620.1.5.15.1.5
+      type: InetAddressIPv4
+      help: Cluster member network - 1.3.6.1.4.1.2620.1.5.15.1.5
+      indexes:
+        - labelname: haClusterIpIndex
+          type: gauge
+    - name: haClusterIpMemberNetMask
+      oid: 1.3.6.1.4.1.2620.1.5.15.1.6
+      type: InetAddressIPv4
+      help: Cluster member network mask - 1.3.6.1.4.1.2620.1.5.15.1.6
+      indexes:
+        - labelname: haClusterIpIndex
+          type: gauge
+    - name: haClusterSyncIndex
+      oid: 1.3.6.1.4.1.2620.1.5.16.1.1
+      type: gauge
+      help: Cluster sync index - 1.3.6.1.4.1.2620.1.5.16.1.1
+      indexes:
+        - labelname: haClusterSyncIndex
+          type: gauge
+    - name: haClusterSyncName
+      oid: 1.3.6.1.4.1.2620.1.5.16.1.2
+      type: DisplayString
+      help: Cluster sync name - 1.3.6.1.4.1.2620.1.5.16.1.2
+      indexes:
+        - labelname: haClusterSyncIndex
+          type: gauge
+    - name: haClusterSyncAddr
+      oid: 1.3.6.1.4.1.2620.1.5.16.1.3
+      type: gauge
+      help: Cluster sync address - 1.3.6.1.4.1.2620.1.5.16.1.3
+      indexes:
+        - labelname: haClusterSyncIndex
+          type: gauge
+    - name: haClusterSyncNetMask
+      oid: 1.3.6.1.4.1.2620.1.5.16.1.4
+      type: gauge
+      help: Cluster sync network mask - 1.3.6.1.4.1.2620.1.5.16.1.4
+      indexes:
+        - labelname: haClusterSyncIndex
+          type: gauge
+    - name: haClusterXLFailover
+      oid: 1.3.6.1.4.1.2620.1.5.17
+      type: gauge
+      help: ClusterXL Failover - 1.3.6.1.4.1.2620.1.5.17
+    - name: haStatCode
+      oid: 1.3.6.1.4.1.2620.1.5.101
+      type: gauge
+      help: Status code - 1.3.6.1.4.1.2620.1.5.101
+    - name: haStatShort
+      oid: 1.3.6.1.4.1.2620.1.5.102
+      type: DisplayString
+      help: Status short - 1.3.6.1.4.1.2620.1.5.102
+    - name: haStatLong
+      oid: 1.3.6.1.4.1.2620.1.5.103
+      type: DisplayString
+      help: Status long - 1.3.6.1.4.1.2620.1.5.103
+    - name: haServicePack
+      oid: 1.3.6.1.4.1.2620.1.5.999
+      type: gauge
+      help: Service pack - 1.3.6.1.4.1.2620.1.5.999
+    - name: svnProdName
+      oid: 1.3.6.1.4.1.2620.1.6.1
+      type: DisplayString
+      help: Product name - 1.3.6.1.4.1.2620.1.6.1
+    - name: svnProdVerMajor
+      oid: 1.3.6.1.4.1.2620.1.6.2
+      type: gauge
+      help: Major version - 1.3.6.1.4.1.2620.1.6.2
+    - name: svnProdVerMinor
+      oid: 1.3.6.1.4.1.2620.1.6.3
+      type: gauge
+      help: Minor version - 1.3.6.1.4.1.2620.1.6.3
+    - name: svnVersion
+      oid: 1.3.6.1.4.1.2620.1.6.4.1
+      type: DisplayString
+      help: SVN version - 1.3.6.1.4.1.2620.1.6.4.1
+    - name: svnBuild
+      oid: 1.3.6.1.4.1.2620.1.6.4.2
+      type: gauge
+      help: SVN build number - 1.3.6.1.4.1.2620.1.6.4.2
+    - name: osName
+      oid: 1.3.6.1.4.1.2620.1.6.5.1
+      type: DisplayString
+      help: OS name - 1.3.6.1.4.1.2620.1.6.5.1
+    - name: osMajorVer
+      oid: 1.3.6.1.4.1.2620.1.6.5.2
+      type: gauge
+      help: OS Major version - 1.3.6.1.4.1.2620.1.6.5.2
+    - name: osMinorVer
+      oid: 1.3.6.1.4.1.2620.1.6.5.3
+      type: gauge
+      help: OS minor version - 1.3.6.1.4.1.2620.1.6.5.3
+    - name: osBuildNum
+      oid: 1.3.6.1.4.1.2620.1.6.5.4
+      type: gauge
+      help: OS build number - 1.3.6.1.4.1.2620.1.6.5.4
+    - name: osSPmajor
+      oid: 1.3.6.1.4.1.2620.1.6.5.5
+      type: gauge
+      help: OS SP major - 1.3.6.1.4.1.2620.1.6.5.5
+    - name: osSPminor
+      oid: 1.3.6.1.4.1.2620.1.6.5.6
+      type: gauge
+      help: OS SP minor - 1.3.6.1.4.1.2620.1.6.5.6
+    - name: osVersionLevel
+      oid: 1.3.6.1.4.1.2620.1.6.5.7
+      type: DisplayString
+      help: OS version level - 1.3.6.1.4.1.2620.1.6.5.7
+    - name: routingIndex
+      oid: 1.3.6.1.4.1.2620.1.6.6.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.6.1.1"
+      indexes:
+        - labelname: routingIndex
+          type: gauge
+    - name: routingDest
+      oid: 1.3.6.1.4.1.2620.1.6.6.1.2
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.6.1.2"
+      indexes:
+        - labelname: routingIndex
+          type: gauge
+    - name: routingMask
+      oid: 1.3.6.1.4.1.2620.1.6.6.1.3
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.6.1.3"
+      indexes:
+        - labelname: routingIndex
+          type: gauge
+    - name: routingGatweway
+      oid: 1.3.6.1.4.1.2620.1.6.6.1.4
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.6.1.4"
+      indexes:
+        - labelname: routingIndex
+          type: gauge
+    - name: routingIntrfName
+      oid: 1.3.6.1.4.1.2620.1.6.6.1.5
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.6.1.5"
+      indexes:
+        - labelname: routingIndex
+          type: gauge
+    - name: memTotalVirtual
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.1
+      type: gauge
+      help:
+        "Total virtual memory (32 bit) NOTE: This 32 bit object has been superseded
+        by a 64 bit object - memTotalVirtual64, which is supported by Check Point SVN
+        FP3 and above - 1.3.6.1.4.1.2620.1.6.7.1.1"
+    - name: memActiveVirtual
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.2
+      type: gauge
+      help:
+        "Active virtual memory (32 bit) NOTE: This 32 bit object has been superseded
+        by a 64 bit object - memActiveVirtual64, which is supported by Check Point SVN
+        FP3 and above - 1.3.6.1.4.1.2620.1.6.7.1.2"
+    - name: memTotalReal
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.3
+      type: gauge
+      help:
+        "Total real memory (32 bit) NOTE: This 32 bit object has been superseded
+        by a 64 bit object - memTotalReal64, which is supported by Check Point SVN FP3
+        and above - 1.3.6.1.4.1.2620.1.6.7.1.3"
+    - name: memActiveReal
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.4
+      type: gauge
+      help:
+        "Active real memory (32 bit) NOTE: This 32 bit object has been superseded
+        by a 64 bit object - memActiveReal64, which is supported by Check Point SVN
+        FP3 and above - 1.3.6.1.4.1.2620.1.6.7.1.4"
+    - name: memFreeReal
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.5
+      type: gauge
+      help:
+        "Free real memory (32 bit) NOTE: This 32 bit object has been superseded
+        by a 64 bit object - memFreeReal64, which is supported by Check Point SVN FP3
+        and above - 1.3.6.1.4.1.2620.1.6.7.1.5"
+    - name: memSwapsSec
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.6
+      type: gauge
+      help:
+        "Memory swaped pages/sec (32 bit) NOTE: This 32 bit object has been superseded
+        by a 64 bit object - memSwapsSec64, which is supported by Check Point SVN FP3
+        and above - 1.3.6.1.4.1.2620.1.6.7.1.6"
+    - name: memDiskTransfers
+      oid: 1.3.6.1.4.1.2620.1.6.7.1.7
+      type: gauge
+      help:
+        "Memory to Disk transfers/sec (32 bit) NOTE: This 32 bit object has been
+        superseded by a 64 bit object - memDiskTransfers64, which is supported by Check
+        Point SVN FP3 and above - 1.3.6.1.4.1.2620.1.6.7.1.7"
+    - name: procUsrTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.1
+      type: gauge
+      help: Processor user time - 1.3.6.1.4.1.2620.1.6.7.2.1
+    - name: procSysTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.2
+      type: gauge
+      help: Processor system time - 1.3.6.1.4.1.2620.1.6.7.2.2
+    - name: procIdleTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.3
+      type: gauge
+      help: Processor idle time - 1.3.6.1.4.1.2620.1.6.7.2.3
+    - name: procUsage
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.4
+      type: gauge
+      help: Processor usage - 1.3.6.1.4.1.2620.1.6.7.2.4
+    - name: procQueue
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.5
+      type: gauge
+      help: Processor queue length - 1.3.6.1.4.1.2620.1.6.7.2.5
+    - name: procInterrupts
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.6
+      type: gauge
+      help: Processor interrupts/sec - 1.3.6.1.4.1.2620.1.6.7.2.6
+    - name: procNum
+      oid: 1.3.6.1.4.1.2620.1.6.7.2.7
+      type: gauge
+      help: Number of processors - 1.3.6.1.4.1.2620.1.6.7.2.7
+    - name: diskTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.3.1
+      type: gauge
+      help: Time the disk is performing io requests - 1.3.6.1.4.1.2620.1.6.7.3.1
+    - name: diskQueue
+      oid: 1.3.6.1.4.1.2620.1.6.7.3.2
+      type: gauge
+      help: Disk requests queue length - 1.3.6.1.4.1.2620.1.6.7.3.2
+    - name: diskPercent
+      oid: 1.3.6.1.4.1.2620.1.6.7.3.3
+      type: gauge
+      help: Percent of free space - 1.3.6.1.4.1.2620.1.6.7.3.3
+    - name: diskFreeTotal
+      oid: 1.3.6.1.4.1.2620.1.6.7.3.4
+      type: counter
+      help: Disk total free space - 1.3.6.1.4.1.2620.1.6.7.3.4
+    - name: diskFreeAvail
+      oid: 1.3.6.1.4.1.2620.1.6.7.3.5
+      type: counter
+      help: Disk available free space - 1.3.6.1.4.1.2620.1.6.7.3.5
+    - name: diskTotal
+      oid: 1.3.6.1.4.1.2620.1.6.7.3.6
+      type: counter
+      help: Disk total space - 1.3.6.1.4.1.2620.1.6.7.3.6
+    - name: memTotalVirtual64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.1
+      type: counter
+      help: Total virtual memory - 1.3.6.1.4.1.2620.1.6.7.4.1
+    - name: memActiveVirtual64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.2
+      type: counter
+      help: Active virtual memory - 1.3.6.1.4.1.2620.1.6.7.4.2
+    - name: memTotalReal64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.3
+      type: counter
+      help: Total real memory - 1.3.6.1.4.1.2620.1.6.7.4.3
+    - name: memActiveReal64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.4
+      type: counter
+      help: Active real memory - 1.3.6.1.4.1.2620.1.6.7.4.4
+    - name: memFreeReal64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.5
+      type: counter
+      help: Free real memory - 1.3.6.1.4.1.2620.1.6.7.4.5
+    - name: memSwapsSec64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.6
+      type: gauge
+      help: Memory swaped pages/sec - 1.3.6.1.4.1.2620.1.6.7.4.6
+    - name: memDiskTransfers64
+      oid: 1.3.6.1.4.1.2620.1.6.7.4.7
+      type: gauge
+      help: Memory to Disk transfers/sec - 1.3.6.1.4.1.2620.1.6.7.4.7
+    - name: multiProcIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.1"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiProcUserTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.2
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.2"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiProcSystemTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.3
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.3"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiProcIdleTime
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.4
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.4"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiProcUsage
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.5
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.5"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiProcRunQueue
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.6"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiProcInterrupts
+      oid: 1.3.6.1.4.1.2620.1.6.7.5.1.7
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.5.1.7"
+      indexes:
+        - labelname: multiProcIndex
+          type: gauge
+    - name: multiDiskIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.1"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskName
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.2"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskSize
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.3
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.3"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskUsed
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.4
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.4"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskFreeTotalBytes
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.5
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.5"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskFreeTotalPercent
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.6"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskFreeAvailableBytes
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.7
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.7"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: multiDiskFreeAvailablePercent
+      oid: 1.3.6.1.4.1.2620.1.6.7.6.1.8
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.6.1.8"
+      indexes:
+        - labelname: multiDiskIndex
+          type: gauge
+    - name: raidVolumeIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.7.1.1.1"
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidVolumeID
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.2
+      type: gauge
+      help: Raid volume identification number - 1.3.6.1.4.1.2620.1.6.7.7.1.1.2
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidVolumeType
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.3
+      type: gauge
+      help:
+        Raid volume type, RAID-0, RAID-1E, RAID-1, RAID_10, RAID-4, RAID-5, RAID-6,
+        RAID-60, RAID-50 (value 0-8 respectively) - 1.3.6.1.4.1.2620.1.6.7.7.1.1.3
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: numOfDisksOnRaid
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.4
+      type: gauge
+      help: Number of disks on the raid - 1.3.6.1.4.1.2620.1.6.7.7.1.1.4
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidVolumeMaxLBA
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.5
+      type: gauge
+      help: Raid maximum number of Logical Block Addressing - 1.3.6.1.4.1.2620.1.6.7.7.1.1.5
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidVolumeState
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.6
+      type: gauge
+      help: "Raid state: OPTIMAL(0), DEGRADED (1), FAILED(2) or UNKNOWN(other)) - 1.3.6.1.4.1.2620.1.6.7.7.1.1.6"
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidVolumeFlags
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.7
+      type: gauge
+      help:
+        "Raid status flags (can get more then one): ENABLED(0x01), QUIESCED(0x02),
+        RESYNC_IN_PROGRESS(0x04), VOLUME_INACTIVE(0x08), NOT_CONFIGURED(0x10), USING_INTERIM_RECOVERY_MODE(0x20),
+        READY_FOR_RECOVERY_OPERATION(0x40), WRONG_PHYSICAL_DRIVE_WAS_REPLACED(0x80),
+        A_PHYSICAL_DRIVE_IS_NOT_PROPERLY_CONNECTED(0x100), HARDWARE_IS_OVER_HEATING(0x200),
+        HARDWARE_WAS_OVERHEATED(0x400), CURRENTLY_EXPENDING(0x800), NOT_YET_AVAILABLE(0x1000),
+        QUEUED_FOR_EXPENSION(0x2000), MIGRATING(0x4000), IMPACTED(0x8000),OFFLINE(0x10000)
+        and CLEARING(0x20000) or NONE(0x00) - 1.3.6.1.4.1.2620.1.6.7.7.1.1.7"
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidVolumeSize
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.1.1.8
+      type: gauge
+      help: Raid Volume Size (GB) - 1.3.6.1.4.1.2620.1.6.7.7.1.1.8
+      indexes:
+        - labelname: raidVolumeIndex
+          type: gauge
+    - name: raidDiskIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.7.2.1.1"
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskVolumeID
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.2
+      type: gauge
+      help: Raid volume identification - 1.3.6.1.4.1.2620.1.6.7.7.2.1.2
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskID
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.3
+      type: gauge
+      help: Raid disk SCSI identification number - 1.3.6.1.4.1.2620.1.6.7.7.2.1.3
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskNumber
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.4
+      type: gauge
+      help: "Raid disk number: on Appliance 0 - upper disc, 1 - lower disc - 1.3.6.1.4.1.2620.1.6.7.7.2.1.4"
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskVendor
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.5
+      type: DisplayString
+      help: Raid disk vendor - 1.3.6.1.4.1.2620.1.6.7.7.2.1.5
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskProductID
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.6
+      type: DisplayString
+      help: Raid disk product identification - 1.3.6.1.4.1.2620.1.6.7.7.2.1.6
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskRevision
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.7
+      type: DisplayString
+      help: Raid disk revision level - 1.3.6.1.4.1.2620.1.6.7.7.2.1.7
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskMaxLBA
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.8
+      type: gauge
+      help: Raid disk maximum number of Logical Block Addressing - 1.3.6.1.4.1.2620.1.6.7.7.2.1.8
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskState
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.9
+      type: gauge
+      help:
+        "Raid disk state (can get more then one): ONLINE(0x00), MISSING(0x01), NOT_COMPATIBLE(0x02),
+        DISC_FAILED(0x03), INITIALIZING(0x04), OFFLINE_REQUESTED(0x05), FAILED_REQUESTED(0x06),
+        UNCONFIGURED_GOOD_SPUN_UP(0x07), UNCONFIGURED_GOOD_SPUN_DOWN (0x08), UNCONFIGURED_BAD(0x09),
+        HOTSPARE(0x0A), DRIVE_OFFLINE(0x0B), REBUILD(0x0C), FAILED(0x0D), COPYBACK(0x0F),
+        OTHER_OFFLINE(0xFF) or UNKNOWN (other) - 1.3.6.1.4.1.2620.1.6.7.7.2.1.9"
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskFlags
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.10
+      type: gauge
+      help:
+        "Raid disk flags: OUT_OF_SYNC(0x01),QUIESCED(0x02),VERIFYING(0x04),READY(0x08)
+        or NONE(other) - 1.3.6.1.4.1.2620.1.6.7.7.2.1.10"
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskSyncState
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.11
+      type: gauge
+      help:
+        Raid disk synchronized percent completed during the synchronization process,
+        relevant only when RESYNC_IN_PROGRESS flag is on - 1.3.6.1.4.1.2620.1.6.7.7.2.1.11
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: raidDiskSize
+      oid: 1.3.6.1.4.1.2620.1.6.7.7.2.1.12
+      type: gauge
+      help: Raid disk size (GB) - 1.3.6.1.4.1.2620.1.6.7.7.2.1.12
+      indexes:
+        - labelname: raidDiskIndex
+          type: gauge
+    - name: tempertureSensorIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.1.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.8.1.1.1"
+      indexes:
+        - labelname: tempertureSensorIndex
+          type: gauge
+    - name: tempertureSensorName
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.1.1.2
+      type: DisplayString
+      help: Sensor name - 1.3.6.1.4.1.2620.1.6.7.8.1.1.2
+      indexes:
+        - labelname: tempertureSensorIndex
+          type: gauge
+    - name: tempertureSensorValue
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.1.1.3
+      type: DisplayString
+      help: Sensor value - 1.3.6.1.4.1.2620.1.6.7.8.1.1.3
+      indexes:
+        - labelname: tempertureSensorIndex
+          type: gauge
+    - name: tempertureSensorUnit
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.1.1.4
+      type: DisplayString
+      help: Sensor unit - 1.3.6.1.4.1.2620.1.6.7.8.1.1.4
+      indexes:
+        - labelname: tempertureSensorIndex
+          type: gauge
+    - name: tempertureSensorType
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.1.1.5
+      type: DisplayString
+      help: Sensor type - 1.3.6.1.4.1.2620.1.6.7.8.1.1.5
+      indexes:
+        - labelname: tempertureSensorIndex
+          type: gauge
+    - name: tempertureSensorStatus
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.1.1.6
+      type: gauge
+      help: Sensor is out of range TRUE(1), FALSE(0), READING ERROR(2) - 1.3.6.1.4.1.2620.1.6.7.8.1.1.6
+      indexes:
+        - labelname: tempertureSensorIndex
+          type: gauge
+    - name: fanSpeedSensorIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.2.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.8.2.1.1"
+      indexes:
+        - labelname: fanSpeedSensorIndex
+          type: gauge
+    - name: fanSpeedSensorName
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.2.1.2
+      type: DisplayString
+      help: Sensor name - 1.3.6.1.4.1.2620.1.6.7.8.2.1.2
+      indexes:
+        - labelname: fanSpeedSensorIndex
+          type: gauge
+    - name: fanSpeedSensorValue
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.2.1.3
+      type: DisplayString
+      help: Sensor value - 1.3.6.1.4.1.2620.1.6.7.8.2.1.3
+      indexes:
+        - labelname: fanSpeedSensorIndex
+          type: gauge
+    - name: fanSpeedSensorUnit
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.2.1.4
+      type: DisplayString
+      help: Sensor unit - 1.3.6.1.4.1.2620.1.6.7.8.2.1.4
+      indexes:
+        - labelname: fanSpeedSensorIndex
+          type: gauge
+    - name: fanSpeedSensorType
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.2.1.5
+      type: DisplayString
+      help: Sensor type - 1.3.6.1.4.1.2620.1.6.7.8.2.1.5
+      indexes:
+        - labelname: fanSpeedSensorIndex
+          type: gauge
+    - name: fanSpeedSensorStatus
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.2.1.6
+      type: gauge
+      help: Sensor is out of range TRUE(1), FALSE(0), READING ERROR(2) - 1.3.6.1.4.1.2620.1.6.7.8.2.1.6
+      indexes:
+        - labelname: fanSpeedSensorIndex
+          type: gauge
+    - name: voltageSensorIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.3.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.8.3.1.1"
+      indexes:
+        - labelname: voltageSensorIndex
+          type: gauge
+    - name: voltageSensorName
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.3.1.2
+      type: DisplayString
+      help: Sensor name - 1.3.6.1.4.1.2620.1.6.7.8.3.1.2
+      indexes:
+        - labelname: voltageSensorIndex
+          type: gauge
+    - name: voltageSensorValue
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.3.1.3
+      type: DisplayString
+      help: Sensor value - 1.3.6.1.4.1.2620.1.6.7.8.3.1.3
+      indexes:
+        - labelname: voltageSensorIndex
+          type: gauge
+    - name: voltageSensorUnit
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.3.1.4
+      type: DisplayString
+      help: Sensor unit - 1.3.6.1.4.1.2620.1.6.7.8.3.1.4
+      indexes:
+        - labelname: voltageSensorIndex
+          type: gauge
+    - name: voltageSensorType
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.3.1.5
+      type: DisplayString
+      help: Sensor type - 1.3.6.1.4.1.2620.1.6.7.8.3.1.5
+      indexes:
+        - labelname: voltageSensorIndex
+          type: gauge
+    - name: voltageSensorStatus
+      oid: 1.3.6.1.4.1.2620.1.6.7.8.3.1.6
+      type: gauge
+      help: Sensor is out of range TRUE(1), FALSE(0), READING ERROR(2) - 1.3.6.1.4.1.2620.1.6.7.8.3.1.6
+      indexes:
+        - labelname: voltageSensorIndex
+          type: gauge
+    - name: powerSupplyIndex
+      oid: 1.3.6.1.4.1.2620.1.6.7.9.1.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.7.9.1.1.1"
+      indexes:
+        - labelname: powerSupplyIndex
+          type: gauge
+    - name: powerSupplyStatus
+      oid: 1.3.6.1.4.1.2620.1.6.7.9.1.1.2
+      type: DisplayString
+      help: Power supply status - 1.3.6.1.4.1.2620.1.6.7.9.1.1.2
+      indexes:
+        - labelname: powerSupplyIndex
+          type: gauge
+    - name: svnSysTime
+      oid: 1.3.6.1.4.1.2620.1.6.8
+      type: gauge
+      help: System time - 1.3.6.1.4.1.2620.1.6.8
+    - name: svnRouteModDest
+      oid: 1.3.6.1.4.1.2620.1.6.9.2
+      type: InetAddressIPv4
+      help: Destination routing modification - 1.3.6.1.4.1.2620.1.6.9.2
+    - name: svnRouteModMask
+      oid: 1.3.6.1.4.1.2620.1.6.9.3
+      type: InetAddressIPv4
+      help: Subnet mask routing modification - 1.3.6.1.4.1.2620.1.6.9.3
+    - name: svnRouteModGateway
+      oid: 1.3.6.1.4.1.2620.1.6.9.4
+      type: InetAddressIPv4
+      help: Gateway routing modification - 1.3.6.1.4.1.2620.1.6.9.4
+    - name: svnRouteModIfIndex
+      oid: 1.3.6.1.4.1.2620.1.6.9.5
+      type: gauge
+      help: Interface index routing modification - 1.3.6.1.4.1.2620.1.6.9.5
+    - name: svnRouteModIfName
+      oid: 1.3.6.1.4.1.2620.1.6.9.6
+      type: DisplayString
+      help: Interface name routing modification - 1.3.6.1.4.1.2620.1.6.9.6
+    - name: svnRouteModAction
+      oid: 1.3.6.1.4.1.2620.1.6.9.10
+      type: gauge
+      help: Routing modification action - 1.3.6.1.4.1.2620.1.6.9.10
+    - name: svnUTCTimeOffset
+      oid: 1.3.6.1.4.1.2620.1.6.10
+      type: gauge
+      help: UTC time offset - 1.3.6.1.4.1.2620.1.6.10
+    - name: svnLogDStat
+      oid: 1.3.6.1.4.1.2620.1.6.11.1
+      type: DisplayString
+      help: Log Daemon Status - 1.3.6.1.4.1.2620.1.6.11.1
+    - name: svnSysStartTime
+      oid: 1.3.6.1.4.1.2620.1.6.12
+      type: gauge
+      help: System start time - 1.3.6.1.4.1.2620.1.6.12
+    - name: svnSysUniqId
+      oid: 1.3.6.1.4.1.2620.1.6.13
+      type: DisplayString
+      help: System unique ID - 1.3.6.1.4.1.2620.1.6.13
+    - name: svnWebUIPort
+      oid: 1.3.6.1.4.1.2620.1.6.15
+      type: gauge
+      help: Web UI port (0 - Not supported) - 1.3.6.1.4.1.2620.1.6.15
+    - name: svnApplianceSerialNumber
+      oid: 1.3.6.1.4.1.2620.1.6.16.3
+      type: DisplayString
+      help: Appliance Serial Number - 1.3.6.1.4.1.2620.1.6.16.3
+    - name: svnApplianceProductName
+      oid: 1.3.6.1.4.1.2620.1.6.16.7
+      type: DisplayString
+      help: Appliance Product Name - 1.3.6.1.4.1.2620.1.6.16.7
+    - name: svnApplianceManufacturer
+      oid: 1.3.6.1.4.1.2620.1.6.16.9
+      type: DisplayString
+      help: Appliance Manufacturer - 1.3.6.1.4.1.2620.1.6.16.9
+    - name: svnApplianceSeriesString
+      oid: 1.3.6.1.4.1.2620.1.6.16.10
+      type: DisplayString
+      help: Appliance Series String - 1.3.6.1.4.1.2620.1.6.16.10
+    - name: licensingIndex
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.1"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingID
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.2
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.2"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingBladeGUIOrder
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.3
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.3"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingBladeName
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.4
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.4"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingState
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.5
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.5"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingExpirationDate
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.6"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingImpact
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.7
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.7"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingBladeActive
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.8
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.8"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingTotalQuota
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.9
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.9"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingUsedQuota
+      oid: 1.3.6.1.4.1.2620.1.6.18.1.1.10
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.18.1.1.10"
+      indexes:
+        - labelname: licensingIndex
+          type: gauge
+    - name: licensingAssetAccountId
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.1
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.1"
+    - name: licensingAssetPackageDescription
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.2"
+    - name: licensingAssetContainerCK
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.3
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.3"
+    - name: licensingAssetCKSignature
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.4
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.4"
+    - name: licensingAssetContainerSKU
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.5
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.5"
+    - name: licensingAssetSupportLevel
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.6
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.6"
+    - name: licensingAssetSupportExpiration
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.7
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.7"
+    - name: licensingAssetActivationStatus
+      oid: 1.3.6.1.4.1.2620.1.6.18.2.8
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.18.2.8"
+    - name: svnConnectivity
+      oid: 1.3.6.1.4.1.2620.1.6.19
+      type: gauge
+      help: User Center connectivity - 1.3.6.1.4.1.2620.1.6.19
+    - name: svnUpdatesInfoBuild
+      oid: 1.3.6.1.4.1.2620.1.6.20.1
+      type: gauge
+      help: Deployment agent build number - 1.3.6.1.4.1.2620.1.6.20.1
+    - name: svnUpdatesInfoStatus
+      oid: 1.3.6.1.4.1.2620.1.6.20.2
+      type: DisplayString
+      help: Deployment agent status - 1.3.6.1.4.1.2620.1.6.20.2
+    - name: svnUpdatesInfoConnection
+      oid: 1.3.6.1.4.1.2620.1.6.20.3
+      type: DisplayString
+      help: Cloud connection - 1.3.6.1.4.1.2620.1.6.20.3
+    - name: svnUpdatesInfoAvailablePackages
+      oid: 1.3.6.1.4.1.2620.1.6.20.4
+      type: gauge
+      help: Available packages count - 1.3.6.1.4.1.2620.1.6.20.4
+    - name: svnUpdatesInfoAvailableRecommended
+      oid: 1.3.6.1.4.1.2620.1.6.20.5
+      type: gauge
+      help: Available recommended packages count - 1.3.6.1.4.1.2620.1.6.20.5
+    - name: svnUpdatesInfoAvailableHotfixes
+      oid: 1.3.6.1.4.1.2620.1.6.20.6
+      type: gauge
+      help: Available hotfixes count - 1.3.6.1.4.1.2620.1.6.20.6
+    - name: updatesInstalledIndex
+      oid: 1.3.6.1.4.1.2620.1.6.20.7.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.20.7.1.1"
+      indexes:
+        - labelname: updatesInstalledIndex
+          type: gauge
+    - name: updatesInstalledName
+      oid: 1.3.6.1.4.1.2620.1.6.20.7.1.2
+      type: DisplayString
+      help: Installed package name - 1.3.6.1.4.1.2620.1.6.20.7.1.2
+      indexes:
+        - labelname: updatesInstalledIndex
+          type: gauge
+    - name: updatesInstalledType
+      oid: 1.3.6.1.4.1.2620.1.6.20.7.1.3
+      type: DisplayString
+      help: Installed package type - 1.3.6.1.4.1.2620.1.6.20.7.1.3
+      indexes:
+        - labelname: updatesInstalledIndex
+          type: gauge
+    - name: updatesRecommendedIndex
+      oid: 1.3.6.1.4.1.2620.1.6.20.8.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.20.8.1.1"
+      indexes:
+        - labelname: updatesRecommendedIndex
+          type: gauge
+    - name: updatesRecommendedName
+      oid: 1.3.6.1.4.1.2620.1.6.20.8.1.2
+      type: DisplayString
+      help: Recommended package name - 1.3.6.1.4.1.2620.1.6.20.8.1.2
+      indexes:
+        - labelname: updatesRecommendedIndex
+          type: gauge
+    - name: updatesRecommendedType
+      oid: 1.3.6.1.4.1.2620.1.6.20.8.1.3
+      type: DisplayString
+      help: Recommended package type - 1.3.6.1.4.1.2620.1.6.20.8.1.3
+      indexes:
+        - labelname: updatesRecommendedIndex
+          type: gauge
+    - name: updatesRecommendedStatus
+      oid: 1.3.6.1.4.1.2620.1.6.20.8.1.4
+      type: DisplayString
+      help: Recommended package status - 1.3.6.1.4.1.2620.1.6.20.8.1.4
+      indexes:
+        - labelname: updatesRecommendedIndex
+          type: gauge
+    - name: vdName
+      oid: 1.3.6.1.4.1.2620.1.6.21.1
+      type: DisplayString
+      help: Virtual-Device name - 1.3.6.1.4.1.2620.1.6.21.1
+    - name: vdType
+      oid: 1.3.6.1.4.1.2620.1.6.21.2
+      type: DisplayString
+      help: Virtual-Device type - 1.3.6.1.4.1.2620.1.6.21.2
+    - name: ctxId
+      oid: 1.3.6.1.4.1.2620.1.6.21.3
+      type: gauge
+      help: Virtual-Device Context ID - 1.3.6.1.4.1.2620.1.6.21.3
+    - name: svnNetIfIndex
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.1"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfVsid
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.2
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.2"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfName
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.3
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.3"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfAddress
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.4
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.4"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfMask
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.5
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.5"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfMTU
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.6"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfState
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.7
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.7"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfMAC
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.8
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.8"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfDescription
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.9
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.9"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfOperState
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.10
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.10"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfRXBytes
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.13
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.13"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfRXDrops
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.14
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.14"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfRXErrors
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.15
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.15"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfRXPackets
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.16
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.16"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfTXBytes
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.17
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.17"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfTXDrops
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.18
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.18"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfTXErrors
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.19
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.19"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: svnNetIfTXPackets
+      oid: 1.3.6.1.4.1.2620.1.6.50.1.1.20
+      type: counter
+      help: " - 1.3.6.1.4.1.2620.1.6.50.1.1.20"
+      indexes:
+        - labelname: svnNetIfIndex
+          type: gauge
+    - name: vsRoutingIndex
+      oid: 1.3.6.1.4.1.2620.1.6.51.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.51.1.1"
+      indexes:
+        - labelname: vsRoutingIndex
+          type: gauge
+    - name: vsRoutingDest
+      oid: 1.3.6.1.4.1.2620.1.6.51.1.2
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.51.1.2"
+      indexes:
+        - labelname: vsRoutingIndex
+          type: gauge
+    - name: vsRoutingMask
+      oid: 1.3.6.1.4.1.2620.1.6.51.1.3
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.51.1.3"
+      indexes:
+        - labelname: vsRoutingIndex
+          type: gauge
+    - name: vsRoutingGateway
+      oid: 1.3.6.1.4.1.2620.1.6.51.1.4
+      type: InetAddressIPv4
+      help: " - 1.3.6.1.4.1.2620.1.6.51.1.4"
+      indexes:
+        - labelname: vsRoutingIndex
+          type: gauge
+    - name: vsRoutingIntrfName
+      oid: 1.3.6.1.4.1.2620.1.6.51.1.5
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.6.51.1.5"
+      indexes:
+        - labelname: vsRoutingIndex
+          type: gauge
+    - name: vsRoutingVsId
+      oid: 1.3.6.1.4.1.2620.1.6.51.1.6
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.6.51.1.6"
+      indexes:
+        - labelname: vsRoutingIndex
+          type: gauge
+    - name: svnStatCode
+      oid: 1.3.6.1.4.1.2620.1.6.101
+      type: gauge
+      help: Status code - 1.3.6.1.4.1.2620.1.6.101
+    - name: svnStatShortDescr
+      oid: 1.3.6.1.4.1.2620.1.6.102
+      type: DisplayString
+      help: Status short description - 1.3.6.1.4.1.2620.1.6.102
+    - name: svnStatLongDescr
+      oid: 1.3.6.1.4.1.2620.1.6.103
+      type: DisplayString
+      help: Status long description - 1.3.6.1.4.1.2620.1.6.103
+    - name: checkPointUTM_1450
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.1
+      type: DisplayString
+      help: UTM-1 450 - 1.3.6.1.4.1.2620.1.6.123.1.1
+    - name: checkPointUTM_11050
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.2
+      type: DisplayString
+      help: UTM-1 1050 - 1.3.6.1.4.1.2620.1.6.123.1.2
+    - name: checkPointUTM_12050
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.3
+      type: DisplayString
+      help: UTM-1 2050 - 1.3.6.1.4.1.2620.1.6.123.1.3
+    - name: checkPointUTM_1130
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.4
+      type: DisplayString
+      help: UTM-1 130 - 1.3.6.1.4.1.2620.1.6.123.1.4
+    - name: checkPointUTM_1270
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.5
+      type: DisplayString
+      help: UTM-1 270 - 1.3.6.1.4.1.2620.1.6.123.1.5
+    - name: checkPointUTM_1570
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.6
+      type: DisplayString
+      help: UTM-1 570 - 1.3.6.1.4.1.2620.1.6.123.1.6
+    - name: checkPointUTM_11070
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.7
+      type: DisplayString
+      help: UTM-1 1070 - 1.3.6.1.4.1.2620.1.6.123.1.7
+    - name: checkPointUTM_12070
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.8
+      type: DisplayString
+      help: UTM-1 2070 - 1.3.6.1.4.1.2620.1.6.123.1.8
+    - name: checkPointUTM_13070
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.9
+      type: DisplayString
+      help: UTM-1 3070 - 1.3.6.1.4.1.2620.1.6.123.1.9
+    - name: checkPointPower_15070
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.10
+      type: DisplayString
+      help: Power-1 5070 - 1.3.6.1.4.1.2620.1.6.123.1.10
+    - name: checkPointPower_19070
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.11
+      type: DisplayString
+      help: Power-1 9070 - 1.3.6.1.4.1.2620.1.6.123.1.11
+    - name: checkPointPower_111000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.12
+      type: DisplayString
+      help: Power-1 11000 - 1.3.6.1.4.1.2620.1.6.123.1.12
+    - name: checkPointSmart_15
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.13
+      type: DisplayString
+      help: Smart-1 5 - 1.3.6.1.4.1.2620.1.6.123.1.13
+    - name: checkPointSmart_125
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.14
+      type: DisplayString
+      help: Smart-1 25 - 1.3.6.1.4.1.2620.1.6.123.1.14
+    - name: checkPointSmart_150
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.15
+      type: DisplayString
+      help: Smart-1 50 - 1.3.6.1.4.1.2620.1.6.123.1.15
+    - name: checkPointSmart_1150
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.16
+      type: DisplayString
+      help: Smart-1 150 - 1.3.6.1.4.1.2620.1.6.123.1.16
+    - name: checkPointIP150
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.17
+      type: DisplayString
+      help: IP150 - 1.3.6.1.4.1.2620.1.6.123.1.17
+    - name: checkPointIP280
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.18
+      type: DisplayString
+      help: IP280 - 1.3.6.1.4.1.2620.1.6.123.1.18
+    - name: checkPointIP290
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.19
+      type: DisplayString
+      help: IP290 - 1.3.6.1.4.1.2620.1.6.123.1.19
+    - name: checkPointIP390
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.20
+      type: DisplayString
+      help: IP390 - 1.3.6.1.4.1.2620.1.6.123.1.20
+    - name: checkPointIP560
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.21
+      type: DisplayString
+      help: IP560 - 1.3.6.1.4.1.2620.1.6.123.1.21
+    - name: checkPointIP690
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.22
+      type: DisplayString
+      help: IP690 - 1.3.6.1.4.1.2620.1.6.123.1.22
+    - name: checkPointIP1280
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.23
+      type: DisplayString
+      help: IP1280 - 1.3.6.1.4.1.2620.1.6.123.1.23
+    - name: checkPointIP2450
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.24
+      type: DisplayString
+      help: IP2450 - 1.3.6.1.4.1.2620.1.6.123.1.24
+    - name: checkPointUNIVERGEUnifiedWall1000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.25
+      type: DisplayString
+      help: UNIVERGE UnifiedWall 1000 - 1.3.6.1.4.1.2620.1.6.123.1.25
+    - name: checkPointUNIVERGEUnifiedWall2000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.26
+      type: DisplayString
+      help: UNIVERGE UnifiedWall 2000 - 1.3.6.1.4.1.2620.1.6.123.1.26
+    - name: checkPointUNIVERGEUnifiedWall4000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.27
+      type: DisplayString
+      help: UNIVERGE UnifiedWall 4000 - 1.3.6.1.4.1.2620.1.6.123.1.27
+    - name: checkPointUNIVERGEUnifiedWall100
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.28
+      type: DisplayString
+      help: UNIVERGE UnifiedWall 100 - 1.3.6.1.4.1.2620.1.6.123.1.28
+    - name: checkPointDLP_19571
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.29
+      type: DisplayString
+      help: DLP-1 9571 - 1.3.6.1.4.1.2620.1.6.123.1.29
+    - name: checkPointDLP_12571
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.30
+      type: DisplayString
+      help: DLP-1 2571 - 1.3.6.1.4.1.2620.1.6.123.1.30
+    - name: checkPointIPS_12076
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.31
+      type: DisplayString
+      help: IPS-1 2076 - 1.3.6.1.4.1.2620.1.6.123.1.31
+    - name: checkPointIPS_15076
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.32
+      type: DisplayString
+      help: IPS-1 5076 - 1.3.6.1.4.1.2620.1.6.123.1.32
+    - name: checkPointIPS_19076
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.33
+      type: DisplayString
+      help: IPS-1 9076 - 1.3.6.1.4.1.2620.1.6.123.1.33
+    - name: checkPoint2200
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.34
+      type: DisplayString
+      help: Check Point 2200 - 1.3.6.1.4.1.2620.1.6.123.1.34
+    - name: checkPoint4200
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.35
+      type: DisplayString
+      help: Check Point 4200 - 1.3.6.1.4.1.2620.1.6.123.1.35
+    - name: checkPoint4400
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.36
+      type: DisplayString
+      help: Check Point 4400 - 1.3.6.1.4.1.2620.1.6.123.1.36
+    - name: checkPoint4600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.37
+      type: DisplayString
+      help: Check Point 4600 - 1.3.6.1.4.1.2620.1.6.123.1.37
+    - name: checkPoint4800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.38
+      type: DisplayString
+      help: Check Point 4800 - 1.3.6.1.4.1.2620.1.6.123.1.38
+    - name: checkPointTE250
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.39
+      type: DisplayString
+      help: Check Point TE250 - 1.3.6.1.4.1.2620.1.6.123.1.39
+    - name: checkPoint12200
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.40
+      type: DisplayString
+      help: Check Point 12200 - 1.3.6.1.4.1.2620.1.6.123.1.40
+    - name: checkPoint12400
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.41
+      type: DisplayString
+      help: Check Point 12400 - 1.3.6.1.4.1.2620.1.6.123.1.41
+    - name: checkPoint12600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.42
+      type: DisplayString
+      help: Check Point 12600 - 1.3.6.1.4.1.2620.1.6.123.1.42
+    - name: checkPointTE1000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.43
+      type: DisplayString
+      help: Check Point TE1000 - 1.3.6.1.4.1.2620.1.6.123.1.43
+    - name: checkPoint13500
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.44
+      type: DisplayString
+      help: Check Point 13500 - 1.3.6.1.4.1.2620.1.6.123.1.44
+    - name: checkPoint21400
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.45
+      type: DisplayString
+      help: Check Point 21400 - 1.3.6.1.4.1.2620.1.6.123.1.45
+    - name: checkPoint21600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.46
+      type: DisplayString
+      help: Check Point 21600 - 1.3.6.1.4.1.2620.1.6.123.1.46
+    - name: checkPoint21700
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.47
+      type: DisplayString
+      help: Check Point 21700 - 1.3.6.1.4.1.2620.1.6.123.1.47
+    - name: checkPointVMware
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.48
+      type: DisplayString
+      help: VMware - 1.3.6.1.4.1.2620.1.6.123.1.48
+    - name: checkPointOpenServer
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.49
+      type: DisplayString
+      help: Open Server - 1.3.6.1.4.1.2620.1.6.123.1.49
+    - name: checkPointSmart_1205
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.50
+      type: DisplayString
+      help: Smart-1 205 - 1.3.6.1.4.1.2620.1.6.123.1.50
+    - name: checkPointSmart_1210
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.51
+      type: DisplayString
+      help: Smart-1 210 - 1.3.6.1.4.1.2620.1.6.123.1.51
+    - name: checkPointSmart_1225
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.52
+      type: DisplayString
+      help: Smart-1 225 - 1.3.6.1.4.1.2620.1.6.123.1.52
+    - name: checkPointSmart_13050
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.53
+      type: DisplayString
+      help: Smart-1 3050 - 1.3.6.1.4.1.2620.1.6.123.1.53
+    - name: checkPointSmart_13150
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.54
+      type: DisplayString
+      help: Smart-1 3150 - 1.3.6.1.4.1.2620.1.6.123.1.54
+    - name: checkPoint13800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.55
+      type: DisplayString
+      help: Check Point 13800 - 1.3.6.1.4.1.2620.1.6.123.1.55
+    - name: checkPoint21800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.56
+      type: DisplayString
+      help: Check Point 21800 - 1.3.6.1.4.1.2620.1.6.123.1.56
+    - name: checkPointTE250X
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.57
+      type: DisplayString
+      help: Check Point TE250X - 1.3.6.1.4.1.2620.1.6.123.1.57
+    - name: checkPointTE1000X
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.58
+      type: DisplayString
+      help: Check Point TE1000X - 1.3.6.1.4.1.2620.1.6.123.1.58
+    - name: checkPointTE2000X
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.59
+      type: DisplayString
+      help: Check Point TE2000X - 1.3.6.1.4.1.2620.1.6.123.1.59
+    - name: checkPointTE100X
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.60
+      type: DisplayString
+      help: Check Point TE100X - 1.3.6.1.4.1.2620.1.6.123.1.60
+    - name: checkPoint23500
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.61
+      type: DisplayString
+      help: Check Point 23500 - 1.3.6.1.4.1.2620.1.6.123.1.61
+    - name: checkPoint23800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.62
+      type: DisplayString
+      help: Check Point 23800 - 1.3.6.1.4.1.2620.1.6.123.1.62
+    - name: checkPoint15400
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.63
+      type: DisplayString
+      help: Check Point 15400 - 1.3.6.1.4.1.2620.1.6.123.1.63
+    - name: checkPoint15600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.64
+      type: DisplayString
+      help: Check Point 15600 - 1.3.6.1.4.1.2620.1.6.123.1.64
+    - name: checkPoint3200
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.65
+      type: DisplayString
+      help: Check Point 3200 - 1.3.6.1.4.1.2620.1.6.123.1.65
+    - name: checkPoint5200
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.66
+      type: DisplayString
+      help: Check Point 5200 - 1.3.6.1.4.1.2620.1.6.123.1.66
+    - name: checkPoint5400
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.67
+      type: DisplayString
+      help: Check Point 5400 - 1.3.6.1.4.1.2620.1.6.123.1.67
+    - name: checkPoint5600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.68
+      type: DisplayString
+      help: Check Point 5600 - 1.3.6.1.4.1.2620.1.6.123.1.68
+    - name: checkPoint5800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.69
+      type: DisplayString
+      help: Check Point 5800 - 1.3.6.1.4.1.2620.1.6.123.1.69
+    - name: checkPoint5900
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.70
+      type: DisplayString
+      help: Check Point 5900 - 1.3.6.1.4.1.2620.1.6.123.1.70
+    - name: checkPoint3100
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.71
+      type: DisplayString
+      help: Check Point 3100 - 1.3.6.1.4.1.2620.1.6.123.1.71
+    - name: checkPoint5100
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.72
+      type: DisplayString
+      help: Check Point 5100 - 1.3.6.1.4.1.2620.1.6.123.1.72
+    - name: checkPointSmart_1405
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.73
+      type: DisplayString
+      help: Smart-1 405 - 1.3.6.1.4.1.2620.1.6.123.1.73
+    - name: checkPointSmart_1410
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.74
+      type: DisplayString
+      help: Smart-1 410 - 1.3.6.1.4.1.2620.1.6.123.1.74
+    - name: checkPointSmart_5050
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.75
+      type: DisplayString
+      help: Smart-1 5050 - 1.3.6.1.4.1.2620.1.6.123.1.75
+    - name: checkPointSmart_525
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.76
+      type: DisplayString
+      help: Smart-1 525 - 1.3.6.1.4.1.2620.1.6.123.1.76
+    - name: checkPointSmart_5150
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.77
+      type: DisplayString
+      help: Smart-1 5150 - 1.3.6.1.4.1.2620.1.6.123.1.77
+    - name: checkPoint23900
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.78
+      type: DisplayString
+      help: Check Point 23900 - 1.3.6.1.4.1.2620.1.6.123.1.78
+    - name: checkPoint6500
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.79
+      type: DisplayString
+      help: Check Point 6500 - 1.3.6.1.4.1.2620.1.6.123.1.79
+    - name: checkPoint6800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.80
+      type: DisplayString
+      help: Check Point 6800 - 1.3.6.1.4.1.2620.1.6.123.1.80
+    - name: checkPoint16000T
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.81
+      type: DisplayString
+      help: Check Point 16000T - 1.3.6.1.4.1.2620.1.6.123.1.81
+    - name: checkPoint26000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.82
+      type: DisplayString
+      help: Check Point 26000 - 1.3.6.1.4.1.2620.1.6.123.1.82
+    - name: checkPointSmart_625
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.83
+      type: DisplayString
+      help: Smart-1 625 - 1.3.6.1.4.1.2620.1.6.123.1.83
+    - name: checkPoint16000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.84
+      type: DisplayString
+      help: Check Point 16000 - 1.3.6.1.4.1.2620.1.6.123.1.84
+    - name: checkPoint26000T
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.85
+      type: DisplayString
+      help: Check Point 26000T - 1.3.6.1.4.1.2620.1.6.123.1.85
+    - name: checkPoint3600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.86
+      type: DisplayString
+      help: Check Point 3600 - 1.3.6.1.4.1.2620.1.6.123.1.86
+    - name: checkPoint3600T
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.87
+      type: DisplayString
+      help: Check Point 3600T - 1.3.6.1.4.1.2620.1.6.123.1.87
+    - name: checkPoint6200B
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.88
+      type: DisplayString
+      help: Check Point 6200B - 1.3.6.1.4.1.2620.1.6.123.1.88
+    - name: checkPoint6200P
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.89
+      type: DisplayString
+      help: Check Point 6200P - 1.3.6.1.4.1.2620.1.6.123.1.89
+    - name: checkPoint6200T
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.90
+      type: DisplayString
+      help: Check Point 6200T - 1.3.6.1.4.1.2620.1.6.123.1.90
+    - name: checkPoint6600
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.91
+      type: DisplayString
+      help: Check Point 6600 - 1.3.6.1.4.1.2620.1.6.123.1.91
+    - name: checkPoint6900
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.92
+      type: DisplayString
+      help: Check Point 6900 - 1.3.6.1.4.1.2620.1.6.123.1.92
+    - name: checkPoint16600HS
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.93
+      type: DisplayString
+      help: Check Point 16600HS - 1.3.6.1.4.1.2620.1.6.123.1.93
+    - name: checkPoint28600HS
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.94
+      type: DisplayString
+      help: Check Point 28600HS - 1.3.6.1.4.1.2620.1.6.123.1.94
+    - name: checkPoint6700
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.95
+      type: DisplayString
+      help: Check Point 6700 - 1.3.6.1.4.1.2620.1.6.123.1.95
+    - name: checkPoint7000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.96
+      type: DisplayString
+      help: Check Point 7000 - 1.3.6.1.4.1.2620.1.6.123.1.96
+    - name: checkPoint16200
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.97
+      type: DisplayString
+      help: Check Point 16200 - 1.3.6.1.4.1.2620.1.6.123.1.97
+    - name: checkPoint28000
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.98
+      type: DisplayString
+      help: Check Point 28000 - 1.3.6.1.4.1.2620.1.6.123.1.98
+    - name: checkPoint6400
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.99
+      type: DisplayString
+      help: Check Point 6400 - 1.3.6.1.4.1.2620.1.6.123.1.99
+    - name: checkPoint3800
+      oid: 1.3.6.1.4.1.2620.1.6.123.1.100
+      type: DisplayString
+      help: Check Point 3800 - 1.3.6.1.4.1.2620.1.6.123.1.100
+    - name: svnServicePack
+      oid: 1.3.6.1.4.1.2620.1.6.999
+      type: gauge
+      help: SVN service pack - 1.3.6.1.4.1.2620.1.6.999
+    - name: mgProdName
+      oid: 1.3.6.1.4.1.2620.1.7.1
+      type: DisplayString
+      help: Product name - 1.3.6.1.4.1.2620.1.7.1
+    - name: mgVerMajor
+      oid: 1.3.6.1.4.1.2620.1.7.2
+      type: gauge
+      help: Major version - 1.3.6.1.4.1.2620.1.7.2
+    - name: mgVerMinor
+      oid: 1.3.6.1.4.1.2620.1.7.3
+      type: gauge
+      help: Minor version - 1.3.6.1.4.1.2620.1.7.3
+    - name: mgBuildNumber
+      oid: 1.3.6.1.4.1.2620.1.7.4
+      type: gauge
+      help: Build number - 1.3.6.1.4.1.2620.1.7.4
+    - name: mgActiveStatus
+      oid: 1.3.6.1.4.1.2620.1.7.5
+      type: DisplayString
+      help: Active status - 1.3.6.1.4.1.2620.1.7.5
+    - name: mgFwmIsAlive
+      oid: 1.3.6.1.4.1.2620.1.7.6
+      type: gauge
+      help: Managment is alive - 1.3.6.1.4.1.2620.1.7.6
+    - name: mgIndex
+      oid: 1.3.6.1.4.1.2620.1.7.7.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.7.7.1.1"
+      indexes:
+        - labelname: mgIndex
+          type: gauge
+    - name: mgClientName
+      oid: 1.3.6.1.4.1.2620.1.7.7.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.7.1.2"
+      indexes:
+        - labelname: mgIndex
+          type: gauge
+    - name: mgClientHost
+      oid: 1.3.6.1.4.1.2620.1.7.7.1.3
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.7.1.3"
+      indexes:
+        - labelname: mgIndex
+          type: gauge
+    - name: mgClientDbLock
+      oid: 1.3.6.1.4.1.2620.1.7.7.1.4
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.7.1.4"
+      indexes:
+        - labelname: mgIndex
+          type: gauge
+    - name: mgApplicationType
+      oid: 1.3.6.1.4.1.2620.1.7.7.1.5
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.7.1.5"
+      indexes:
+        - labelname: mgIndex
+          type: gauge
+    - name: mgMgmtHAJournals
+      oid: 1.3.6.1.4.1.2620.1.7.9
+      type: DisplayString
+      help: Management HA synchronization journals - 1.3.6.1.4.1.2620.1.7.9
+    - name: mgIsLicenseViolation
+      oid: 1.3.6.1.4.1.2620.1.7.10
+      type: gauge
+      help: License violation detected - 1.3.6.1.4.1.2620.1.7.10
+    - name: mgLicenseViolationMsg
+      oid: 1.3.6.1.4.1.2620.1.7.11
+      type: DisplayString
+      help: License violation detected - 1.3.6.1.4.1.2620.1.7.11
+    - name: mgLSLogReceiveRate
+      oid: 1.3.6.1.4.1.2620.1.7.14.1
+      type: gauge
+      help: MGMT Log Server Log Receive Rate - 1.3.6.1.4.1.2620.1.7.14.1
+    - name: mgLSLogReceiveRatePeak
+      oid: 1.3.6.1.4.1.2620.1.7.14.2
+      type: gauge
+      help: MGMT Log Server Log Receive Rate Peak - 1.3.6.1.4.1.2620.1.7.14.2
+    - name: mgLSLogReceiveRate10Min
+      oid: 1.3.6.1.4.1.2620.1.7.14.3
+      type: gauge
+      help: MGMT Log Server Log Receive Rate (Last 10 Minutes) - 1.3.6.1.4.1.2620.1.7.14.3
+    - name: mglsGWIndex
+      oid: 1.3.6.1.4.1.2620.1.7.14.4.1.1
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.7.14.4.1.1"
+      indexes:
+        - labelname: mglsGWIndex
+          type: gauge
+    - name: mglsGWIP
+      oid: 1.3.6.1.4.1.2620.1.7.14.4.1.2
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.14.4.1.2"
+      indexes:
+        - labelname: mglsGWIndex
+          type: gauge
+    - name: mglsGWState
+      oid: 1.3.6.1.4.1.2620.1.7.14.4.1.3
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.14.4.1.3"
+      indexes:
+        - labelname: mglsGWIndex
+          type: gauge
+    - name: mglsGWLastLoginTime
+      oid: 1.3.6.1.4.1.2620.1.7.14.4.1.4
+      type: DisplayString
+      help: " - 1.3.6.1.4.1.2620.1.7.14.4.1.4"
+      indexes:
+        - labelname: mglsGWIndex
+          type: gauge
+    - name: mglsGWLogReceiveRate
+      oid: 1.3.6.1.4.1.2620.1.7.14.4.1.5
+      type: gauge
+      help: " - 1.3.6.1.4.1.2620.1.7.14.4.1.5"
+      indexes:
+        - labelname: mglsGWIndex
+          type: gauge
+    - name: mgIndexerInfoTotalReadLogs
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.1
+      type: DisplayString
+      help: Total Read Logs - 1.3.6.1.4.1.2620.1.7.14.5.1
+    - name: mgIndexerInfoTotalUpdatesAndLogsIndexed
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.2
+      type: DisplayString
+      help: Total Updates and Logs Indexed - 1.3.6.1.4.1.2620.1.7.14.5.2
+    - name: mgIndexerInfoTotalReadLogsErrors
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.3
+      type: DisplayString
+      help: Total Read Logs Errors - 1.3.6.1.4.1.2620.1.7.14.5.3
+    - name: mgIndexerInfoTotalUpdatesAndLogsIndexedErrors
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.4
+      type: DisplayString
+      help: Total Updates and Logs Indexed Errors - 1.3.6.1.4.1.2620.1.7.14.5.4
+    - name: mgIndexerInfoUpdatesAndLogsIndexedRate
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.5
+      type: gauge
+      help: Updates and Logs Indexed Rate - 1.3.6.1.4.1.2620.1.7.14.5.5
+    - name: mgIndexerInfoReadLogsRate
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.6
+      type: gauge
+      help: Read Logs Rate - 1.3.6.1.4.1.2620.1.7.14.5.6
+    - name: mgIndexerInfoUpdatesAndLogsIndexedRate10min
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.7
+      type: gauge
+      help: Updates and Logs Indexed Rate (10 min) - 1.3.6.1.4.1.2620.1.7.14.5.7
+    - name: mgIndexerInfoReadLogsRate10min
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.8
+      type: gauge
+      help: Read Logs Rate (10 min) - 1.3.6.1.4.1.2620.1.7.14.5.8
+    - name: mgIndexerInfoUpdatesAndLogsIndexedRate60min
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.9
+      type: gauge
+      help: Updates and Logs Indexed Rate (60 min) - 1.3.6.1.4.1.2620.1.7.14.5.9
+    - name: mgIndexerInfoReadLogsRate60min
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.10
+      type: gauge
+      help: Read Logs Rate (60 min) - 1.3.6.1.4.1.2620.1.7.14.5.10
+    - name: mgIndexerInfoUpdatesAndLogsIndexedRatePeak
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.11
+      type: gauge
+      help: Updates and Logs Indexed Rate Peak - 1.3.6.1.4.1.2620.1.7.14.5.11
+    - name: mgIndexerInfoReadLogsRatePeak
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.12
+      type: gauge
+      help: Read Logs Rate Peak - 1.3.6.1.4.1.2620.1.7.14.5.12
+    - name: mgIndexerInfoReadLogsDelay
+      oid: 1.3.6.1.4.1.2620.1.7.14.5.13
+      type: gauge
+      help: Read Logs Delay - 1.3.6.1.4.1.2620.1.7.14.5.13
+    - name: mgLSLogReceiveRate1Hour
+      oid: 1.3.6.1.4.1.2620.1.7.14.6
+      type: gauge
+      help: MGMT Log Server Log Receive Rate (Last Hour) - 1.3.6.1.4.1.2620.1.7.14.6
+    - name: mgStatCode
+      oid: 1.3.6.1.4.1.2620.1.7.101
+      type: gauge
+      help: Status code - 1.3.6.1.4.1.2620.1.7.101
+    - name: mgStatShortDescr
+      oid: 1.3.6.1.4.1.2620.1.7.102
+      type: DisplayString
+      help: Status short description - 1.3.6.1.4.1.2620.1.7.102
+    - name: mgStatLongDescr
+      oid: 1.3.6.1.4.1.2620.1.7.103
+      type: DisplayString
+      help: Status long description - 1.3.6.1.4.1.2620.1.7.103
+  version: 3
+  auth:
+    security_level: authPriv
+    username: snmp-poll-prometheus
+    password: HF73S8.eFR3E
+    auth_protocol: SHA256
+    priv_protocol: AES
+    priv_password: HF73S8.eFR3E

@@ -1,0 +1,24 @@
+#### IMPORT EXISTING PRIVATE ENDPOINT ####
+subscription_id     = <subscription_id>
+resource_group_name             = "rg-btuat"
+location                        = "central india"
+app_name                        = "dtw-adf"
+use_existing_pe                 = true
+use_existing_dns                = true
+private_endpoint_name           = "ep-mysql-btuat-to-dtw-adf"
+pe_resource_group_name          = "rg-btuat"
+subnet_id                       = "/subscriptions/64421e13-ee76-43d2-93d5-bb5b97858ba5/resourceGroups/rg-btnwhub/providers/Microsoft.Network/virtualNetworks/vnet-btnwhub/subnets/snet-btuat"
+private_service_connection_name = "ep-mysql-btuat-to-dtw-adf"
+manual_connection               = false
+pdz_name                        = ["privatelink.datafactory.azure.net"]
+private_dns_zone_group_name     = "default"
+private_dns_zone_ids            = ["/subscriptions/64421e13-ee76-43d2-93d5-bb5b97858ba5/resourceGroups/rg-btnwhub/providers/Microsoft.Network/privateDnsZones/privatelink.datafactory.azure.net"]
+pdz_resource_group_name         = ["rg-btnwhub"]
+pdz_link_name                   = ["463sa2jpq7uec"]
+virtual_network_id              = ["/subscriptions/64421e13-ee76-43d2-93d5-bb5b97858ba5/resourceGroups/rg-btnwhub/providers/Microsoft.Network/virtualNetworks/vnet-btnwhub"]
+linked_pdz_name                 = ["privatelink.datafactory.azure.net"]
+vlink_resource_group_name       = ["rg-btnwhub"]
+sub_resource_id                 = "/subscriptions/64421e13-ee76-43d2-93d5-bb5b97858ba5/resourceGroups/rg-btdemo/providers/Microsoft.DBforMySQL/flexibleServers/mysql-bt-test"
+sub_resource_names              = ["dataFactory"]
+azure_private_dns_zone_name     = "privatelink.datafactory.azure.net"
+custom_network_interface_name   = " "

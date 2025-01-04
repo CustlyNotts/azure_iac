@@ -1,0 +1,17 @@
+subscription_id     = <subscription_id>
+service_plan_name                                = "ASP-rgsendgridevents-94e6"
+os_type                                          = "Linux"
+sku_name                                         = "P1v2"
+location                                         = "uaecentral"
+function_app_name                                = "dtworld-sendgrid-to-eventhub"
+resource_group_name                              = "rg-sendgrid-events"
+storage_account_name                             = "storageaccountrgsenb8f8"
+storage_account_resource_group_name              = "rg-sendgrid-events"
+storage_account_kind                             = "Storage"
+storage_account_cross_tenant_replication_enabled = true
+https_only                                       = false
+builtin_logging_enabled                          = false
+client_certificate_mode                          = "Optional"
+#virtual_network_subnet_id                        = "null"
+identity_enabled                                 = true
+identity_type                                    = "SystemAssigned"

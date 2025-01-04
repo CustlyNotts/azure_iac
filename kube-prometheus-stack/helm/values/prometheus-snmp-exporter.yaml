@@ -1,0 +1,11 @@
+extraConfigmapMounts:
+  - name: snmp-exporter-config
+    mountPath: /etc/snmp_exporter
+    configMap: snmp-exporter-config
+    readOnly: true
+    defaultMode: 420
+service:
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.139.0.50"

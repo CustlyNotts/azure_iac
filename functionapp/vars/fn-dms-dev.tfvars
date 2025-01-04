@@ -1,0 +1,24 @@
+subscription_id     = <subscription_id>
+service_plan_name                                = "asp-dms-nonprod"
+os_type                                          = "Windows"
+sku_name                                         = "B1"
+function_app_name                                = "fn-dms-dev"
+resource_group_name                              = "rg-dms-nonprod"
+storage_account_name                             = "strdmsdev"
+storage_account_resource_group_name              = "rg-dms-nonprod"
+storage_account_kind                             = "StorageV2"
+https_only                                       = true
+builtin_logging_enabled                          = false
+client_certificate_mode                          = "Required"
+virtual_network_subnet_id                        = "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-dms-nonprod/providers/Microsoft.Network/virtualNetworks/vnet-dms-nonprod/subnets/snet-dms-dev"
+identity_type                                    = "SystemAssigned"
+storage_account_cross_tenant_replication_enabled = false
+storage_account_replication_type                 = "LRS"
+dotnet_version				         = "v8.0"
+public_network_access_enabled                    = false
+fn_public_network_access_enabled                 = false
+  tags                                           = {
+            "Application Name"  = "DMS"
+            "Application Owner" = "Kapil/Rhoderick"
+            "ENV"               = "Dev"
+        }

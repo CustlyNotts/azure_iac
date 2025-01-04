@@ -1,0 +1,265 @@
+# # Use a workload identity with an application on Azure Kubernetes Service (AKS)
+# # https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity
+# # federated identity name
+# export FICID="cloudcustodian"
+# # user assigned identity name
+# export UAID="cloudcustodian"
+# export RESOURCE_GROUP="rg-infrateam"
+# export AKS_OIDC_ISSUER="$(az aks show --subscription 1691759c-bec8-41b8-a5eb-03c57476ffdb -n aks-infra -g rg-infrateam --query "oidcIssuerProfile.issuerUrl" -otsv)"
+# # environment variables for the Kubernetes Service account & federated identity credential
+# export SERVICE_ACCOUNT_NAMESPACE="cloudcustodian"
+# export SERVICE_ACCOUNT_NAME="cloudcustodian-sa"
+# az identity federated-credential create --subscription 1691759c-bec8-41b8-a5eb-03c57476ffdb --name ${FICID} --identity-name ${UAID} --resource-group ${RESOURCE_GROUP} --issuer ${AKS_OIDC_ISSUER} --subject system:serviceaccount:${SERVICE_ACCOUNT_NAMESPACE}:${SERVICE_ACCOUNT_NAME}
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    azure.workload.identity/client-id: 21b666f0-06ca-47ae-abbf-3f2e9cbaec5c
+    azure.workload.identity/tenant-id: 2bd16c9b-7e21-4274-9c06-7919f7647bbb
+  labels:
+    azure.workload.identity/use: "true"
+  name: cloudcustodian-sa
+  namespace: cloudcustodian
+
+---
+
+apiVersion: v1
+data:
+  policies.yaml: |
+    policies:
+      - name: mysql-flexibleserver-offhour
+        resource: azure.mysql-flexibleserver
+        filters:
+          - type: offhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: mysql-flexibleserver-onhour
+        resource: azure.mysql-flexibleserver
+        filters:
+          - type: onhour
+            tag: scheduler
+          - type: value
+            key: tags.ManualStart
+            value: "true"
+            op: not-equal
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: mysql-offhour
+        resource: azure.mysql
+        filters:
+          - type: offhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: mysql-onhour
+        resource: azure.mysql
+        filters:
+          - type: onhour
+            tag: scheduler
+          - type: value
+            key: tags.ManualStart
+            value: "true"
+            op: not-equal
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: aks-offhour
+        resource: azure.aks
+        filters:
+          - type: offhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: aks-onhour
+        resource: azure.aks
+        filters:
+          - type: onhour
+            tag: scheduler
+          - type: value
+            key: tags.ManualStart
+            value: "true"
+            op: not-equal
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: vm-offhour
+        resource: azure.vm
+        filters:
+          - type: offhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: vm-onhour
+        resource: azure.vm
+        filters:
+          - type: onhour
+            tag: scheduler
+          - type: value
+            key: tags.ManualStart
+            value: "true"
+            op: not-equal
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+kind: ConfigMap
+metadata:
+  name: cloudcustodian-policies
+  namespace: cloudcustodian
+
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cloudcustodian
+  namespace: cloudcustodian
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 300
+      ttlSecondsAfterFinished: 300
+      template:
+        metadata:
+          labels:
+            azure.workload.identity/use: "true"
+        spec:
+          serviceAccountName: cloudcustodian-sa
+          volumes:
+          - name: cloudcustodian-policies
+            configMap:
+              name: cloudcustodian-policies
+          containers:
+          - name: cloudcustodian
+            image: acrdpwinfra.azurecr.io/cloudcustodian:0.9
+            env:
+            - name: AZURE_USE_MSI
+              value: "1"
+            - name: AZURE_SUBSCRIPTION_ID
+              value: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+            - name: AZURE_CLIENT_ID
+              value: "21b666f0-06ca-47ae-abbf-3f2e9cbaec5c"
+            - name: TZ
+              value: "Asia/Dubai"
+            command: ["/bin/sh","-c"]
+            args:
+              - source custodian/bin/activate;
+                python custodian/azuresubs.py -f custodian/subscriptions.yml;
+                custodian/bin/c7n-org run -c custodian/subscriptions.yml -s custodian/output -u custodian/policies.yaml;
+            volumeMounts:
+            - name: cloudcustodian-policies
+              mountPath: "/custodian/policies.yaml"
+              subPath: policies.yaml
+              readOnly: true
+          restartPolicy: OnFailure

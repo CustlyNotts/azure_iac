@@ -1,0 +1,701 @@
+[0m[1mdata.external.get_access_token: Reading...[0m[0m
+[0m[1mdata.external.get_access_token: Still reading... [10s elapsed][0m[0m
+[0m[1mdata.external.get_access_token: Read complete after 12s [id=-][0m
+[0m[1mdata.azurerm_resource_group.current: Reading...[0m[0m
+[0m[1mdata.azurerm_resource_group.current: Read complete after 3s [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network][0m
+[0m[1mazureipam_reservation.main[0]: Refreshing state... [id=5BJBdmqMRwm9XCAMQZBuSN][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-3][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-2][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-1][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-4][0m
+[0m[1mazurerm_virtual_network.current: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab][0m
+[0m[1mazurerm_virtual_network_peering.vnet_infrateam[0]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/virtualNetworkPeerings/vnet-infrateam][0m
+[0m[1mazurerm_virtual_network_peering.current[0]: Refreshing state... [id=/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.Network/virtualNetworks/vnet-infrateam/virtualNetworkPeerings/vnet-test-lab][0m
+[0m[1mazurerm_subnet.current["snet-test-lab-2"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-2][0m
+[0m[1mazurerm_subnet.current["snet-test-lab-4"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-4][0m
+[0m[1mazurerm_subnet.current["snet-test-lab-3"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-3][0m
+[0m[1mazurerm_subnet.current["snet-test-lab-1"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-1][0m
+[0m[1mazurerm_virtual_network_peering.smartssh_local[0]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/virtualNetworkPeerings/Peer-UAE-smartssh][0m
+[0m[1mazurerm_virtual_network_peering.sechub_uae[0]: Refreshing state... [id=/subscriptions/cf524703-9d5e-4aa2-bbe9-975fe083f66a/resourceGroups/rgnwsechub/providers/Microsoft.Network/virtualNetworks/vnetsechub/virtualNetworkPeerings/Peer-UAE-vnet-test-lab][0m
+[0m[1mazurerm_virtual_network_peering.sechub_local[0]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/virtualNetworkPeerings/Peer-UAE-sechub][0m
+[0m[1mazurerm_virtual_network_peering.smartssh_uae[0]: Refreshing state... [id=/subscriptions/113fbeb3-ce3b-4e2a-b3fd-f9176ff893f3/resourceGroups/rg-dpw-uae-smart-ssh/providers/Microsoft.Network/virtualNetworks/vnet-dpw-uae-smart-ssh/virtualNetworkPeerings/Peer-UAE-vnet-test-lab][0m
+[0m[1mazurerm_subnet_route_table_association.subnet_route_table_associations["snet-test-lab-1"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-1][0m
+[0m[1mazurerm_subnet_route_table_association.subnet_route_table_associations["snet-test-lab-2"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-2][0m
+[0m[1mazurerm_subnet_route_table_association.subnet_route_table_associations["snet-test-lab-4"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-4][0m
+[0m[1mazurerm_subnet_route_table_association.subnet_route_table_associations["snet-test-lab-3"]: Refreshing state... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-3][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+  [33m~[0m update in-place[0m
+
+Terraform will perform the following actions:
+
+[1m  # azurerm_network_security_group.subnet_nsg["snet-test-lab-1"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "subnet_nsg" {
+      [32m+[0m[0m id                  = (known after apply)
+      [32m+[0m[0m location            = "uaenorth"
+      [32m+[0m[0m name                = "nsg-snet-test-lab-1"
+      [32m+[0m[0m resource_group_name = "rg-infralab-network"
+      [32m+[0m[0m security_rule       = [
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Azure Load Balancer Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "AzureLoadBalancer"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "443"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "80"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 201
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-1"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+        ]
+    }
+
+[1m  # azurerm_network_security_group.subnet_nsg["snet-test-lab-2"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "subnet_nsg" {
+      [32m+[0m[0m id                  = (known after apply)
+      [32m+[0m[0m location            = "uaenorth"
+      [32m+[0m[0m name                = "nsg-snet-test-lab-2"
+      [32m+[0m[0m resource_group_name = "rg-infralab-network"
+      [32m+[0m[0m security_rule       = [
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Azure Load Balancer Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "AzureLoadBalancer"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "443"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "80"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 201
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-2"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+        ]
+    }
+
+[1m  # azurerm_network_security_group.subnet_nsg["snet-test-lab-3"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "subnet_nsg" {
+      [32m+[0m[0m id                  = (known after apply)
+      [32m+[0m[0m location            = "uaenorth"
+      [32m+[0m[0m name                = "nsg-snet-test-lab-3"
+      [32m+[0m[0m resource_group_name = "rg-infralab-network"
+      [32m+[0m[0m security_rule       = [
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Azure Load Balancer Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "AzureLoadBalancer"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "443"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "80"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 201
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-3"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+        ]
+    }
+
+[1m  # azurerm_network_security_group.subnet_nsg["snet-test-lab-4"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "subnet_nsg" {
+      [32m+[0m[0m id                  = (known after apply)
+      [32m+[0m[0m location            = "uaenorth"
+      [32m+[0m[0m name                = "nsg-snet-test-lab-4"
+      [32m+[0m[0m resource_group_name = "rg-infralab-network"
+      [32m+[0m[0m security_rule       = [
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Azure Load Balancer Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "AzureLoadBalancer"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "443"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 200
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow Internet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "Internet"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "80"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 201
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Allow"
+              [32m+[0m[0m description                                = "Allow VNet Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "VirtualNetwork"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 100
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "VirtualNetwork"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Inbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Inbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m access                                     = "Deny"
+              [32m+[0m[0m description                                = "Deny all Outbound"
+              [32m+[0m[0m destination_address_prefix                 = "*"
+              [32m+[0m[0m destination_address_prefixes               = []
+              [32m+[0m[0m destination_application_security_group_ids = []
+              [32m+[0m[0m destination_port_range                     = "*"
+              [32m+[0m[0m destination_port_ranges                    = []
+              [32m+[0m[0m direction                                  = "Outbound"
+              [32m+[0m[0m name                                       = "snet-test-lab-4"
+              [32m+[0m[0m priority                                   = 4096
+              [32m+[0m[0m protocol                                   = "*"
+              [32m+[0m[0m source_address_prefix                      = "*"
+              [32m+[0m[0m source_address_prefixes                    = []
+              [32m+[0m[0m source_application_security_group_ids      = []
+              [32m+[0m[0m source_port_range                          = "*"
+              [32m+[0m[0m source_port_ranges                         = []
+            },
+        ]
+    }
+
+[1m  # azurerm_route_table.current["snet-test-lab-1"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "azurerm_route_table" "current" {
+        id                            = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-1"
+        name                          = "rt-snet-test-lab-1"
+      [33m~[0m[0m tags                          = {
+          [31m-[0m[0m "Application Name"  = "Global Infra Lab" [90m-> null[0m[0m
+          [31m-[0m[0m "Application Owner" = "Global Infra" [90m-> null[0m[0m
+          [31m-[0m[0m "ENV"               = "LAB" [90m-> null[0m[0m
+        }
+        [90m# (5 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # azurerm_route_table.current["snet-test-lab-2"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "azurerm_route_table" "current" {
+        id                            = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-2"
+        name                          = "rt-snet-test-lab-2"
+      [33m~[0m[0m tags                          = {
+          [31m-[0m[0m "Application Name"  = "Global Infra Lab" [90m-> null[0m[0m
+          [31m-[0m[0m "Application Owner" = "Global Infra" [90m-> null[0m[0m
+          [31m-[0m[0m "ENV"               = "LAB" [90m-> null[0m[0m
+        }
+        [90m# (5 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # azurerm_route_table.current["snet-test-lab-3"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "azurerm_route_table" "current" {
+        id                            = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-3"
+        name                          = "rt-snet-test-lab-3"
+      [33m~[0m[0m tags                          = {
+          [31m-[0m[0m "Application Name"  = "Global Infra Lab" [90m-> null[0m[0m
+          [31m-[0m[0m "Application Owner" = "Global Infra" [90m-> null[0m[0m
+          [31m-[0m[0m "ENV"               = "LAB" [90m-> null[0m[0m
+        }
+        [90m# (5 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # azurerm_route_table.current["snet-test-lab-4"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "azurerm_route_table" "current" {
+        id                            = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-4"
+        name                          = "rt-snet-test-lab-4"
+      [33m~[0m[0m tags                          = {
+          [31m-[0m[0m "Application Name"  = "Global Infra Lab" [90m-> null[0m[0m
+          [31m-[0m[0m "Application Owner" = "Global Infra" [90m-> null[0m[0m
+          [31m-[0m[0m "ENV"               = "LAB" [90m-> null[0m[0m
+        }
+        [90m# (5 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # azurerm_subnet_network_security_group_association.subnet_nsg_association["snet-test-lab-1"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_subnet_network_security_group_association" "subnet_nsg_association" {
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m network_security_group_id = (known after apply)
+      [32m+[0m[0m subnet_id                 = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-1"
+    }
+
+[1m  # azurerm_subnet_network_security_group_association.subnet_nsg_association["snet-test-lab-2"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_subnet_network_security_group_association" "subnet_nsg_association" {
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m network_security_group_id = (known after apply)
+      [32m+[0m[0m subnet_id                 = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-2"
+    }
+
+[1m  # azurerm_subnet_network_security_group_association.subnet_nsg_association["snet-test-lab-3"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_subnet_network_security_group_association" "subnet_nsg_association" {
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m network_security_group_id = (known after apply)
+      [32m+[0m[0m subnet_id                 = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-3"
+    }
+
+[1m  # azurerm_subnet_network_security_group_association.subnet_nsg_association["snet-test-lab-4"][0m will be created
+[0m  [32m+[0m[0m resource "azurerm_subnet_network_security_group_association" "subnet_nsg_association" {
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m network_security_group_id = (known after apply)
+      [32m+[0m[0m subnet_id                 = "/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/virtualNetworks/vnet-test-lab/subnets/snet-test-lab-4"
+    }
+
+[1mPlan:[0m 8 to add, 4 to change, 0 to destroy.
+[0m[0m[1m
+Do you want to perform these actions in workspace "vnet-test"?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-2"]: Creating...[0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-2][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-1][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-4][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-3][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-4"]: Creating...[0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-3"]: Creating...[0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-1"]: Creating...[0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-2"]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-4, 10s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-2, 10s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-1, 10s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-3, 10s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-4"]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-1"]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-3"]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-2, 20s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-2"]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-1, 20s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-4, 20s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-3, 20s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-4"]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-3"]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-1"]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-2, 30s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-1, 30s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-4, 30s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-3, 30s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-4"]: Still creating... [30s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-3"]: Still creating... [30s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-1, 40s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-2, 40s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-4, 40s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-3, 40s elapsed][0m[0m
+[0m[1mazurerm_network_security_group.subnet_nsg["snet-test-lab-4"]: Still creating... [40s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-2"]: Modifications complete after 43s [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-2][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-3"]: Modifications complete after 47s [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-3][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-1, 50s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Still modifying... [id=/subscriptions/ae354a06-c974-4fe3-89c1-...Network/routeTables/rt-snet-test-lab-4, 50s elapsed][0m[0m
+[0m[1mazurerm_route_table.current["snet-test-lab-4"]: Modifications complete after 52s [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-4][0m
+[0m[1mazurerm_route_table.current["snet-test-lab-1"]: Modifications complete after 54s [id=/subscriptions/ae354a06-c974-4fe3-89c1-663dd2830157/resourceGroups/rg-infralab-network/providers/Microsoft.Network/routeTables/rt-snet-test-lab-1][0m

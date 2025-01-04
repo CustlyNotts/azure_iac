@@ -1,0 +1,253 @@
+thanos:
+  store:
+    nodeSelector:
+      kubernetes.io/os: linux
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+  queryFrontend:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+  query:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+  compact:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+  bucket:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+kubecostMetrics:
+  exporter:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+nodeSelector:
+  kubernetes.io/os: linux
+  kubernetes.azure.com/mode: system
+networkCosts:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  nodeSelector:
+    kubernetes.io/os: linux
+kubecostFrontend:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  image: "acrdpwinfra.azurecr.io/kubecost1/frontend"
+kubecostModel:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  image: "acrdpwinfra.azurecr.io/kubecost1/cost-model"
+  resources:
+    requests:
+      cpu: 10m
+grafana:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.azure.com/mode: system
+  image:
+    repository: acrdpwinfra.azurecr.io/grafana
+    tag: 9.0.2
+  sidecar:
+    image: acrdpwinfra.azurecr.io/k8s-sidecar:1.21.0
+prometheus:
+  server:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.azure.com/mode: system
+    retention: 30d
+    global:
+      external_labels:
+        cluster_id: ${name}
+    image:
+      repository: acrdpwinfra.azurecr.io/prometheus/prometheus
+      tag: v2.41.0
+  kube-state-metrics:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.azure.com/mode: system
+    image:
+      repository: acrdpwinfra.azurecr.io/kube-state-metrics
+      tag: v1.9.8
+  configmapReload:
+    prometheus:
+      image:
+        repository: acrdpwinfra.azurecr.io/configmap-reload
+        tag: v0.7.1
+  nodeExporter:
+    enabled: true
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+    priorityClassName: high-priority
+    image:
+      repository: acrdpwinfra.azurecr.io/node-exporter
+      tag: v1.3.0
+kubecostDeployment:
+  replicas: 2
+kubecostProductConfigs:
+  clusters:
+    - name: "aks-account-dev"
+      address: http://10.211.16.35:9090
+    - name: "aks-accounts-dr"
+      address: http://10.214.8.11:9090
+    - name: "aks-accounts-preprod"
+      address: http://10.210.16.252:9090
+    - name: "aks-accounts-uat"
+      address: http://172.16.32.76:9090
+    - name: "aks-BlockchainUAE-staging"
+      address: http://10.191.0.62:9090
+    - name: "aks-bt-preprod-green"
+      address: http://10.223.97.126:9090
+    - name: "aks-bt-preprod"
+      address: http://10.223.80.151:9090
+    - name: "aks-bt-uat"
+      address: http://10.223.8.217:9090
+    - name: "aks-bttest"
+      address: http://10.223.0.244:9090
+    - name: "aks-cargoes-boomi-prod"
+      address: http://10.139.16.123:9090
+    - name: "aks-cargoes-customs-stg"
+      address: http://10.155.0.99:9090
+    - name: "aks-cargoescanada-preprod"
+      address: http://10.212.0.122:9090
+    - name: "aks-cargoscanada-stg"
+      address: http://10.210.24.153:9090
+    - name: "aks-cargoscanada-test"
+      address: http://10.222.248.239:9090
+    - name: "aks-ccs-dev"
+      address: http://10.146.2.10:9090
+    - name: "aks-ccs-stg"
+      address: http://10.146.6.9:9090
+    - name: "aks-cns-dev"
+      address: http://172.22.192.7:9090
+    - name: "aks-cns-dr"
+      address: http://172.21.0.178:9090
+    - name: "aks-cns-preprod"
+      address: http://172.22.133.161:9090
+    - name: "aks-cns-prod"
+      address: http://172.22.99.238:9090
+    - name: "aks-cns-test"
+      address: http://172.22.1.12:9090
+    - name: "aks-cns-uat"
+      address: http://172.22.34.38:9090
+    # - name: "aks-cnsdr"
+    #   address: http://172.21.0.35:9090
+    - name: "aks-core-demo"
+      address: http://10.210.81.99:9090
+    - name: "aks-core-stag"
+      address: http://10.222.240.237:9090
+    - name: "aks-dga-customsapp-preprod"
+      address: http://10.233.16.34:9090
+    - name: "aks-dga-customsapp-training"
+      address: http://10.233.32.179:9090
+    - name: "aks-drtradedev"
+      address: http://10.222.201.155:9090
+    - name: "aks-global-test"
+      address: http://10.170.168.8:9090
+    - name: "aks-lcit-prod"
+      address: http://10.170.40.13:9090
+    - name: "aks-lcit-staging"
+      address: http://10.170.8.12:9090
+    - name: "aks-mea-prod-green"
+      address: http://10.170.40.13:9090
+    - name: "aks-mea-test"
+      address: http://10.170.72.7:9090
+    - name: "aks-mea-uat"
+      address: http://10.170.75.10:9090
+    - name: "aks-ros-nonprod"
+      address: http://10.171.144.19:9090   
+    - name: "aks-turkey-staging"
+      address: http://10.170.136.11:9090
+    - name: "aks-ecommerce-prod"
+      address: http://10.165.104.34:9090
+    - name: "aks-nau-production"
+      address: http://10.236.32.6:9090
+    - name: "aks-appliedscience-dev"
+      address: http://10.157.4.103:9090
+    - name: "cargoes-platform-staging-cluster"
+      address: http://10.240.224.178:9090
+    - name: "aks-nonprod-ros"
+      address: http://10.171.152.151:9090
+    - name: "aks-dga-customsapp-prod"
+      address: http://10.233.48.67:9090
+    - name: "aks-dga-customsapp-dr"
+      address: http://10.233.64.34:9090
+    - name: "aks-cnsprod-green"
+      address: http://172.22.162.73:9090
+    - name: "aks-mea-prod"
+      address: http://10.170.104.13:9090
+    - name: "aks-cargoescanada-prod"
+      address: http://10.210.128.212:9090
+    - name: "aks-accounts-prod"
+      address: http://10.156.8.8:9090
+    - name: "aks-wlp-prod-dr"
+      address: http://10.233.128.34:9090
+    - name: "aks-wlp-prod"
+      address: http://10.233.112.36:9090
+    - name: "aks-sharedapps-prod"
+      address: http://10.240.193.76:9090
+    - name: "aks-cargoes-boomi-nonprod"
+      address: http://10.139.8.121:9090
+    - name: "aks-cargoes-finance-cluster-prod-dr"
+      address: http://10.240.44.8:9090
+    - name: "aks-cargoesflow-dev"
+      address: http://10.243.8.8:9090
+    - name: "aks-cargoeslogistics-dev"
+      address: http://10.242.16.130:9090
+    - name: "aks-cargoesrunner-nonprod"
+      address: http://10.153.225.93:9090
+    - name: "aks-ccssvc-uat"
+      address: http://10.146.96.204:9090
+  grafanaURL: http://${kubecost_ip}:9090/grafana
+  clusterName: ${name}
+  serviceKeySecretName: azure-service-key
+  azureBillingRegion: AE
+  azureOfferDurableID:  MS-AZR-0017P
+  currencyCode: USD
+service:
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-ipv4: "${kubecost_ip}"
+nodeSelector:
+  kubernetes.io/os: linux
+  kubernetes.azure.com/mode: system
+tolerations:
+  - key: CriticalAddonsOnly
+    operator: Exists

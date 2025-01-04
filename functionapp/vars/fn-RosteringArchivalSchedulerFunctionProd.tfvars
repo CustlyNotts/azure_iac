@@ -1,0 +1,16 @@
+subscription_id     = <subscription_id>
+service_plan_name                                = "RosteringArchivalSchedulerFunctionProd"
+os_type                                          = "Windows"
+sku_name                                         = "S1"
+function_app_name                                = "RosteringArchivalSchedulerFunctionProd"
+resource_group_name                              = "Rg-Rostima-Prod"
+storage_account_name                             = "strgrosteringschfunction"
+storage_account_resource_group_name              = "Rg-Rostima-Prod"
+storage_account_kind                             = "StorageV2"
+storage_account_cross_tenant_replication_enabled = false
+https_only                                       = true
+builtin_logging_enabled                          = false
+client_certificate_mode                          = "Required"
+virtual_network_subnet_id                        = "/subscriptions/1f5e2bb0-70cd-430f-9fde-ecd3b07a0769/resourceGroups/Rg-Vnet/providers/Microsoft.Network/virtualNetworks/vnet-rostimafunctions/subnets/snet-rosteringarchivalfunction-prod"
+identity_enabled                                 = true
+identity_type                                    = "SystemAssigned"

@@ -1,0 +1,9 @@
+# docker build -t acrdpwinfra.azurecr.io/debug . -f debug --platform linux/amd64
+# docker push acrdpwinfra.azurecr.io/debug
+# or
+# podman build -t acrdpwinfra.azurecr.io/debug . -f debug --arch=amd64
+# podman push acrdpwinfra.azurecr.io/debug
+
+FROM acrdpwinfra.azurecr.io/debug:base
+
+COPY chkpnt.mib /tmp

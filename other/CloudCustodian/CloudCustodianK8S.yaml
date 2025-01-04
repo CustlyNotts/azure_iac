@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custodian-policies
+  namespace: monitoring
+data:
+  policies.yaml: |-
+    policies:
+    - name: my-first-policy
+      description: |
+        Adds a tag to a virtual machines
+      resource: azure.vm
+      filters:
+        - type: value
+          key: name
+          value: my_vm_name
+      actions:
+       - type: tag
+         tag: Hello
+         value: World
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cloudcustodian
+  namespace: monitoring
+spec:
+  schedule: "* * * */1 *"
+  jobTemplate:
+    spec:
+      backOffLimit: 
+      template:
+        spec:
+          volumes:
+          - name: policy
+            configMap:
+              name: custodian-policies
+          containers:
+          - name: cloudcustodian
+            image: cloudcustodian/c7n
+            args: ["run", "--output-dir=/tmp", "/home/custodian/policies.yaml"]
+            volumeMounts:
+            - name: policy
+              mountPath: /home/custodian
+          restartPolicy: Never

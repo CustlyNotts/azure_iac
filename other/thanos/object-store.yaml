@@ -1,0 +1,5 @@
+type: AZURE
+config:
+  storage_account: "infrateamthanos"
+  storage_account_key: "ZlP/ITLR+Y9mQ9DzV9JAxuQJC13q25+qzTDo857yxLmteLMXz64uicSZ5nlT9RoU1Wvu2cF7yB8A+AStPmKObg=="
+  container: "metrics"

@@ -1,0 +1,65 @@
+terraform state list | cut -f 1 -d '[' | xargs -L 1  terraform state rm
+
+terraform state push /tmp/ccs/aks-ccs-dev.tfstate
+
+terraform state list
+
+terraform state mv 'data.azurerm_resource_group.current ' 'module.aks-ccs-dev.data.azurerm_resource_group.current ' 
+terraform state mv 'data.azurerm_subnet.vnet ' 'module.aks-ccs-dev.data.azurerm_subnet.vnet '
+terraform state mv 'data.azurerm_virtual_network.current ' 'module.aks-ccs-dev.data.azurerm_virtual_network.current '
+terraform state mv 'azurerm_kubernetes_cluster.current ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster.current '
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["accountdev"] ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["accountdev"] '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.VnetWVDall ' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.VnetWVDall '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.current["vnet-build"] ' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.current["vnet-build"] '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.vnetsechub ' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.vnetsechub '
+terraform state mv 'azurerm_role_assignment.acrdpwinfra[0] ' 'module.aks-ccs-dev.azurerm_role_assignment.acrdpwinfra[0] '
+terraform state mv 'azurerm_role_assignment.internal-lb ' 'module.aks-ccs-dev.azurerm_role_assignment.internal-lb '
+terraform state mv 'helm_release.kubecost[0] ' 'module.aks-ccs-dev.helm_release.kubecost[0] '
+terraform state mv 'kubernetes_priority_class.high-priority[0] ' 'module.aks-ccs-dev.kubernetes_priority_class.high-priority[0] '
+terraform state mv 'kubernetes_secret.azure-service-key[0]' 'module.aks-ccs-dev.kubernetes_secret.azure-service-key[0]'
+terraform state mv 'data.azurerm_subnet.pods[0] ' 'module.aks-ccs-dev.data.azurerm_subnet.pods[0] '
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["accountsdr"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["accountsdr"]'
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.current["vmbuild"]' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.current["vmbuild"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["accountsprod"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["accountsprod"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["accountuat"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["accountuat"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["bttest"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["bttest"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["cargoes"] ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["cargoes"] '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.current["wvddtw"]' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.current["wvddtw"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["cargoespre"] ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["cargoespre"] '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.current["pl-avd-dtw"]' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.current["pl-avd-dtw"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["canadastg"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["canadastg"]'
+terraform state mv 'azurerm_role_assignment.acrdpwinfra' 'module.aks-ccs-dev.azurerm_role_assignment.acrdpwinfra'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["dgadevpool"] ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["dgadevpool"] '
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["dgaqapool"] ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["dgaqapool"] '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.current["wvd-dtw"]' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.current["wvd-dtw"]'
+terraform state mv 'helm_release.kubecost ' 'module.aks-ccs-dev.helm_release.kubecost '
+terraform state mv 'kubernetes_priority_class.high-priority ' 'module.aks-ccs-dev.kubernetes_priority_class.high-priority '
+terraform state mv 'kubernetes_secret.azure-service-key' 'module.aks-ccs-dev.kubernetes_secret.azure-service-key'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["turkeystg"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["turkeystg"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["turkeyprod"]' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["turkeyprod"]'
+terraform state mv 'data.azurerm_container_registry.current["acrwlp"] ' 'module.aks-ccs-dev.data.azurerm_container_registry.current["acrwlp"] '
+terraform state mv 'azurerm_role_assignment.acr["acrwlp"]' 'module.aks-ccs-dev.azurerm_role_assignment.acr["acrwlp"]'
+terraform state mv 'azurerm_kubernetes_cluster_node_pool.userpool["cargoespool"] ' 'module.aks-ccs-dev.azurerm_kubernetes_cluster_node_pool.userpool["cargoespool"] '
+terraform state mv 'azurerm_private_dns_zone_virtual_network_link.current["pl-ccssvc-uat-aks"]' 'module.aks-ccs-dev.azurerm_private_dns_zone_virtual_network_link.current["pl-ccssvc-uat-aks"]'
+terraform state mv 'data.azurerm_container_registry.current["cargoes"]' 'module.aks-ccs-dev.data.azurerm_container_registry.current["cargoes"]'
+terraform state mv 'azurerm_role_assignment.acr["cargoes"]' 'module.aks-ccs-dev.azurerm_role_assignment.acr["cargoes"]'
+
+
+terraform state list
+
+terraform state pull > /tmp/ccs/aks-ccs-dev.tfstate
+
+
+terraform-targets () {sed 's/\x1b\[[0-9;]*m//g' | grep -o '# [^( ]* ' | grep '\.' | sed " s/^# /-target '/; s/ $/'/; "}
+terraform plan | terraform-targets | grep -E -v 'aks_workloads' | xargs -r terraform plan -out /tmp/tfplan
+
+
+
+
+
+terraform import 'module.aks-account-dev.module.aks_workloads.kubernetes_priority_class.high-priority[0]' high-priority
+terraform import 'module.aks-account-dev.module.aks_workloads.kubernetes_secret.azure-service-key[0] ' monitoring/azure-service-key
+terraform import 'module.aks-account-dev.module.aks_workloads.helm_release.kubecost[0]' monitoring/kubecost 
+
+terraform-targets () {sed 's/\x1b\[[0-9;]*m//g' | grep -o '# [^( ]* ' | grep '\.' | sed " s/^# /-target '/; s/ $/'/; "}
+terraform apply | terraform-targets | grep -E 'aks-account-dev' | xargs -ro terraform apply

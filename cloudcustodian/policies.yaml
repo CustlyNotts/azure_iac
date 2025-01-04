@@ -1,0 +1,185 @@
+policies:
+  - name: mysql-flexibleserver-offhour
+    resource: azure.mysql-flexibleserver
+    filters:
+      - type: offhour
+        tag: scheduler
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: mysql-flexibleserver-onhour
+    resource: azure.mysql-flexibleserver
+    filters:
+      - type: onhour
+        tag: scheduler
+      - type: value
+        key: tags.ManualStart
+        value: "true"
+        op: not-equal
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: mysql-offhour
+    resource: azure.mysql
+    filters:
+      - type: offhour
+        tag: scheduler
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: mysql-onhour
+    resource: azure.mysql
+    filters:
+      - type: onhour
+        tag: scheduler
+      - type: value
+        key: tags.ManualStart
+        value: "true"
+        op: not-equal
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: aks-offhour
+    resource: azure.aks
+    filters:
+      - type: offhour
+        tag: scheduler
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: aks-onhour
+    resource: azure.aks
+    filters:
+      - type: onhour
+        tag: scheduler
+      - type: value
+        key: tags.ManualStart
+        value: "true"
+        op: not-equal
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: vm-offhour
+    resource: azure.vm
+    filters:
+      - type: offhour
+        tag: scheduler
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name
+  - name: vm-onhour
+    resource: azure.vm
+    filters:
+      - type: onhour
+        tag: scheduler
+      - type: value
+        key: tags.ManualStart
+        value: "true"
+        op: not-equal
+      - or:
+          - type: value
+            key: tags.ENV
+            value: PROD
+            op: not-equal
+          - type: value
+            key: tags.AutoShutdown
+            value: "true"
+            op: equal
+    actions:
+      - type: webhook
+        url: ${callback_url}
+        batch: true
+        body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+        query-params:
+          policy_name: policy.name

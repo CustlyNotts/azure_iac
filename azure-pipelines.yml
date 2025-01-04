@@ -1,0 +1,627 @@
+trigger:
+  - none
+pool: aks-infra
+variables:
+  ARM_CLIENT_ID: <ARM_CLIENT_ID> #Replace with actual
+  ARM_SUBSCRIPTION_ID: <ARM_SUBSCRIPTION_ID> #Replace with actual
+  ARM_TENANT_ID: <ARM_TENANT_ID> #Replace with actual
+  ARM_USE_MSI: "true"
+parameters:
+  - name: resource_type
+    displayName: Provide a resource type
+    type: string
+    values:
+      - Resource Group
+      - Virtual Network
+      - Route Table
+      - Network Security Group
+      - Kubernetes Service
+      - Container Registry
+      - Virtual Machine
+      - Storage Account
+      - MySQL flexible server
+      - PostgreSQL flexible server
+      - Private DNS Zone
+      - Private Endpoint
+      - SQL server
+      - Cosmos DB
+      - CDN
+      - Application Gateway
+      - Cache for Redis
+      - Service Bus Namespace
+      - Key vault
+      - Function App
+      - Azure DevOps agent
+      - Cloudcustodian
+      - App Service
+      - Traffic Manager
+      - VPN
+      - Availability Set
+      - Alerts VM
+      - Alerts ServiceBus
+      - APIM
+      - Webpubsub Service
+      - Eventhub
+  - name: action_type
+    displayName: Provide action type
+    type: string
+    values:
+      - apply
+      - destroy
+      - unlock
+  - name: resource_name
+    displayName: Provide a resource name
+    type: string
+    default: ""
+jobs:
+  - job: terraform_plan
+    displayName: Terraform Plan
+    steps:
+      - checkout: self
+        clean: "true"
+      - bash: |
+          az login --identity --username 4bdad00a-f14e-4129-a845-c2a2f221dfbb
+          if [ "${{ parameters.resource_type }}" == "Resource Group" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]rg.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]rg"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Virtual Network" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]vnet.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]vnet"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Route Table" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]rt.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]rt"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Network Security Group" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]nsg.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]nsg"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Kubernetes Service" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]aks.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]aks"
+            mv -f '$(System.DefaultWorkingDirectory)/aks/providers_azuredevops' '$(System.DefaultWorkingDirectory)/aks/providers.tf'
+          fi
+          if [ "${{ parameters.resource_type }}" == "Container Registry" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]acr.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]acr"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Virtual Machine" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]vm.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]vm"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Storage Account" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]sa.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]sa"
+          fi
+          if [ "${{ parameters.resource_type }}" == "MySQL flexible server" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]mysql_flexible.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]mysql_flexible"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Private DNS Zone" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]private_dns_zone.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]private_dns_zone"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Private Endpoint" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]private_endpoint.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]private_endpoint"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Cosmos DB" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]cosmos.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]cosmos"
+          fi
+          if [ "${{ parameters.resource_type }}" == "CDN" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]cdn.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]cdn"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Application Gateway" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]appgw.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]appgw"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Cache for Redis" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]redis.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]redis"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Service Bus Namespace" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]servicebus.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]servicebus"
+          fi
+          if [ "${{ parameters.resource_type }}" == "PostgreSQL flexible server" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]postgresql_flexible.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]postgresql_flexible"
+          fi
+          if [ "${{ parameters.resource_type }}" == "SQL server" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]mssql.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]mssql"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Key vault" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]kv.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]kv"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Azure DevOps agent" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]k8s_devops_agent.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]k8s-devops-agent"
+            mv -f '$(System.DefaultWorkingDirectory)/k8s-devops-agent/providers_azuredevops' '$(System.DefaultWorkingDirectory)/k8s-devops-agent/providers.tf'
+          fi
+          if [ "${{ parameters.resource_type }}" == "Cloudcustodian" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]cloudcustodian.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]cloudcustodian"
+            mv -f '$(System.DefaultWorkingDirectory)/cloudcustodian/providers_azuredevops' '$(System.DefaultWorkingDirectory)/cloudcustodian/providers.tf'
+          fi
+          if [ "${{ parameters.resource_type }}" == "Function App" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]functionapp.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]functionapp"
+          fi
+          if [ "${{ parameters.resource_type }}" == "App Service" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]appservice.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]appservice"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Traffic Manager" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]traffic_manager.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]traffic_manager"
+          fi
+          if [ "${{ parameters.resource_type }}" == "VPN" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]vpn.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]vpn"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Availability Set" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]as.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]as"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Alerts VM" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]alerts_automation.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]alert_automation/vm"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Alerts ServiceBus" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]alerts_automation.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]alert_automation/service_bus"
+          fi
+          if [ "${{ parameters.resource_type }}" == "APIM" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]apim.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]apim"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Webpubsub Service" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]webpubsub.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]webpubsub_service"
+          fi
+          if [ "${{ parameters.resource_type }}" == "Eventhub" ] ; then
+            echo "##vso[task.setvariable variable=backendAzureRmKey;isOutput=true]eventhub.tfstate"
+            echo "##vso[task.setvariable variable=TF_PATH;isOutput=true]eventhub"
+          fi
+        name: "set_variables"
+        displayName: "Set Variables"
+      # - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@1
+      #   displayName: "Install"
+      # - task: TerraformCLI@1
+      #   displayName: "Init"
+      #   inputs:
+      #     command: "init"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+      #     backendType: "azurerm"
+      #     # backendServiceArm: "DP World Global (1691759c-bec8-41b8-a5eb-03c57476ffdb)"
+      #     backendAzureRmSubscriptionId: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+      #     backendAzureRmResourceGroupName: "rg-infrateam"
+      #     backendAzureRmStorageAccountName: "dpwinfrateam"
+      #     backendAzureRmContainerName: "tfstate"
+      #     backendAzureRmKey: "$(set_variables.backendAzureRmKey)"
+      - bash: |
+          terraform init
+          terraform validate
+          terraform workspace new ${{ parameters.resource_name }} || terraform workspace select ${{ parameters.resource_name }}
+        name: "terraform_init"
+        condition: and(succeeded(), ne('${{ parameters.action_type }}', 'unlock'))
+        workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+        displayName: "Init & Validate"
+      
+      - task: Bash@3
+        displayName: "Fetching Tags"
+        name: fetch_tags
+        inputs:
+          #workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+          condition: succeeded()
+          targetType: 'inline'
+          script: |
+            tfvars_file="$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)/vars/${{ parameters.resource_name }}.tfvars"
+            # Check if the file exists
+            if [ -f "$tfvars_file" ]; then
+              # Filter lines containing 'tags'
+              filtered_tags=$(awk '/tags *= *\{/,/}/' "$tfvars_file" | awk -F'"' '
+                {
+                  if ($2 != "" && $4 != "") {
+                    gsub(/[{},]/, "");  # Remove curly braces and commas
+                    printf "\"%s\": \"%s\",|", $2, $4;  # Format as "key": "value",
+                  }
+                }')
+  
+              #filtered_tags=$(awk -F'=' '/tags/ {flag=1; next} /\}/{flag=0} flag' "$tfvars_file" | tr '\n' '|')
+              #filtered_tags=$(awk -F'"' '/tags = {/,/}/ && $2 != "" && $4 != "" {gsub(/[{},]/, ""); if ($2 != "" && $4 != "") printf "\"%s\" : \"%s\",| ", $2, $4}' "$tfvars_file" ) 
+
+
+              # Add double quotes around each key-value pair
+              #formatted_tags=$(echo "$filtered_tags_no_hash" | sed -E 's/^\s*([^:]+)\s*:\s*"?\s*([^,|]+)\s*"?,?$/ "\1" : "\2",/g')
+
+              # Remove trailing '|'
+              #formatted_tags=${formatted_tags%|}
+
+              # Ensure the output is enclosed in single quotes
+              #formatted_tags="'{${formatted_tags}}'"
+              formatted_tags="'{ ${filtered_tags%|} }'"
+              echo "$formatted_tags"
+              echo "##vso[task.setvariable variable=tfvars_tags;isOutput=true]"$formatted_tags""
+            else
+              echo "Error: .tfvars file not found at $tfvars_file"
+              exit 1
+            fi
+
+      - task: TerraformCLI@1
+        displayName: "Validate"
+        inputs:
+          command: "validate"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+
+      - bash: |
+          terraform workspace new ${{ parameters.resource_name }} || terraform workspace select ${{ parameters.resource_name }}
+        name: "terraform_workspace"
+        condition: succeeded()
+        workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+        displayName: "Workspace"
+
+      - task: TerraformCLI@1
+        displayName: "Workspace New"
+        inputs:
+          command: "workspace"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+          workspaceSubCommand: "new"
+          skipExistingWorkspace: true
+          workspaceName: ${{ parameters.resource_name }}
+      - task: TerraformCLI@1
+        displayName: "Workspace Select"
+        enabled: "true"
+        inputs:
+          command: "workspace"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+          workspaceName: ${{ parameters.resource_name }}
+
+
+      - task: TerraformCLI@1
+        displayName: "Plan Apply"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'apply'))
+        inputs:
+          command: "plan"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+          commandOptions: '-var-file "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)/vars/${{ parameters.resource_name }}.tfvars" -out=$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)/${{ parameters.resource_name }}.tfplan  -detailed-exitcode'
+          publishPlanResults: "tfplan"
+      - task: TerraformCLI@1
+        displayName: "Plan Destroy"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'destroy'))
+        inputs:
+          command: "plan"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+          publishPlanResults: "tfplan"
+          commandOptions: '-var-file "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)/vars/${{ parameters.resource_name }}.tfvars" -out=$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)/${{ parameters.resource_name }}.tfplan  -detailed-exitcode -destroy'
+
+ 
+      - bash: |
+          az storage blob lease break --subscription 1691759c-bec8-41b8-a5eb-03c57476ffdb --account-name dpwinfrateam --container-name tfstate --blob-name $(set_variables.TF_PATH).tfstateenv:${{ parameters.resource_name }}
+        name: "state_unlock"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'unlock'))
+        workingDirectory: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)"
+        displayName: "State Unlock"
+
+      - bash: |
+          if [ "$TERRAFORM_PLAN_HAS_CHANGES" = true ] ; then
+            echo "##vso[task.setvariable variable=HAS_CHANGES;isOutput=true]true"
+            echo "##vso[task.logissue type=warning]Changes detected, pipeline will require a manual approval to proceed"
+            fi
+          if [ "$TERRAFORM_PLAN_HAS_CHANGES" != true ] ; then
+            echo "##vso[task.logissue type=warning]No changes detected, terraform apply will not run"
+          fi
+        name: "detect_changes"
+        condition: and(succeeded(), ne('${{ parameters.action_type }}', 'unlock'))
+        displayName: "Detect Changes"
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifacts"
+        condition: and(succeeded(), eq(variables['TERRAFORM_PLAN_HAS_CHANGES'], 'true'))
+        inputs:
+          PathtoPublish: "$(System.DefaultWorkingDirectory)/$(set_variables.TF_PATH)/${{ parameters.resource_name }}.tfplan"
+          ArtifactName: "tfplan"
+          publishLocation: "Container"
+
+      
+            
+  - job: ManualValidation
+    displayName: Changes Approval
+    pool: server
+    dependsOn: terraform_plan
+    condition: and(succeeded(), eq(dependencies.terraform_plan.outputs['detect_changes.HAS_CHANGES'], 'true'))
+    steps:
+      - task: ManualValidation@0
+        inputs:
+          notifyUsers: "pavlo.tymoshchenkov@dpworld.com"
+          instructions: "Changes detected, pipeline will require a manual approval to proceed"
+  - job: terraform_apply
+    displayName: Terraform Apply
+    timeoutInMinutes: "90"
+    dependsOn:
+      - ManualValidation
+      - terraform_plan
+    variables:
+      backendAzureRmKey: $[ dependencies.terraform_plan.outputs['set_variables.backendAzureRmKey'] ]
+      TF_PATH: $[ dependencies.terraform_plan.outputs['set_variables.TF_PATH'] ]
+    steps:
+      - checkout: self
+        clean: "true"
+        persistCredentials: "true"
+      - task: DownloadBuildArtifacts@1
+        displayName: "Download Artifacts"
+        inputs:
+          buildType: "current"
+          downloadType: "single"
+          artifactName: "tfplan"
+          downloadPath: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+      # - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+      #   displayName: "Install"
+      # - task: TerraformCLI@0
+      #   displayName: "Init"
+      #   inputs:
+      #     command: "init"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+      #     backendType: "azurerm"
+      #     # backendServiceArm: "DP World Global (1691759c-bec8-41b8-a5eb-03c57476ffdb)"
+      #     backendAzureRmSubscriptionId: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+      #     backendAzureRmResourceGroupName: "rg-infrateam"
+      #     backendAzureRmStorageAccountName: "dpwinfrateam"
+      #     backendAzureRmContainerName: "tfstate"
+      #     backendAzureRmKey: "$(backendAzureRmKey)"
+      - bash: |
+          terraform init
+          terraform validate
+          terraform workspace select ${{ parameters.resource_name }}
+        name: "terraform_init"
+        condition: succeeded()
+        workingDirectory: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+        displayName: "Init & Validate"
+
+      # - bash: |
+      #     terraform workspace new ${{ parameters.resource_name }} || terraform workspace select ${{ parameters.resource_name }}
+      #   name: "terraform_workspace"
+      #   condition: succeeded()
+      #   workingDirectory: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+      #   displayName: "Workspace"
+
+      # - task: TerraformCLI@0
+      #   displayName: "Workspace Select"
+      #   enabled: "true"
+      #   inputs:
+      #     command: "workspace"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+      #     workspaceName: ${{ parameters.resource_name }}
+      - task: TerraformCLI@1
+        displayName: "Apply"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'apply'))
+        inputs:
+          command: "apply"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+          commandOptions: "$(System.DefaultWorkingDirectory)/$(TF_PATH)/tfplan/${{ parameters.resource_name }}.tfplan"
+  
+      # - script: |
+      #     echo  terraform_exit_code=$?
+      #     # if [ $? -eq 0 ]; then
+      #     #   echo "##vso[task.setvariable variable=TF_STATUS;isOutput=true]Succeeded"
+      #     #   echo "Succeeded"
+      #     # else
+      #     #   echo "##vso[task.setvariable variable=TF_STATUS;isOutput=true]Failed"
+      #     #   echo "Failed"
+      #     #   exit 1
+      #     # fi   
+      #   displayName: 'Capture Apply Task Status'
+      #   condition: and(succeededorfailed(), eq('${{ parameters.action_type }}', 'apply'))
+      #   name: ApplyStatusCapture
+
+      - task: TerraformCLI@1
+        displayName: "Destroy"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'destroy'))
+        inputs:
+          command: "apply"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/$(TF_PATH)"
+          commandOptions: "$(System.DefaultWorkingDirectory)/$(TF_PATH)/tfplan/${{ parameters.resource_name }}.tfplan"
+
+      # - script: |
+          
+      #     if [ $? -eq 0 ]; then
+      #       echo "##vso[task.setvariable variable=TF_STATUS;isOutput=true]Succeeded"
+      #     else
+      #       echo "##vso[task.setvariable variable=TF_STATUS;isOutput=true]Failed"
+      #       exit 1
+      #     fi
+      #   displayName: 'Capture Destroy Task Status'
+      #   condition: and(succeededorfailed(), eq('${{ parameters.action_type }}', 'destroy'))
+      #   name: DestroyStatusCapture
+
+      # - task: Bash@3 
+      #   displayName: "Terraform Status"
+      #   condition: always()
+      #   inputs:
+      #   targetType: 'inline'
+      #   script: |
+      #     if [ $(Apply.result) == "succeeded" ]; then
+      #       echo "Terraform apply succeeded."
+      #       echo "##vso[task.setvariable variable=TF_STATUS;isOutput=true]succeeded"
+      #     else
+      #       echo "Terraform apply failed."
+      #       echo "##vso[task.setvariable variable=TF_STATUS;isOutput=true]failed"
+      #     fi
+      #   displayName: 'Capture Terraform apply status'
+      #   name: tf_apply_status
+
+      - bash: |
+          terraform init
+          terraform validate
+          terraform workspace new ${{ parameters.resource_name }} || terraform workspace select ${{ parameters.resource_name }}
+        condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+        workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+        displayName: "Init & Validate AKS Workloads"
+      # - task: TerraformCLI@0
+      #   displayName: "Init AKS Workloads"
+      #   condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+      #   inputs:
+      #     command: "init"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+      #     backendType: "azurerm"
+      #     backendServiceArm: "DP World Global (1691759c-bec8-41b8-a5eb-03c57476ffdb)"
+      #     backendAzureRmSubscriptionId: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+      #     backendAzureRmResourceGroupName: "rg-infrateam"
+      #     backendAzureRmStorageAccountName: "dpwinfrateam"
+      #     backendAzureRmContainerName: "tfstate"
+      #     backendAzureRmKey: "aks_workloads.tfstate"
+      # - task: TerraformCLI@0
+      #   displayName: "Validate AKS Workloads"
+      #   condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+      #   inputs:
+      #     command: "validate"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+      # - task: TerraformCLI@0
+      #   displayName: "Workspace New AKS Workloads"
+      #   condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+      #   inputs:
+      #     command: "workspace"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+      #     workspaceSubCommand: "new"
+      #     skipExistingWorkspace: "true"
+      #     workspaceName: ${{ parameters.resource_name }}
+      # - task: TerraformCLI@0
+      #   displayName: "Workspace Select AKS Workloads"
+      #   condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+      #   enabled: "true"
+      #   inputs:
+      #     command: "workspace"
+      #     workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+      #     workspaceName: ${{ parameters.resource_name }}
+      - bash: |
+          mv -f '$(System.DefaultWorkingDirectory)/aks/aks_workloads/providers_azuredevops' '$(System.DefaultWorkingDirectory)/aks/aks_workloads/providers.tf'
+        name: "copy_config"
+        workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+        condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+        displayName: "Copy Config"
+      - task: TerraformCLI@1
+        displayName: "Plan Apply AKS Workloads"
+        condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+        inputs:
+          command: "apply"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+          publishPlanResults: "aks_workloads"
+          commandOptions: '-var-file "$(System.DefaultWorkingDirectory)/aks/aks_workloads/vars/${{ parameters.resource_name }}.tfvars" -auto-approve'
+
+      ## Direct commit will be disabled for this aks
+      # - bash: |
+      #     git config --global user.email "IT.InfraTeam@dpwapps.com"
+      #     git config --global user.name "Azure DevOps Pipeline"
+      #     git checkout -B main
+      #     git pull origin main
+      #     git add vars/${{ parameters.resource_name }}.tfvars
+      #     git commit -m "deployment $(Build.BuildNumber)"
+      #     git push --set-upstream origin main
+      #   name: "commit_variables"
+      #   condition: and(succeeded(), eq('${{ parameters.resource_type }}', 'Kubernetes Service'), eq('${{ parameters.action_type }}', 'apply'))
+      #   workingDirectory: "$(System.DefaultWorkingDirectory)/aks/aks_workloads"
+      #   displayName: "Commit Variables"
+      
+  - job: SendMetricsToNewRelic
+    displayName: 'Send Metrics to New Relic'
+    dependsOn: 
+      - terraform_plan
+      - terraform_apply
+    variables:
+      - group: NEWRELIC
+      - name: tags_output
+        value: $[ dependencies.terraform_plan.outputs['fetch_tags.tfvars_tags'] ]
+      - name: tf_apply_status
+        value: $[ dependencies.terraform_apply.outputs['ApplyStatusCapture.TF_STATUS'] ]
+      - name: tf_destroy_status
+        value: $[ dependencies.terraform_apply.outputs['DestroyStatusCapture.TF_STATUS'] ]
+      - name: pipelineStatus
+        value: $[dependencies.terraform_status_update.outputs['terraform_status.pipelineStatus']]
+      - name:  terraform_result
+        value: $[ dependencies.terraform_apply.result ]
+
+    #condition: succeededorfailed() # This ensures the job runs regardless of the outcome of the MainJob
+    condition: and(succeededOrFailed(), in(dependencies.terraform_apply.result,'Succeeded','Failed'))
+    steps:
+    - task: Bash@3
+      displayName: 'Terraform Status'
+      name: terraform_status
+      inputs:
+        targetType: 'inline'
+        script: |    
+          if [ "$(terraform_result)" == "Succeeded" ]; then
+            echo "Terraform apply succeeded."
+            echo "##vso[task.setvariable variable=pipelineStatus;isoutput=true]Succeeded"
+          elif [ "$(terraform_result)" == "Failed" ]; then
+            echo "Terraform apply failed."
+            echo "##vso[task.setvariable variable=pipelineStatus;isoutput=true]Failed"
+          fi
+    
+    - task: Bash@3
+      displayName: 'Newrelic terraform success metrics'
+      name: Metrics 
+      env:
+        pipelineStatus: $(terraform_status.pipelineStatus)
+      inputs:
+        targetType: 'inline'
+        script: |
+          tags_output=$(tags_output)
+          # Extract values for "Application Owner" and "ENV" fields
+          #application_name=$(echo "$tags_output" | sed -e 's/|/,/g' -e 's/ = / : /g' | grep -ioE '"Application Name"[ ]*:[ ]*"[^"]*"' | cut -d '"' -f 4)
+          #environment=$(echo "$tags_output" | sed -e 's/|/,/g' -e 's/ = / : /g' | grep -ioE '"ENV"[ ]*:[ ]*"[^"]*"' | cut -d '"' -f 4)
+          application_name=$(echo "$tags_output" | sed -e 's/|/,/g' | grep -ioE '"Application Name"[ ]*:[ ]*"[^"]*"' | cut -d '"' -f 4)
+          environment=$(echo "$tags_output" | sed -e 's/|/,/g' | grep -ioE '"ENV"[ ]*:[ ]*"[^"]*"' | cut -d '"' -f 4)
+          # #echo "$(tags_output)"
+          # # Gather information about the pipeline run
+          eventType="TerrafEvent"
+          pipelineName=$(echo "$(Build.DefinitionName)")
+          pipelineRunId=$(echo "$(Build.BuildNumber)")
+          pipelineTriggeredBy=$(echo "$(Build.RequestedFor)")
+          pipelineStatus="$pipelineStatus"
+          pipelineAction="${{ parameters.action_type }}"
+          pipelineResourceName="${{ parameters.resource_name }}"
+          pipelineResourceType="${{ parameters.resource_type }}"
+          pipelineAppName="$application_name"
+          pipelineAppEnv="$environment"
+          pipelineRunInfoJson=$(jq -n \
+            --arg pipelineName "$pipelineName" \
+            --arg pipelineRunId "$pipelineRunId" \
+            --arg pipelineTriggeredBy "$pipelineTriggeredBy" \
+            --arg pipelineAction "$pipelineAction" \
+            --arg pipelineStatus "$pipelineStatus" \
+            --arg pipelineResourceType "$pipelineResourceType" \
+            --arg pipelineResourceName "$pipelineResourceName" \
+            --arg pipelineAppName "$pipelineAppName" \
+            --arg pipelineAppEnv  "$pipelineAppEnv" \
+            --arg eventType "$eventType" \
+            '{eventType: $eventType, PipelineName: $pipelineName, Application_name: $pipelineAppName, Environment: $pipelineAppEnv, PipelineRunId: $pipelineRunId, PipelineTriggeredBy: $pipelineTriggeredBy, PipelineAction : $pipelineAction, PipelineStatus: $pipelineStatus, PipelineResourceType: $pipelineResourceType, PipelineResourceName: $pipelineResourceName}')
+          echo "$pipelineRunInfoJson"
+          echo "##vso[task.setvariable variable=pipelineRunInfoJson;isoutput=true]"$pipelineRunInfoJson""
+          
+    - task:  Bash@3
+      displayName: 'Sending Metrics to Newrelic'
+      condition:  Succeeded()
+      env: 
+        API_KEY: $(NEWRELIC_API)
+        InsightURL: $(NEWRELIC_URL)
+        JSON_DATA: $(Metrics.pipelineRunInfoJson)
+      inputs:
+        targetType: 'inline'
+        script: |
+           echo "$JSON_DATA" | gzip -c | curl -X POST \
+             -H "Content-Type: application/json" \
+             -H "Api-Key: $API_KEY" \
+             -H "Content-Encoding: gzip" \
+             $InsightURL \
+             --data-binary @-
+
+           
+
+      # Send custom metrics to New Relic using Insights API
+      # apiKey="YOUR_NEW_RELIC_INSIGHTS_INSERT_API_KEY"
+      # insightsUrl="https://insights-collector.newrelic.com/v1/accounts/YOUR_ACCOUNT_ID/events"
+      # curl -X POST -H "Content-Type: application/json" -H "X-Insert-Key: $apiKey" -d "$pipelineRunInfoJson" "$insightsUrl"

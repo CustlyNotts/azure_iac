@@ -1,0 +1,17 @@
+subscription_id     = <subscription_id>
+service_plan_name                                = "ASP-RgRostimaProd-96c7"
+os_type                                          = "Windows"
+sku_name                                         = "Y1"
+function_app_name                                = "RosteringSchedulerFunctionProd"
+resource_group_name                              = "Rg-Rostima-Prod"
+storage_account_name                             = "rgrostimaproda223"
+storage_account_resource_group_name              = "Rg-Rostima-Prod"
+storage_account_kind                             = "Storage"
+storage_account_cross_tenant_replication_enabled = false
+https_only                                       = false
+builtin_logging_enabled                          = false
+client_certificate_mode                          = "Required"
+virtual_network_subnet_id                        = null
+identity_enabled                                 = false
+identity_type                                    = "SystemAssigned"
+public_network_access_enabled                    = true

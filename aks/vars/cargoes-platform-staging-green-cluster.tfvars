@@ -1,0 +1,19 @@
+subscription_id     = <subscription_id>
+resource_group                    = "cargoes-staging"
+virtual_network                   = "cargoes-platform-cluster-staging-green-vnet"
+virtual_network_resource_group    = "cargoes-staging"
+subnet                            = "cargoes-platform-cluster-staging-green-subnet-1"
+cluster_name                      = "cargoes-platform-staging-green-cluster"
+kubernetes_version                = "1.26.6"
+key_vault_secrets_provider        = true
+key_vault_secret_rotation_enabled = true
+aks_network_policy                = "none"
+aks_system_pool_name              = "poolmemopt"
+aks_system_pool_vm_size           = "Standard_E4ds_v4"
+aks_system_pool_max_count         = 20
+aks_system_pool_max_pods          = 60
+tags = {
+  "Application Name"  = "Cargoes Platform",
+  "Application Owner" = "Jay Li / Jayakrishna Alwar",
+  "ENV"               = "STAGING"
+}

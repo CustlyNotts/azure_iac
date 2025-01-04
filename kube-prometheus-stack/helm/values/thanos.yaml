@@ -1,0 +1,26 @@
+queryFrontend:
+  enabled: false
+# existingObjstoreSecret: "thanos-objstore-config" #not working in current version
+objstoreConfig:
+  type: AZURE
+  config:
+    storage_account: ${storage_account}
+    storage_account_key: ${storage_account_key}
+    container: "metrics"
+    endpoint: "blob.core.windows.net"
+    max_retries: 10
+query:
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.139.0.155"
+  stores:
+    - kube-prometheus-stack-thanos-discovery:10901
+storegateway:
+  enabled: true
+compactor:
+  enabled: true
+  retentionResolutionRaw: 30d
+  retentionResolution5m: 90d
+  retentionResolution1h: 1y

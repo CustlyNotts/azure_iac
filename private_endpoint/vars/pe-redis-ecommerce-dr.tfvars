@@ -1,0 +1,23 @@
+#### IMPORT EXISTING PRIVATE ENDPOINT ####
+subscription_id     = <subscription_id>
+location                        = "UAE Central"
+use_existing_dns                = false
+private_endpoint_name           = "pe-redis-ecommerce-dr"
+pe_resource_group_name          = "rg-ecommerce-dr"
+subnet_id                       = "/subscriptions/039efcb8-56e2-459b-ad3c-68c086e8feb9/resourceGroups/rg-ecommerce-infra-dr/providers/Microsoft.Network/virtualNetworks/vnet-ecommerce-dr/subnets/snet-ecommerce-shared-dr"
+private_service_connection_name = "pe-redis-ecommerce-dr"
+manual_connection               = false
+pdz_name                        = ["privatelink.redis.cache.windows.net"]
+private_dns_zone_group_name     = "default"
+private_dns_zone_ids            = ["/subscriptions/039efcb8-56e2-459b-ad3c-68c086e8feb9/resourceGroups/rg-ecommerce-dr/providers/Microsoft.Network/privateDnsZones/privatelink.redis.cache.windows.net"]
+pdz_resource_group_name         = ["rg-ecommerce-dr"]
+pdz_link_name                   = ["redis-ecommerce-dr"]
+virtual_network_id              = ["/subscriptions/039efcb8-56e2-459b-ad3c-68c086e8feb9/resourceGroups/rg-ecommerce-infra-dr/providers/Microsoft.Network/virtualNetworks/vnet-ecommerce-dr"]
+linked_pdz_name                 = ["privatelink.redis.cache.windows.net"]
+vlink_resource_group_name       = ["rg-ecommerce-infra-dr"]
+sub_resource_id                 = "/subscriptions/039efcb8-56e2-459b-ad3c-68c086e8feb9/resourceGroups/rg-ecommerce-dr/providers/Microsoft.Cache/Redis/redis-ecommerce-dr"
+sub_resource_names              = ["redisCache"]
+azure_private_dns_zone_name     = "privatelink.redis.cache.windows.net"
+custom_network_interface_name   = ""
+#pdz_counter                     = 2
+#vlink_counter                   = 0

@@ -1,0 +1,8 @@
+environment=prod
+environment=PROD
+environment=production
+Environment=Prod
+ENV=PRD
+ENV=prod
+ENV=Prod
+environment-type=Prod

@@ -1,0 +1,135 @@
+thanos:
+  store:
+    nodeSelector:
+      kubernetes.io/os: linux
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+  queryFrontend:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+  query:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+  compact:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+  bucket:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+kubecostMetrics:
+  exporter:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+networkCosts:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  nodeSelector:
+    kubernetes.io/os: linux
+kubecostFrontend:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  image: "acrdpwinfra.azurecr.io/kubecost1/frontend"
+kubecostModel:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  image: "acrdpwinfra.azurecr.io/kubecost1/cost-model"
+  resources:
+    requests:
+      cpu: 10m
+grafana:
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.azure.com/mode: system
+  image:
+    repository: acrdpwinfra.azurecr.io/grafana
+    tag: 9.0.2
+  sidecar:
+    image: acrdpwinfra.azurecr.io/k8s-sidecar:1.21.0
+prometheus:
+  server:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.azure.com/mode: system
+    retention: 30d
+    global:
+      external_labels:
+        cluster_id: ${name}
+    image:
+      repository: acrdpwinfra.azurecr.io/prometheus/prometheus
+      tag: v2.41.0
+  kube-state-metrics:
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.azure.com/mode: system
+    image:
+      repository: acrdpwinfra.azurecr.io/kube-state-metrics
+      tag: v1.9.8
+  configmapReload:
+    prometheus:
+      image:
+        repository: acrdpwinfra.azurecr.io/configmap-reload
+        tag: v0.7.1
+  nodeExporter:
+    enabled: true
+    tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
+    priorityClassName: high-priority
+    image:
+      repository: acrdpwinfra.azurecr.io/node-exporter
+      tag: v1.3.0
+kubecostProductConfigs:
+  grafanaURL: http://${kubecost_ip}:9090/grafana
+  clusterName: ${name}
+  serviceKeySecretName: azure-service-key
+  azureBillingRegion: AE
+  azureOfferDurableID: MS-AZR-0017P
+  currencyCode: USD
+service:
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-ipv4: "${kubecost_ip}"
+nodeSelector:
+  kubernetes.io/os: linux
+  kubernetes.azure.com/mode: system
+tolerations:
+  - key: CriticalAddonsOnly
+    operator: Exists

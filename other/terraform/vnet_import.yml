@@ -1,0 +1,75 @@
+terraform state list | cut -f 1 -d '[' | xargs -L 1  terraform state rm
+
+terraform state push -force /tmp/ccs/vnet-cargoescustoms-svc-uat.tfstate
+
+terraform state list
+
+terraform state mv 'data.azurerm_resource_group.current ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_resource_group.current'
+terraform state mv 'data.azurerm_route_table.current["snet-SecAudit"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-SecAudit"] '
+terraform state mv 'data.azurerm_route_table.current["snet-account-dev"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-account-dev"] '
+terraform state mv 'data.azurerm_route_table.current["snet-internallb"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-internallb"] '
+terraform state mv 'azurerm_subnet.current["snet-SecAudit"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-SecAudit"] '
+terraform state mv 'azurerm_subnet.current["snet-account-dev"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-account-dev"] '
+terraform state mv 'azurerm_subnet.current["snet-internallb"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-internallb"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-SecAudit"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-SecAudit"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-account-dev"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-account-dev"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-internallb"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-internallb"] '
+terraform state mv 'azurerm_virtual_network.current ' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network.current '
+terraform state mv 'azurerm_virtual_network_peering.current[0] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.current[0] '
+terraform state mv 'azurerm_virtual_network_peering.harmony_connect_local[0] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.harmony_connect_local[0] '
+terraform state mv 'azurerm_virtual_network_peering.harmony_connect_uae[0] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.harmony_connect_uae[0] '
+terraform state mv 'azurerm_virtual_network_peering.sechub_local[0] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.sechub_local[0] '
+terraform state mv 'azurerm_virtual_network_peering.sechub_uae[0] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.sechub_uae[0] '
+terraform state mv 'azurerm_virtual_network_peering.vnet-infrateam[0]' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.vnet-infrateam[0]'
+terraform state mv 'data.azurerm_route_table.current["snet-aksnode-accounts-dr"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-aksnode-accounts-dr"] '
+terraform state mv 'data.azurerm_route_table.current["snet-akspod-accounts-dr"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-akspod-accounts-dr"] '
+terraform state mv 'data.azurerm_route_table.current["snet-common"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-common"] '
+terraform state mv 'azurerm_subnet.current["snet-aksnode-accounts-dr"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-aksnode-accounts-dr"] '
+terraform state mv 'azurerm_subnet.current["snet-akspod-accounts-dr"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-akspod-accounts-dr"] '
+terraform state mv 'azurerm_subnet.current["snet-common"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-common"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-aksnode-accounts-dr"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-aksnode-accounts-dr"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-akspod-accounts-dr"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-akspod-accounts-dr"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-common"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-common"] '
+terraform state mv 'azurerm_virtual_network_peering.local["Vnetglbsechubdr"]' 'module.vnet-cargoescustoms-svc-uat.azurerm_virtual_network_peering.local["Vnetglbsechubdr"]'
+terraform state mv 'data.azurerm_route_table.current["snet-accounts-s1-preprod"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-accounts-s1-preprod"] '
+terraform state mv 'data.azurerm_route_table.current["snet-accounts-s2-preprod"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-accounts-s2-preprod"] '
+terraform state mv 'azurerm_subnet.current["snet-accounts-s1-preprod"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-accounts-s1-preprod"] '
+terraform state mv 'azurerm_subnet.current["snet-accounts-s2-preprod"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-accounts-s2-preprod"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-accounts-s1-preprod"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-accounts-s1-preprod"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-accounts-s2-preprod"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-accounts-s2-preprod"] '
+terraform state mv 'data.azurerm_route_table.current["snet-accountsuat"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-accountsuat"] '
+terraform state mv 'data.azurerm_route_table.current["snet-common-flex"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-common-flex"] '
+terraform state mv 'azurerm_subnet.current["snet-accountsuat"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-accountsuat"] '
+terraform state mv 'azurerm_subnet.current["snet-common-flex"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-common-flex"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-accountsuat"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-accountsuat"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-common-flex"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-common-flex"] '
+terraform state mv 'data.azurerm_route_table.current["snet-aks-cargoes-customs-stg"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-aks-cargoes-customs-stg"] '
+terraform state mv 'data.azurerm_route_table.current["snet-bastion-cargoes-customs"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-bastion-cargoes-customs"] '
+terraform state mv 'data.azurerm_route_table.current["snet-lb-cargoes-customs-stg"] ' 'module.vnet-cargoescustoms-svc-uat.data.azurerm_route_table.current["snet-lb-cargoes-customs-stg"] '
+terraform state mv 'azurerm_subnet.current["snet-aks-cargoes-customs-dev"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-aks-cargoes-customs-dev"] '
+terraform state mv 'azurerm_subnet.current["snet-aks-cargoes-customs-stg"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-aks-cargoes-customs-stg"] '
+terraform state mv 'azurerm_subnet.current["snet-bastion-cargoes-customs"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-bastion-cargoes-customs"] '
+terraform state mv 'azurerm_subnet.current["snet-lb-cargoes-customs-dev"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-lb-cargoes-customs-dev"] '
+terraform state mv 'azurerm_subnet.current["snet-lb-cargoes-customs-stg"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet.current["snet-lb-cargoes-customs-stg"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-aks-cargoes-customs-stg"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-aks-cargoes-customs-stg"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-bastion-cargoes-customs"] ' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-bastion-cargoes-customs"] '
+terraform state mv 'azurerm_subnet_route_table_association.current["snet-lb-cargoes-customs-stg"]' 'module.vnet-cargoescustoms-svc-uat.azurerm_subnet_route_table_association.current["snet-lb-cargoes-customs-stg"]'
+
+terraform state list
+
+terraform state pull > /tmp/ccs/vnet-cargoescustoms-svc-uat.tfstate
+
+
+terraform-targets () {sed 's/\x1b\[[0-9;]*m//g' | grep -o '# [^( ]* ' | grep '\.' | sed " s/^# /-target '/; s/ $/'/; "}
+terraform plan | terraform-targets | grep -E -v 'aks_workloads' | xargs -r terraform plan -out /tmp/tfplan
+
+
+
+
+
+terraform import 'module.aks-account-dev.module.aks_workloads.kubernetes_priority_class.high-priority[0]' high-priority
+terraform import 'module.aks-account-dev.module.aks_workloads.kubernetes_secret.azure-service-key[0] ' monitoring/azure-service-key
+terraform import 'module.aks-account-dev.module.aks_workloads.helm_release.kubecost[0]' monitoring/kubecost 
+
+terraform-targets () {sed 's/\x1b\[[0-9;]*m//g' | grep -o '# [^( ]* ' | grep '\.' | sed " s/^# /-target '/; s/ $/'/; "}
+terraform apply | terraform-targets | grep -E 'aks-account-dev' | xargs -ro terraform apply

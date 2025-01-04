@@ -1,0 +1,27 @@
+global:
+  licenseKey: eu01xx63b7c333953c854e7e0a76708acb8aNRAL
+  cluster: ${name}
+  lowDataMode: "true"
+  priorityClassName: high-priority
+newrelic-infrastructure:
+  privileged: "true"
+  kubelet:
+    resources:
+      requests:
+        cpu: 10m
+  ksm:
+    resources:
+      requests:
+        cpu: 20m
+nri-metadata-injection:
+  resources:
+    requests:
+      cpu: 10m
+kube-state-metrics:
+  enabled: "true"
+  image:
+    tag: v2.6.0
+kubeEvents:
+  enabled: "true"
+logging:
+  enabled: "true"

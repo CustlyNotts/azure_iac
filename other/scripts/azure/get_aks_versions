@@ -1,0 +1,16 @@
+# az account list-locations --query "[].name"
+# az aks show --name aks-infra --resource-group rg-infrateam --query "{name: name, location:location, kubernetesVersion:kubernetesVersion}"
+# az aks show --name aks-infra --resource-group rg-infrateam -query "kubernetesVersion"
+# az aks get-versions --location westus2 --query "orchestrators[?default].orchestratorVersion" -otsv
+
+
+
+for i in $(az account list -o tsv | awk '{print$3}')
+do
+  az account set --subscription $i
+for k in $(az aks list --query "[].location" -otsv)
+do
+  version=$(az aks get-versions --location $k --query "orchestrators[?default].orchestratorVersion" -otsv)
+  echo "Default Kubernetes version for the region $k is $version"
+done | sort -u
+done

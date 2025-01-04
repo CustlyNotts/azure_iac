@@ -1,0 +1,129 @@
+trigger:
+  - none
+
+pool: aks-infra
+
+variables:
+  ARM_CLIENT_ID: "4bdad00a-f14e-4129-a845-c2a2f221dfbb"
+  ARM_SUBSCRIPTION_ID: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+  ARM_TENANT_ID: "2bd16c9b-7e21-4274-9c06-7919f7647bbb"
+  ARM_USE_MSI: "true"
+
+parameters:
+  - name: action_type
+    displayName: Provide action type
+    type: string
+    values:
+      - apply
+      - destroy
+
+jobs:
+  - job: terraform_plan
+    displayName: Terraform plan
+    steps:
+      - bash: |
+          mv -f '$(System.DefaultWorkingDirectory)/kube-prometheus-stack/providers_azuredevops' '$(System.DefaultWorkingDirectory)/kube-prometheus-stack/providers.tf'
+        name: "set_variables"
+        displayName: "Kubelogin config"
+
+      - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+        displayName: "Terraform Install"
+        inputs:
+          terraformVersion: "1.4.6"
+      - task: TerraformCLI@0
+        displayName: "Terraform init"
+        inputs:
+          command: "init"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+          backendType: "azurerm"
+          backendServiceArm: "DP World Global (1691759c-bec8-41b8-a5eb-03c57476ffdb)"
+          backendAzureRmSubscriptionId: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+          backendAzureRmResourceGroupName: "rg-infrateam"
+          backendAzureRmStorageAccountName: "dpwinfrateam"
+          backendAzureRmContainerName: "tfstate"
+          backendAzureRmKey: "kube_prometheus_stack.tfstate"
+      - task: TerraformCLI@0
+        displayName: "Terraform validate"
+        inputs:
+          command: "validate"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+      - task: TerraformCLI@0
+        displayName: "Terraform plan apply"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'apply'))
+        inputs:
+          command: "plan"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+          publishPlanResults: "PlanResults"
+          commandOptions: "-out=$(System.DefaultWorkingDirectory)/kube-prometheus-stack/tfplan  -detailed-exitcode"
+      - task: TerraformCLI@0
+        displayName: "Terraform plan destroy"
+        condition: and(succeeded(), eq('${{ parameters.action_type }}', 'destroy'))
+        inputs:
+          command: "plan"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+          publishPlanResults: "PlanResults"
+          commandOptions: "-out=$(System.DefaultWorkingDirectory)/kube-prometheus-stack/tfplan  -detailed-exitcode -destroy"
+      - bash: |
+          if [ "$TERRAFORM_PLAN_HAS_CHANGES" = true ] ; then
+            echo "##vso[task.setvariable variable=HAS_CHANGES;isOutput=true]true"
+            echo "##vso[task.logissue type=warning]Changes detected, pipeline will require a manual approval to proceed"
+            fi
+          if [ "$TERRAFORM_PLAN_HAS_CHANGES" != true ] ; then
+            echo "##vso[task.logissue type=warning]No changes detected, terraform apply will not run"
+          fi
+        name: "detect_changes"
+        displayName: "Detect changes"
+      - task: PublishBuildArtifacts@1
+        condition: and(succeeded(), eq(variables['TERRAFORM_PLAN_HAS_CHANGES'], 'true'))
+        inputs:
+          PathtoPublish: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack/tfplan"
+          ArtifactName: "tfplan"
+          publishLocation: "Container"
+  - job: ManualValidation
+    displayName: Changes approval
+    pool: server
+    dependsOn: terraform_plan
+    condition: and(succeeded(), eq(dependencies.terraform_plan.outputs['detect_changes.HAS_CHANGES'], 'true'))
+    steps:
+      - task: ManualValidation@0
+        inputs:
+          notifyUsers: "pavlo.tymoshchenkov@dpworld.com"
+          instructions: "Changes detected, pipeline will require a manual approval to proceed"
+  - job: terraform_apply
+    displayName: Terraform apply
+    timeoutInMinutes: "90"
+    dependsOn:
+      - ManualValidation
+      - terraform_plan
+    variables:
+      backendAzureRmKey: "kube_prometheus_stack.tfstate"
+      TF_PATH: "kube-prometheus-stack"
+    steps:
+      - task: DownloadBuildArtifacts@1
+        inputs:
+          buildType: "current"
+          downloadType: "single"
+          artifactName: "tfplan"
+          downloadPath: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+      - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+        displayName: "Terraform Install"
+        inputs:
+          terraformVersion: "1.4.6"
+      - task: TerraformCLI@0
+        displayName: "Terraform init"
+        inputs:
+          command: "init"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+          backendType: "azurerm"
+          backendServiceArm: "DP World Global (1691759c-bec8-41b8-a5eb-03c57476ffdb)"
+          backendAzureRmSubscriptionId: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+          backendAzureRmResourceGroupName: "rg-infrateam"
+          backendAzureRmStorageAccountName: "dpwinfrateam"
+          backendAzureRmContainerName: "tfstate"
+          backendAzureRmKey: "kube_prometheus_stack.tfstate"
+      - task: TerraformCLI@0
+        displayName: "Terraform apply"
+        inputs:
+          command: "apply"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack"
+          commandOptions: "$(System.DefaultWorkingDirectory)/kube-prometheus-stack/tfplan/tfplan"

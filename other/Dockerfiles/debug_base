@@ -1,0 +1,41 @@
+# docker build -t acrdpwinfra.azurecr.io/debug:base . -f debug_base --platform linux/amd64
+# docker push acrdpwinfra.azurecr.io/debug:base
+# or
+# podman build -t acrdpwinfra.azurecr.io/debug:base . -f debug_base --arch=amd64
+# podman push acrdpwinfra.azurecr.io/debug:base
+
+FROM ubuntu:20.04
+
+COPY chkpnt.mib /tmp
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y -qq --no-install-recommends \
+    apt-transport-https \
+    apt-utils \
+    ca-certificates \
+    curl \
+    git \
+    iputils-ping \
+    jq \
+    lsb-release \
+    software-properties-common \
+    zip \
+    unzip \
+    build-essential \
+    libsnmp-dev \
+    snmp \
+    vim \
+    && curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+    
+RUN NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+    && /home/linuxbrew/.linuxbrew/bin/brew install gcc Azure/kubelogin/kubelogin go terraform terragrunt \
+    && /home/linuxbrew/.linuxbrew/bin/brew cleanup --prune=all \
+    && apt-get clean -y \
+    && apt-get autoremove \
+    && rm -Rf /var/cache/apt \
+    && rm -Rf /var/lib/apt/lists/* \
+    && rm -Rf /var/log/*
+
+ENV PATH="${PATH}:/home/linuxbrew/.linuxbrew/bin"

@@ -1,0 +1,4 @@
+ENV=UAT-Jeddah
+ENV=UAT-Maputo
+ENV=UAT-Sokhna
+Environment=Uat

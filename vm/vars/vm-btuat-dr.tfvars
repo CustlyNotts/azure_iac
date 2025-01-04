@@ -1,0 +1,34 @@
+subscription_id     = <subscription_id>
+resource_group_name = "rg-btuat-dr"
+name                = "vm-btuat-dr"
+image_os            = "linux"
+os_simple           = "CentOS"
+size                = "Standard_B4ms"
+os_disk = {
+  caching              = "ReadWrite"
+  storage_account_type = "Standard_LRS"
+}
+virtual_network_name                = "vnet-bt-dr"
+virtual_network_resource_group_name = "rg-btinfra-dr"
+subnet_name                         = "snet-uatcommon-dr"
+new_network_interface = {
+  name                = "vm-btuat-dr-nic"
+  resource_group_name = "rg-btuat-dr"
+  ip_configurations = [
+    {
+      private_ip_address_allocation = "Static"
+      private_ip_address            = "172.17.8.11"
+    }
+  ]
+}
+disable_password_authentication = false
+identity = {
+  type = "SystemAssigned"
+}
+# tags = {
+#   "Application Name"  = "Mawani CNS",
+#   "Application Owner" = "Daniel Stuart / pradeesh raju",
+#   "ENV"               = "UAT"
+#   "scheduler"         = "off=(M-U,17);on=(M-U,8);tz=Asia/Dubai"
+# }
+

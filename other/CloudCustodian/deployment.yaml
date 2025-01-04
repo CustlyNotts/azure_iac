@@ -1,0 +1,163 @@
+# # Use a workload identity with an application on Azure Kubernetes Service (AKS)
+# # https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity
+# # federated identity name
+# export FICID="cloudcustodian" 
+# # user assigned identity name
+# export UAID="cloudcustodian"
+# export RESOURCE_GROUP="rg-infrateam"
+# export AKS_OIDC_ISSUER="$(az aks show --subscription 1691759c-bec8-41b8-a5eb-03c57476ffdb -n aks-infra -g rg-infrateam --query "oidcIssuerProfile.issuerUrl" -otsv)"
+# # environment variables for the Kubernetes Service account & federated identity credential
+# export SERVICE_ACCOUNT_NAMESPACE="cloudcustodian"
+# export SERVICE_ACCOUNT_NAME="cloudcustodian-sa"
+# az identity federated-credential create --subscription 1691759c-bec8-41b8-a5eb-03c57476ffdb --name ${FICID} --identity-name ${UAID} --resource-group ${RESOURCE_GROUP} --issuer ${AKS_OIDC_ISSUER} --subject system:serviceaccount:${SERVICE_ACCOUNT_NAMESPACE}:${SERVICE_ACCOUNT_NAME}
+# custodian/bin/c7n-org run -c custodian/accounts.yaml -s custodian/output -u custodian/policies.yaml
+
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   annotations:
+#     azure.workload.identity/client-id: 21b666f0-06ca-47ae-abbf-3f2e9cbaec5c
+#   labels:
+#     azure.workload.identity/use: "true"
+#   name: cloudcustodian-sa
+#   namespace: cloudcustodian
+
+# ---
+
+apiVersion: v1
+data:
+  policies.yaml: |
+    policies:
+      - name: aks-offhour
+        resource: azure.aks
+        filters:
+          - type: offhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://lg-infrateam.azurewebsites.net:443/api/CloudCustodian/triggers/manual/invoke?api-version=2022-05-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=WbBsnzl07p_cKCbHZverEglJKwKL8sYOZRcvNGlzptM
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: aks-onhour
+        resource: azure.aks
+        filters:
+          - type: onhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://lg-infrateam.azurewebsites.net:443/api/CloudCustodian/triggers/manual/invoke?api-version=2022-05-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=WbBsnzl07p_cKCbHZverEglJKwKL8sYOZRcvNGlzptM
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: vm-offhour
+        resource: azure.vm
+        filters:
+          - type: offhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://lg-infrateam.azurewebsites.net:443/api/CloudCustodian/triggers/manual/invoke?api-version=2022-05-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=WbBsnzl07p_cKCbHZverEglJKwKL8sYOZRcvNGlzptM
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+      - name: vm-onhour
+        resource: azure.vm
+        filters:
+          - type: onhour
+            tag: scheduler
+          - or:
+            - type: value
+              key: tags.ENV
+              value: PROD
+              op: not-equal
+            - type: value
+              key: tags.AutoShutdown
+              value: "true"
+              op: equal
+        actions:
+          - type: webhook
+            url: https://lg-infrateam.azurewebsites.net:443/api/CloudCustodian/triggers/manual/invoke?api-version=2022-05-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=WbBsnzl07p_cKCbHZverEglJKwKL8sYOZRcvNGlzptM
+            batch: true
+            body: 'resources[].{ id: id, name: name, TeamsChannel: tags."TeamsChannel" }'
+            query-params:
+              policy_name: policy.name
+kind: ConfigMap
+metadata:
+  name: cloudcustodian-policies-deployment
+  namespace: cloudcustodian
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcustodian
+  namespace: cloudcustodian
+spec:
+  selector:
+    matchLabels:
+      app: cloudcustodian
+  template:
+    metadata:
+      labels:
+        app: cloudcustodian
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: cloudcustodian-sa
+      volumes:
+      - name: cloudcustodian-policies-deployment
+        configMap:
+          name: cloudcustodian-policies-deployment
+      containers:
+      - name: cloudcustodian
+        image: acrdpwinfra.azurecr.io/cloudcustodian:0.8
+        command: ["/bin/sh","-c"]
+        args:
+          - source custodian/bin/activate;
+            python custodian/azuresubs.py -f custodian/subscriptions.yml;
+            sleep infinity;
+        env:
+        - name: AZURE_USE_MSI
+          value: "1"
+        - name: AZURE_SUBSCRIPTION_ID
+          value: "1691759c-bec8-41b8-a5eb-03c57476ffdb"
+        - name: AZURE_CLIENT_ID
+          value: "21b666f0-06ca-47ae-abbf-3f2e9cbaec5c"
+        - name: TZ
+          value: "Asia/Dubai"
+        volumeMounts:
+        - name: cloudcustodian-policies-deployment
+          mountPath: "/custodian/policies.yaml"
+          subPath: policies.yaml
+          readOnly: true

@@ -1,0 +1,42 @@
+# AZURE_FUNCTION_TENANT_ID=2bd16c9b-7e21-4274-9c06-7919f7647bbb
+# AZURE_FUNCTION_CLIENT_ID=21b666f0-06ca-47ae-abbf-3f2e9cbaec5c
+# AZURE_FUNCTION_CLIENT_SECRET
+# AZURE_FUNCTION_SUBSCRIPTION_ID=1691759c-bec8-41b8-a5eb-03c57476ffdb
+# AZURE_FUNCTION_MANAGEMENT_GROUP_NAME=mgdpwgroup
+
+
+policies:
+  - name: aks-offhour
+    mode:
+      type: azure-periodic
+      schedule: '0 45 * * * *'
+      provision-options:
+        identity:
+            type: UserAssigned
+            id: cloudcustodian
+        servicePlan:
+          location: UAE North
+    resource: azure.aks
+    filters:
+      - type: offhour
+        default_tz: "Asia/Dubai"
+        tag: scheduler
+        offhour: 20
+      - or:
+        - type: value
+          key: tags.ENV
+          value: PROD
+          op: not-equal
+        - type: value
+          key: tags.AutoShutdown
+          value: "true"
+          op: equal
+    actions:
+      - type: webhook
+        url: https://prod-15.uaenorth.logic.azure.com:443/workflows/33f1840e78f04965b20ac021393a4599/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=y-yQcQibJ-osKmK_Sfqd9VjI_2-4fBdP4xGcXRTbCpA
+        batch: true
+        body: 'resources[].{ id: id, name: name, application: tags."Application Name" }'
+        query-params:
+          policy_name: policy.name
+
+# 20.203.76.184/32

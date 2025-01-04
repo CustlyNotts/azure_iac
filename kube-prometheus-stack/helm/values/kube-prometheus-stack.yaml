@@ -1,0 +1,95 @@
+grafana:
+  # grafana.ini:
+  #   auth.anonymous:
+  #     enabled: true
+  #     org_role: Viewer
+  defaultDashboardsTimezone: Asia/Dubai
+  adminPassword: prom-operator
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.139.0.5"
+  sidecar:
+    datasources:
+      uid: thanos
+      url: "http://thanos-query:9090"
+      isDefaultDatasource: true
+prometheus:
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.139.0.55"
+  thanosService:
+    enabled: true
+  prometheusSpec:
+    enableRemoteWriteReceiver: true
+    retention: 6h
+    disableCompaction: true
+    thanos:
+      objectStorageConfig:
+        name: thanos-objstore-config
+        key: thanos.yaml
+    additionalScrapeConfigs:
+      - job_name: opencost
+        honor_labels: true
+        scrape_interval: 1m
+        scrape_timeout: 10s
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets:
+              - opencost:9003
+      - job_name: "snmp_checkpoint"
+        static_configs:
+          - targets:
+              - "10.201.0.68"
+              - "10.200.0.117"
+              - "10.200.0.118"
+              - "10.200.0.36"
+              - "10.200.0.37"
+              - "10.200.0.4"
+              - "10.200.0.5"
+              - "10.201.0.117"
+              - "10.201.0.118"
+              - "10.201.0.53"
+              - "10.201.0.54"
+              - "10.201.0.21"
+              - "10.201.0.22"
+              - "10.222.32.4"
+              - "10.222.32.5"
+              - "10.202.0.117"
+              - "10.202.0.118"
+              - "10.202.2.4"
+              - "10.202.2.5"
+              - "10.202.0.36"
+              - "10.202.0.37"
+              - "10.202.0.4"
+              - "10.202.0.5"
+              - "10.254.15.21"
+              - "10.254.15.22"
+              - "10.255.0.4"
+              - "10.255.0.5"
+              - "10.254.2.4"
+              - "10.254.2.5"
+              - "10.254.0.7"
+              - "10.254.0.8"
+        metrics_path: /snmp
+        params:
+          module: [if_mib]
+        relabel_configs:
+          - source_labels: [__address__]
+            target_label: __param_target
+          - source_labels: [__param_target]
+            target_label: instance
+          - target_label: __address__
+            replacement: prometheus-snmp-exporter:9116
+      # - job_name: "Windows_VMs"
+      #   static_configs:
+      #     - targets:
+      #         - "10.139.2.222:9182"
+      # - job_name: "Linux_VMs"
+      #   static_configs:
+      #     - targets:
+      #         - "10.139.2.223:9100"

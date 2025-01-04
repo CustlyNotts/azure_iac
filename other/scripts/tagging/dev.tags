@@ -1,0 +1,11 @@
+ENV=Dev
+ENV=DEV-Jeddah
+ENV=DEV-Maputo
+ENV=DEV-Sokhna
+environment=development
+Environment=SapHanaDev
+ENV=dev
+ENV=Dev
+environment=dev
+environment=Dev
+environment=development

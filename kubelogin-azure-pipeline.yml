@@ -1,0 +1,31 @@
+trigger:
+  - none
+
+pool: aks-infra
+
+steps:
+  # - bash: |
+  #     curl -LO "https://github.com/Azure/kubelogin/releases/download/v0.0.28/kubelogin-linux-amd64.zip"
+  #     unzip -j "kubelogin-linux-amd64.zip" -d /usr/local/bin
+  #     rm -f "kubelogin-linux-amd64.zip"
+  #     kubelogin --version
+  #   displayName: kubelogin - install
+  - bash: |
+      apt-get update
+      apt-get install -y ca-certificates curl
+      apt-get install -y apt-transport-https
+      mkdir /etc/apt/keyrings
+      curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" |  tee /etc/apt/sources.list.d/kubernetes.list
+      apt-get update
+      apt-get install -y kubectl
+    displayName: kubectl - install
+  - bash: |
+      az login --identity --username 4bdad00a-f14e-4129-a845-c2a2f221dfbb
+      az account set --subscription 1691759c-bec8-41b8-a5eb-03c57476ffdb
+      az aks get-credentials --resource-group rg-infrateam --name aks-terraform-test --public-fqdn
+      kubelogin convert-kubeconfig -l msi --client-id 4bdad00a-f14e-4129-a845-c2a2f221dfbb
+    displayName: kubelogin - login
+  - bash: |
+      kubectl get pods -A
+    displayName: kubelogin - test

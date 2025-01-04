@@ -1,0 +1,153 @@
+subscriptions:
+- name: DP World Global Shared Security Hub
+  subscription_id: cf524703-9d5e-4aa2-bbe9-975fe083f66a
+- name: DP World Global
+  subscription_id: 1691759c-bec8-41b8-a5eb-03c57476ffdb
+- name: Ecommerce
+  subscription_id: 039efcb8-56e2-459b-ad3c-68c086e8feb9
+- name: DP World Dakar
+  subscription_id: 08f0956e-d5e6-4f3f-9bc0-aac02804ad68
+- name: Sharepoint Production Environment
+  subscription_id: 09388672-3138-448c-a91e-f1f1276ba016
+- name: London Gateway
+  subscription_id: 19ff1b54-0d4c-4d74-bcb5-9d2a673c218d
+- name: DP World EUR Shared Security Hub
+  subscription_id: 1b37d994-cdaf-4d33-b73d-afb406d36357
+- name: POEMS
+  subscription_id: 1f5e2bb0-70cd-430f-9fde-ecd3b07a0769
+- name: Cargoes Flow
+  subscription_id: 226040e8-5c0e-44f2-8915-1afed1732440
+- name: DP World APAC Shared Security Hub
+  subscription_id: 2829b90f-e2a6-45f3-bcf7-35f4923df4e7
+- name: Syncreon
+  subscription_id: 3399661a-0d50-482b-8d45-6cf0f51b04f9
+- name: Cargoes Prod
+  subscription_id: 368014ab-c35d-4615-a165-842d87aec6f5
+- name: DP World QICT
+  subscription_id: 38c685f8-8a9f-4a2b-9b2b-f8db4465e13f
+- name: Cargoes Customs
+  subscription_id: 3b33091e-1cdc-4ea3-a1a9-112226376c1b
+- name: Business Analytics
+  subscription_id: 3c44ba2d-eba5-4d51-adb8-8614bf03bd29
+- name: Cargoes UK
+  subscription_id: 3d414e09-5260-4c92-af05-d377ec768f8e
+- name: Cargoes Dev/Test
+  subscription_id: 3ddf2459-a8f6-4f71-9fa4-9b3479dbf234
+- name: Cargoes ROS
+  subscription_id: 3f73c166-e295-4b4f-a2bc-ef5a0a63b7a4
+- name: QA
+  subscription_id: 43e324d8-d639-4436-80bf-7f2fc1ca94f2
+- name: CCS-Turkey
+  subscription_id: 4b645787-cdfe-4b5a-b2df-4dfbb226ec40
+- name: DP World Peru
+  subscription_id: 4f01af32-f9f1-40d8-a872-15f7e3dc1966
+- name: DP World AMR Shared Security Hub
+  subscription_id: 552154ff-433b-4cb2-bfa6-9d1c7249ef1f
+- name: DGA Customs
+  subscription_id: 55744d2d-7e03-4a83-a021-a23196bd65db
+- name: DP World Pivdennyi
+  subscription_id: 55addf90-a31d-48c6-b3ac-7063d7baa100
+- name: DT World
+  subscription_id: 56a6b4b1-7256-4834-9817-e27c75f1ae05
+- name: Mongo Atlas DB
+  subscription_id: 5887d151-9800-4d53-85ac-e5ef9c52de21
+- name: Zodiac Cloud
+  subscription_id: 595e7ee7-9b95-405c-b00f-9a1f6d79bb11
+- name: Applied Science
+  subscription_id: 5a53469f-938f-4947-908f-851bde5c3777
+- name: CCS-CNS
+  subscription_id: 5c7ffb4d-2288-4bc0-a920-78bab3f2db58
+- name: DP World Chile
+  subscription_id: 619cf599-d9a9-4b59-8212-b380a5133b50
+- name: Berth Planning Application
+  subscription_id: 623cd43f-a4c3-4dbc-881c-3ba2804a8a4c
+- name: Zodiac MPM
+  subscription_id: 62e57f0f-24ab-417a-8993-b32a3b3501b5
+- name: CCS-Bharat Trade
+  subscription_id: 64421e13-ee76-43d2-93d5-bb5b97858ba5
+- name: Metaverse
+  subscription_id: 64c0b6b8-a619-421a-941d-8feb2e48de4f
+- name: DPWAPAC
+  subscription_id: 68a1305a-bb4e-4ff8-b57b-3f44bd7b3b23
+- name: CCS-Global
+  subscription_id: 7076703f-57ca-4c30-9d69-94c008f7a470
+- name: Azure-TBI Project
+  subscription_id: 738d8477-8668-4ea0-8923-770289cdacb3
+- name: CCS-LCIT
+  subscription_id: 7bace25e-b7ab-4946-85c9-7caf3a4c49fa
+- name: DryDocks
+  subscription_id: 7c422b28-6937-4df7-895e-c19e321257cb
+- name: DT World Dell Boomi
+  subscription_id: 7c7a17a5-36b8-40d9-a4b4-6f303637dc47
+- name: DP World Paramaribo
+  subscription_id: 7c9f1c4d-dcbe-4132-93ba-434b850324a9
+- name: DP World Posorja
+  subscription_id: 8268fccb-bbe4-4ff0-831d-e5ce1d6fda7c
+- name: Zodiac SaaS
+  subscription_id: 890a825c-da9d-4478-af12-ae64f279d165
+- name: CCS-Dev
+  subscription_id: 8a5908cd-e907-473a-9c94-748bd2347176
+- name: DPWorld.com
+  subscription_id: 8b99dc94-b0e9-4144-8f0c-81093d2071b0
+- name: Zodiac Platform
+  subscription_id: 8c18015f-f6be-403d-905d-5cdfcb1f1c1d
+- name: HR Applications
+  subscription_id: 98e5e4a5-115d-4c59-abd1-052a8ac7935b
+- name: Cargoes Runner
+  subscription_id: 99a847a3-1033-4a6d-a9bb-41a087e8c982
+- name: DP World Sokhna
+  subscription_id: a1b5bf0c-d4c4-4e18-a50b-c32c5e2ec370
+- name: Azure-EUR Websites
+  subscription_id: a3da6128-80b2-4b5e-bd61-55cee0d157ff
+- name: Cargoes Logistics
+  subscription_id: a3e25ce2-341c-4f68-b42d-0ec5f349a526
+- name: Tracking Service
+  subscription_id: a7831bc0-3c70-4db7-95c4-62d614caf575
+- name: DP World Jeddah
+  subscription_id: ac55fff2-7ff6-464a-84d4-7816653e0305
+- name: CCS-MEA
+  subscription_id: ad86c834-0651-4e48-8c88-2cf8289e2fe7
+- name: DPWAH
+  subscription_id: b356d152-b2b1-4fd7-ade2-814d6bb37755
+- name: DP World LCIT
+  subscription_id: b750eb54-ab7e-42cc-ba26-fe0200bdda03
+- name: DP World SPCT
+  subscription_id: bc3e663a-ab78-46ec-affa-0ce0fda71b5b
+- name: Zodiac LMS
+  subscription_id: bf474629-6288-42a5-9630-00e5d420099f
+- name: DP World Bossaso
+  subscription_id: c091906f-2614-4a0a-9133-ffdb933b2634
+- name: ORMS
+  subscription_id: c1ed99db-01ec-4593-92d3-cf4a26a19555
+- name: CCS-Canada
+  subscription_id: c65610b4-f532-47fb-b450-632f88d21fa8
+- name: LCIT Mawani Shared Security Hub
+  subscription_id: c7415c97-6b77-4ee2-95c1-ed58ce172043
+- name: DP World Pusan
+  subscription_id: cba0b139-51c7-47d3-847b-9c4e05bca837
+- name: DP World Maputo
+  subscription_id: d271a3ed-0b8d-497c-9ce7-673482bafefa
+- name: Imperial Logistics International
+  subscription_id: d6741639-bf83-4401-8aa3-deeaa27205f6
+- name: UAE Region Datachain
+  subscription_id: dc2a271c-2f36-4ca3-b3b6-79ada4cd5d6b
+- name: Storage Service
+  subscription_id: ddd9f6d6-f88f-4023-b919-baabce24ed59
+- name: DP World Berbera
+  subscription_id: ebc9f169-7a6f-4fd7-95e4-ac3363841681
+- name: NAU
+  subscription_id: ededa550-54e3-4ac7-a6b0-bca51f3c1495
+- name: DP World Algiers
+  subscription_id: eef303e4-75ec-4b73-8787-dc279592b417
+- name: Trade Finance
+  subscription_id: f3d35456-12f8-4897-a1c3-2bb59e949ec5
+- name: DP World ATI Manila
+  subscription_id: f773edab-f544-4964-9bd0-bd9644f0375d
+- name: Cargoes ZMS
+  subscription_id: f82bd124-b526-43d2-89ee-1768f5e7f3fe
+- name: UAE-RnD
+  subscription_id: f85e0513-f7a6-445a-bf6c-a6fd1f9c1c80
+- name: CNS Dev/Test
+  subscription_id: fadaff5b-f5a8-4e90-9d2a-98b5429e3093
+- name: DP World Luanda
+  subscription_id: ff611921-aac8-43d5-a97f-8beb2fa4640d

@@ -1,0 +1,9 @@
+subscription_id     = <subscription_id>
+apimName                = "Cargoes-APIM-Nonprod"
+resource_group_name = "Rg-Cargoes-APIM-NonProd"
+location="uaenorth"
+apimPublisherEmail ="kannadas.ramankutty@dpworld.com"
+apimPublisherName="Cargoes-APIM-Nonprod"
+apimSku="Developer"
+apimSkuCapacity=1
+subnet_id="/subscriptions/8bfd9524-8956-41b0-a915-4e7ed9f8b84b/resourceGroups/rg-cargoes-apim-nonprod/providers/Microsoft.Network/virtualNetworks/vnet-cargoes-boomi-apim-nonprod/subnets/snet-cargoes-boomi-apim-nonprod"

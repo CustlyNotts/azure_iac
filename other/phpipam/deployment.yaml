@@ -1,0 +1,113 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: phpipam-secret
+  namespace: phpipam
+type: Opaque
+data:
+  TZ: QXNpYS9EdWJhaQ==
+  IPAM_DATABASE_HOST: MTAuMTM5LjAuMjIy
+  IPAM_DATABASE_USER: aG90cmFja2luZ3VzZXJAbXlzcWwtYWxsZXdhbi1wcm9k
+  IPAM_DATABASE_PASS: RHhiQDIwMjMkJA==
+  IPAM_DATABASE_NAME: aG9pcHRyYWNraW5n
+---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: phpipam-mysql
+#   namespace: phpipam
+#   # annotations:
+#   #   service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+# spec:
+#   # type: LoadBalancer
+#   selector:
+#     app: phpipam-mysql
+#   ports:
+#     - name: phpipam-mysql
+#       port: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpipam-web
+  namespace: phpipam
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-ipv4: 10.139.0.35
+spec:
+  type: LoadBalancer
+  selector:
+    app: phpipam-web
+  ports:
+    - name: phpipam-web
+      port: 80
+---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#     app: phpipam-mysql
+#   name: phpipam-mysql
+#   namespace: phpipam
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: phpipam-mysql
+#   strategy: {}
+#   template:
+#     metadata:
+#       labels:
+#         app: phpipam-mysql
+#     spec:
+#       containers:
+#       - image: mariadb:latest
+#         name: phpipam-mysql
+#         resources: {}
+#         ports:
+#         - containerPort: 3306
+#         volumeMounts:
+#         - mountPath: /var/lib/mysql
+#           name: phpipam-db-data
+#         envFrom:
+#         - secretRef:
+#             name: phpipam-secret
+#       volumes:
+#       - name: phpipam-db-data
+#         emptyDir: {}
+# status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: phpipam-web
+  name: phpipam-web
+  namespace: phpipam
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpipam-web
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: phpipam-web
+    spec:
+      containers:
+      - image: phpipam/phpipam-www
+        name: phpipam-www
+        resources: {}
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /phpipam/css/images/logo
+          name: phpipam-logo
+        envFrom:
+        - secretRef:
+            name: phpipam-secret
+      volumes:
+      - name: phpipam-logo
+        emptyDir: {}
+status: {}

@@ -1,0 +1,25 @@
+#### IMPORT EXISTING PRIVATE ENDPOINT ####
+subscription_id     = <subscription_id>
+resource_group_name             = "rg-btnwhub"
+location                        = "central india"
+app_name                        = " "
+use_existing_pe                 = true
+use_existing_dns                = true
+private_endpoint_name           = "ep-mongodb-bttest"
+pe_resource_group_name          = "rg-btnwhub"
+subnet_id                       = "/subscriptions/64421e13-ee76-43d2-93d5-bb5b97858ba5/resourceGroups/rg-btnwhub/providers/Microsoft.Network/virtualNetworks/vnet-btnwhub/subnets/snet-btdemo"
+private_service_connection_name = "pls_634e5aa3a9ca2a7dd9ec7c41"
+manual_connection               = true
+pdz_name                        = [""]
+private_dns_zone_group_name     = "default"
+private_dns_zone_ids            = [""]
+pdz_resource_group_name         = [""]
+pdz_link_name                   = [""]
+virtual_network_id              = [""]
+linked_pdz_name                 = [""]
+vlink_resource_group_name       = [""]
+sub_resource_id                 = "/subscriptions/64421e13-ee76-43d2-93d5-bb5b97858ba5/resourceGroups/rg-btdemo/providers/Microsoft.DBforMySQL/flexibleServers/mysql-bt-test"
+sub_resource_names              = [""]
+azure_private_dns_zone_name     = " "
+custom_network_interface_name   = " "
+pdz_count                       = 0

@@ -1,0 +1,1708 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Parse_JSON_Body": {
+                "inputs": {
+                    "content": "@triggerBody()",
+                    "schema": {
+                        "items": {
+                            "properties": {
+                                "TeamsChannel": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "name",
+                                "TeamsChannel"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "runAfter": {},
+                "type": "ParseJson"
+            },
+            "Parse_JSON_Queries": {
+                "inputs": {
+                    "content": "@triggerOutputs()['queries']",
+                    "schema": {
+                        "properties": {
+                            "policy_name": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {
+                    "Parse_JSON_Body": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ParseJson"
+            },
+            "Switch": {
+                "cases": {
+                    "aks-offhour": {
+                        "actions": {
+                            "For_each": {
+                                "actions": {
+                                    "Condition": {
+                                        "actions": {
+                                            "For_each_5": {
+                                                "actions": {
+                                                    "For_each_6": {
+                                                        "actions": {
+                                                            "Condition_2": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_3": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each')['name']}<br>\n<span style=\"color: rgb(209,72,65)\"><strong>STOPPED</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_6')?['id']",
+                                                                                    "groupId": "@items('For_each_5')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_6')?['displayName']",
+                                                                                "@items('For_each')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_5')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams')?['value']",
+                                                "runAfter": {
+                                                    "List_teams": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "Condition_7": {
+                                        "actions": {
+                                            "For_each_11": {
+                                                "actions": {
+                                                    "For_each_12": {
+                                                        "actions": {
+                                                            "Condition_8": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_12": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO STOP</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_12')?['id']",
+                                                                                    "groupId": "@items('For_each_11')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_12')?['displayName']",
+                                                                                "@items('For_each')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_4')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_4": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_4": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_11')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_4')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_4": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_4": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_2": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "HTTP": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "identity": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloudcustodian",
+                                                "type": "ManagedServiceIdentity"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://management.azure.com@{items('For_each')['id']}/stop?api-version=2022-09-01"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    },
+                                    "Post_message_in_a_chat_or_channel": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each')['name']}<br>\n<span style=\"color: rgb(209,72,65)\"><strong>STOPPED</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_2": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO STOP</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP": [
+                                                "TimedOut",
+                                                "Skipped",
+                                                "Failed"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "foreach": "@body('Parse_JSON_Body')",
+                                "runAfter": {},
+                                "type": "Foreach"
+                            }
+                        },
+                        "case": "aks-offhour"
+                    },
+                    "aks-onhour": {
+                        "actions": {
+                            "For_each_2": {
+                                "actions": {
+                                    "Condition_11": {
+                                        "actions": {
+                                            "For_each_15": {
+                                                "actions": {
+                                                    "For_each_16": {
+                                                        "actions": {
+                                                            "Condition_12": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_14": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each_2')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO START</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_16')?['id']",
+                                                                                    "groupId": "@items('For_each_15')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_16')?['displayName']",
+                                                                                "@items('For_each_2')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_6')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_6": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_6": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_15')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_6')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_6": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_6": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_2')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_5": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "Condition_9": {
+                                        "actions": {
+                                            "For_each_13": {
+                                                "actions": {
+                                                    "For_each_14": {
+                                                        "actions": {
+                                                            "Condition_10": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_13": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each_2')['name']}<br>\n<span style=\"color: rgb(65,168,95)\"><strong>STARTED</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_14')?['id']",
+                                                                                    "groupId": "@items('For_each_13')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_14')?['displayName']",
+                                                                                "@items('For_each_2')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_5')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_5": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_5": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_13')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_5')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_5": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_5": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_2')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_4": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "HTTP_2": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "identity": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloudcustodian",
+                                                "type": "ManagedServiceIdentity"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://management.azure.com@{items('For_each_2')['id']}/start?api-version=2022-09-01"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_4": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each_2')['name']}<br>\n<span style=\"color: rgb(65,168,95)\"><strong>STARTED</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_2": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_5": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>AKS cluster:</strong><br>\n@{items('For_each_2')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO START</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_2": [
+                                                "TimedOut",
+                                                "Skipped",
+                                                "Failed"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "foreach": "@body('Parse_JSON_Body')",
+                                "runAfter": {},
+                                "type": "Foreach"
+                            }
+                        },
+                        "case": "aks-onhour"
+                    },
+                    "mysql-offhour": {
+                        "actions": {
+                            "For_each_21": {
+                                "actions": {
+                                    "Condition_19": {
+                                        "actions": {
+                                            "For_each_25": {
+                                                "actions": {
+                                                    "For_each_26": {
+                                                        "actions": {
+                                                            "Condition_20": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_21": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>MySQL database:</strong><br>\n@{items('For_each_21')['name']}<br>\n<span style=\"color: rgb(209,72,65)\"><strong>STOPPED</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_26')?['id']",
+                                                                                    "groupId": "@items('For_each_25')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_26')?['displayName']",
+                                                                                "@items('For_each_21')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_10')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_10": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_10": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_25')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_10')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_10": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_10": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_21')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_17": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "Condition_21": {
+                                        "actions": {
+                                            "For_each_27": {
+                                                "actions": {
+                                                    "For_each_28": {
+                                                        "actions": {
+                                                            "Condition_22": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_22": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>MySQL database:</strong><br>\n@{items('For_each_21')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO STOP</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_28')?['id']",
+                                                                                    "groupId": "@items('For_each_27')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_28')?['displayName']",
+                                                                                "@items('For_each_21')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_11')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_11": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_11": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_27')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_11')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_11": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_11": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_21')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_18": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "HTTP_5": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "identity": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloudcustodian",
+                                                "type": "ManagedServiceIdentity"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://management.azure.com@{items('For_each_21')['id']}/stop?api-version=2020-01-01"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_17": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>MySQL database:<br>\n</strong><strong>@{items('For_each_21')['name']}</strong><strong></strong><br>\n<span style=\"color: rgb(209,72,65)\"><strong>STOPPED</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_5": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_18": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>MySQL database:</strong><br>\n@{items('For_each_21')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO STOP</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_5": [
+                                                "TimedOut",
+                                                "Skipped",
+                                                "Failed"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "foreach": "@body('Parse_JSON_Body')",
+                                "runAfter": {},
+                                "type": "Foreach"
+                            }
+                        },
+                        "case": "mysql-offhour"
+                    },
+                    "mysql-onhour": {
+                        "actions": {
+                            "For_each_22": {
+                                "actions": {
+                                    "Condition_17": {
+                                        "actions": {
+                                            "For_each_23": {
+                                                "actions": {
+                                                    "For_each_24": {
+                                                        "actions": {
+                                                            "Condition_18": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_23": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>MySQL database:<br>\n</strong><strong>@{items('For_each_22')['name']}</strong><strong></strong><br>\n<span style=\"color: rgb(65,168,95)\"><strong>STARTED</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_24')?['id']",
+                                                                                    "groupId": "@items('For_each_23')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_24')?['displayName']",
+                                                                                "@items('For_each_22')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_9')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_9": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_9": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_23')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_9')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_9": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_9": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_22')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_19": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "HTTP_6": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "identity": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloudcustodian",
+                                                "type": "ManagedServiceIdentity"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://management.azure.com@{items('For_each_22')['id']}/start?api-version=2020-01-01"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_19": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>MySQL database:</strong><br>\n@{items('For_each_22')['name']}<br>\n<span style=\"color: rgb(65,168,95)\"><strong>STARTED</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_6": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_20": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>MySQL database:</strong><br>\n@{items('For_each_22')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO START</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_6": [
+                                                "TimedOut",
+                                                "Skipped",
+                                                "Failed"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "foreach": "@body('Parse_JSON_Body')",
+                                "runAfter": {},
+                                "type": "Foreach"
+                            }
+                        },
+                        "case": "mysql-onhour"
+                    },
+                    "vm-offhour": {
+                        "actions": {
+                            "For_each_3": {
+                                "actions": {
+                                    "Condition_13": {
+                                        "actions": {
+                                            "For_each_17": {
+                                                "actions": {
+                                                    "For_each_18": {
+                                                        "actions": {
+                                                            "Condition_14": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_15": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_3')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO STOP</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_18')?['id']",
+                                                                                    "groupId": "@items('For_each_17')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_18')?['displayName']",
+                                                                                "@items('For_each_3')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_7')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_7": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_7": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_17')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_7')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_7": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_7": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_3')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_7": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "Condition_5": {
+                                        "actions": {
+                                            "For_each_9": {
+                                                "actions": {
+                                                    "For_each_10": {
+                                                        "actions": {
+                                                            "Condition_6": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_11": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_3')['name']}<br>\n<span style=\"color: rgb(209,72,65)\"><strong>STOPPED</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_10')?['id']",
+                                                                                    "groupId": "@items('For_each_9')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_10')?['displayName']",
+                                                                                "@items('For_each_3')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_3')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_3": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_3": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_9')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_3')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_3": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_3": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_3')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_6": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "HTTP_3": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "identity": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloudcustodian",
+                                                "type": "ManagedServiceIdentity"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://management.azure.com@{items('For_each_3')['id']}/deallocate?api-version=2022-08-01"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_6": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_3')['name']}<br>\n<span style=\"color: rgb(209,72,65)\"><strong>STOPPED</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_3": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_7": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_3')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO STOP</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_3": [
+                                                "TimedOut",
+                                                "Skipped",
+                                                "Failed"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "foreach": "@body('Parse_JSON_Body')",
+                                "runAfter": {},
+                                "type": "Foreach"
+                            }
+                        },
+                        "case": "vm-offhour"
+                    },
+                    "vm-onhour": {
+                        "actions": {
+                            "For_each_4": {
+                                "actions": {
+                                    "Condition_15": {
+                                        "actions": {
+                                            "For_each_19": {
+                                                "actions": {
+                                                    "For_each_20": {
+                                                        "actions": {
+                                                            "Condition_16": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_16": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_4')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO START</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_20')?['id']",
+                                                                                    "groupId": "@items('For_each_19')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_20')?['displayName']",
+                                                                                "@items('For_each_4')['TeamsChannel']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_8')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_8": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_8": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_19')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_8')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_8": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_8": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_4')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_9": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "Condition_3": {
+                                        "actions": {
+                                            "For_each_7": {
+                                                "actions": {
+                                                    "For_each_8": {
+                                                        "actions": {
+                                                            "Condition_4": {
+                                                                "actions": {
+                                                                    "Post_message_in_a_chat_or_channel_10": {
+                                                                        "inputs": {
+                                                                            "body": {
+                                                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_4')['name']}<br>\n<span style=\"color: rgb(65,168,95)\"><strong>STARTED</strong></span></p>",
+                                                                                "recipient": {
+                                                                                    "channelId": "@items('For_each_8')?['id']",
+                                                                                    "groupId": "@items('For_each_7')?['id']"
+                                                                                }
+                                                                            },
+                                                                            "host": {
+                                                                                "connection": {
+                                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                                }
+                                                                            },
+                                                                            "method": "post",
+                                                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                                                        },
+                                                                        "runAfter": {},
+                                                                        "type": "ApiConnection"
+                                                                    }
+                                                                },
+                                                                "expression": {
+                                                                    "and": [
+                                                                        {
+                                                                            "equals": [
+                                                                                "@items('For_each_4')['TeamsChannel']",
+                                                                                "@items('For_each_8')?['displayName']"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "runAfter": {},
+                                                                "type": "If"
+                                                            }
+                                                        },
+                                                        "foreach": "@body('List_channels_2')?['value']",
+                                                        "runAfter": {
+                                                            "List_channels_2": [
+                                                                "Succeeded"
+                                                            ]
+                                                        },
+                                                        "type": "Foreach"
+                                                    },
+                                                    "List_channels_2": {
+                                                        "inputs": {
+                                                            "host": {
+                                                                "connection": {
+                                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                                }
+                                                            },
+                                                            "method": "get",
+                                                            "path": "/beta/groups/@{encodeURIComponent(items('For_each_7')?['id'])}/channels"
+                                                        },
+                                                        "runAfter": {},
+                                                        "type": "ApiConnection"
+                                                    }
+                                                },
+                                                "foreach": "@body('List_teams_2')?['value']",
+                                                "runAfter": {
+                                                    "List_teams_2": [
+                                                        "Succeeded"
+                                                    ]
+                                                },
+                                                "type": "Foreach"
+                                            },
+                                            "List_teams_2": {
+                                                "inputs": {
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "get",
+                                                    "path": "/beta/me/joinedTeams"
+                                                },
+                                                "runAfter": {},
+                                                "type": "ApiConnection"
+                                            }
+                                        },
+                                        "expression": {
+                                            "and": [
+                                                {
+                                                    "not": {
+                                                        "equals": [
+                                                            "@items('For_each_4')['TeamsChannel']",
+                                                            "@null"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "runAfter": {
+                                            "Post_message_in_a_chat_or_channel_8": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "If"
+                                    },
+                                    "HTTP_4": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "identity": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloudcustodian",
+                                                "type": "ManagedServiceIdentity"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://management.azure.com@{items('For_each_4')['id']}/start?api-version=2022-08-01"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_8": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_4')['name']}<br>\n<span style=\"color: rgb(65,168,95)\"><strong>STARTED</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_4": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Post_message_in_a_chat_or_channel_9": {
+                                        "inputs": {
+                                            "body": {
+                                                "messageBody": "<p><strong>Virtual Machine:</strong><br>\n@{items('For_each_4')['name']}<br>\n<span style=\"color: rgb(251,160,38)\"><strong>FAILED TO START</strong></span></p>",
+                                                "recipient": {
+                                                    "channelId": "19:e5c2e40ca1b24866b438001b4f7871b6@thread.tacv2",
+                                                    "groupId": "76ebf98a-111e-4330-a08f-eada65716e0f"
+                                                }
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+                                        },
+                                        "runAfter": {
+                                            "HTTP_4": [
+                                                "TimedOut",
+                                                "Skipped",
+                                                "Failed"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "foreach": "@body('Parse_JSON_Body')",
+                                "runAfter": {},
+                                "type": "Foreach"
+                            }
+                        },
+                        "case": "vm-onhour"
+                    }
+                },
+                "default": {
+                    "actions": {}
+                },
+                "expression": "@body('Parse_JSON_Queries')?['policy_name']",
+                "runAfter": {
+                    "Parse_JSON_Queries": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Switch"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {},
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "teams_1": {
+                    "connectionId": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/resourceGroups/rg-infrateam/providers/Microsoft.Web/connections/teams-1",
+                    "connectionName": "teams-1",
+                    "id": "/subscriptions/1691759c-bec8-41b8-a5eb-03c57476ffdb/providers/Microsoft.Web/locations/uaenorth/managedApis/teams"
+                }
+            }
+        }
+    }
+}

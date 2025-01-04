@@ -1,0 +1,3 @@
+controller:
+  priorityClassName: high-priority
+  replicaCount: 2

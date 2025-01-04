@@ -1,0 +1,45 @@
+policies:
+  # - name: orphaned-disk
+  #   resource: azure.disk
+  #   filters:
+  #     - type: value
+  #       key: managedBy
+  #       value: null
+  # - name: orphaned-nic
+  #   resource: azure.networkinterface
+  #   filters:
+  #     - type: value
+  #       key: properties.virtualMachine
+  #       value: null
+  # - name: orphaned-ip
+  #   resource: azure.publicip
+  #   filters:
+  #     - type: value
+  #       key: properties.ipConfiguration
+  #       value: null
+  - name: aks-offhour
+    resource: azure.aks
+    filters:
+      - type: offhour
+        tag: scheduler
+    actions:
+     - type: logic-app
+       resource-group: rg-infrateam
+       logic-app-name: cloudcustodian
+       batch: true
+       body: 'resources[].{ id: id }'
+       query-params:
+          policy_name: policy.name
+  - name: aks-onhour
+    resource: azure.aks
+    filters:
+      - type: onhour
+        tag: scheduler
+    actions:
+     - type: logic-app
+       resource-group: rg-infrateam
+       logic-app-name: cloudcustodian
+       batch: true
+       body: 'resources[].{ id: id }'
+       query-params:
+          policy_name: policy.name

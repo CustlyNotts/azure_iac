@@ -1,0 +1,11 @@
+subscription_id     = <subscription_id>
+service_plan_name                                = "ASP-CargoesRunner-a477"
+os_type                                          = "Windows"
+sku_name                                         = "Y1"
+function_app_name                                = "CargoesRunner-staging"
+resource_group_name                              = "rg-resourcemove"
+https_only                                       = false
+builtin_logging_enabled                          = false
+client_certificate_mode                          = "Optional"
+identity_enabled                                 = off
+identity_type                                    = "SystemAssigned"
