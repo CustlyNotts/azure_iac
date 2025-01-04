@@ -51,10 +51,10 @@ resource "kubernetes_secret" "azure-service-key" {
     "service-key.json" = jsonencode({
       subscriptionId = var.subscription_id
       serviceKey = {
-        appId       = "c65d7458-0e1c-4215-af74-55ed3157e460"
+        appId       = <app_id>
         displayName = "KubecostAccess"
-        password    = "HHw8Q~-X6VxU9lctIMBIO4cNM6CSI6rBObww7dtY"
-        tenant      = "2bd16c9b-7e21-4274-9c06-7919f7647bbb"
+        password    = <password>
+        tenant      = <tenant_id>
       }
     })
   }

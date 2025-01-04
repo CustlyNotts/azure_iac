@@ -17,7 +17,7 @@ extra_tags = {
 }
 
 app_settings                                   = {
-          "AzureWebJobsStorage"         = "DefaultEndpointsProtocol=https;AccountName=rgcargoescleganedev8bb3;AccountKey=aVXys4mdPYWE2bSJ5DIV8kLyX8AkrfaQqYljEm7HtKEDvUl2WmQOOfx3226tOk5jDsJKJOJrEKAo+AStsSWJ/Q==;EndpointSuffix=core.windows.net"
+          "AzureWebJobsStorage"         = <azure_key>
           "FUNCTIONS_EXTENSION_VERSION" = "~4"
           "FUNCTIONS_WORKER_RUNTIME"    = "node"
           "NODE_ENV"                    = "qa"
